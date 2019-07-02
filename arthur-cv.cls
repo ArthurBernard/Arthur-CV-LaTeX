@@ -1,6 +1,6 @@
 \NeedsTeXFormat{LaTeX2e}
 \LoadClass{article}
-\ProvidesClass{arthur_cv}[2019/06/28 Custom CV class]
+\ProvidesClass{arthur-cv}[2019/06/28 Custom CV class]
 
 %%%%%%%%%%%%%%%%%%%%%
 %%  Load packages  %%
