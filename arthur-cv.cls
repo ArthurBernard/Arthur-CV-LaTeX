@@ -81,7 +81,9 @@
 
   %------------------------------------------------
 
-  \begin{textblock}{6}(0.5, 0.2)
+  \begin{textblock}{36}(0.5, 0.2)
+
+    \begin{minipage}[t]{0.33\textwidth}
 
     %------------------------------------------------
     
@@ -96,13 +98,17 @@
 
     %------------------------------------------------
     
+    \end{minipage} 
+    \hfill
+    \begin{minipage}[t]{0.66\textwidth} 
+
     \vspace{3mm}
     \renewcommand{\arraystretch}{2}
     \begin{tabular}{p{1cm} @{\hskip 0.5cm}p{8cm}}
       \ifthenelse{\equal{\cvnumberphone}{}}{}{
       		{$
               \begin{array}{l}
-              \hspace{4mm} \textnormal{\faMobile} 
+              \hspace{4mm} \Large \textnormal{\faMobile} 
               \end{array}
               $} 
             & \cvnumberphone\\}
@@ -110,14 +116,14 @@
       \ifthenelse{\equal{\cvsite}{}}{}{
             {$
               \begin{array}{l}
-              \hspace{2.8mm} \textnormal{\textcolor{test}{\faGlobe}}
+              \hspace{2.8mm} \Large \textnormal{\textcolor{test}{\faGlobe}}
               \end{array}
               $} 
             & \href{http://\cvsite}{\cvsite} \\}
       \ifthenelse{\equal{\cvmail}{}}{}{
             {$
               \begin{array}{l}
-              \hspace{2.5mm} \textnormal{\textcolor{yt}{\faEnvelopeO}}
+              \hspace{2.5mm} \Large \textnormal{\textcolor{yt}{\faEnvelopeO}}
               \end{array}
               $} 
             & \href{mailto:\cvmail}{\cvmail} \\}
@@ -125,68 +131,28 @@
        \ifthenelse{\equal{\cvlinkedin}{}}{}{
             {$
               \begin{array}{l}
-              \hspace{3mm} \textnormal{\textcolor{linkedin}{\faLinkedin}}
+              \hspace{3mm} \Large \textnormal{\textcolor{linkedin}{\faLinkedin}}
               \end{array}
               $} & \href{https://www.linkedin.com\cvlinkedin}{\cvlinkedin} \\
             }  
         \ifthenelse{\equal{\cvgithub}{}}{}{
             {$
               \begin{array}{l}
-              \hspace{3mm} \textnormal{\faGithub}
+              \hspace{3mm} \Large \textnormal{\faGithub}
               \end{array}
               $} & \href{https://www.github.com/\cvgithub}{\cvgithub} \\
             }   
             
     \end{tabular}
+
+    \end{minipage} 
       
   \end{textblock}
-}
-
-% From wonderalice
-\newcommand{\rolefont}{%
-  \fontsize{14pt}{24pt}\selectfont%
-  \thinfont%
-  \color{white}%
-}
-
-\newcommand{\header}[3]{%
-  \begin{tikzpicture}[remember picture,overlay]
-    \node [rectangle, fill=fillheader, anchor=north, minimum width=\paperwidth, minimum height=3cm] (box) at (current page.north){};
-    \node [anchor=center] (name) at (box) {%
-      \fontsize{30pt}{62pt}\color{header}%
-      {\thinfont #1}{\bodyfont  #2}
-    };
-    \node [anchor=north] at (name.south) {%
-      \fontsize{14pt}{24pt}\color{pblue}%
-      \bodyfont #3%
-    };
-  \end{tikzpicture}
-  \vspace{0.5cm}
-  \vspace{-2\parskip}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%
 %%  Left Side Block  %%
 %%%%%%%%%%%%%%%%%%%%%%%
-
-\RequirePackage[absolute,overlay]{textpos}
-\setlength{\TPHorizModule}{1cm}
-\setlength{\TPVertModule}{1cm}
-\newenvironment{aside}{%
-  \let\oldsection\section
-  \renewcommand{\section}[1]{
-    \par\vspace{\baselineskip}{\Large\headingfont\color{pblue} ##1}
-  }
-  \begin{textblock}{3.6}(2.0, 0.55)
-  \begin{flushright}
-  \obeycr
-}{%
-  \restorecr
-  \end{flushright}
-  \end{textblock}
-  \let\section\oldsection
-}
-
 
 \titleformat{\section}       % Customise the \section command 
 {\Large\scshape\raggedright} % Make the \section headers large (\Large), small capitals (\scshape) and left aligned (\raggedright)
@@ -194,13 +160,15 @@
   {}           % Can be used to insert code before the heading
   [\titlerule] % Inserts a horizontal line after the heading
 
-  \titleformat{\subsection}
-  {\large\scshape\raggedright}
-  {}{0em}
-  {}
 \newcommand{\datedsection}[2]{%
   \section[#1]{#1 \hfill #2}%
 }
+
+\titleformat{\subsection}
+  {\large\scshape\raggedright}
+  {}{0em}
+  {}
+
 \newcommand{\datedsubsection}[2]{%
   \subsection[#1]{#1 \hfill #2}%
 }
