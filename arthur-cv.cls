@@ -83,73 +83,67 @@
 
   %------------------------------------------------
 
-  \begin{textblock}{36}(0.5, 0.2)
+  \begin{textblock}{17}(0.5, 0.2)
 
     \begin{minipage}[t]{0.33\textwidth}
 
-    %------------------------------------------------
-    
-    \vspace{4mm}
-    {\Huge\color{pblue}\cvname}
-    
-    \vspace{2mm}
+      \vspace{3mm}
+      \renewcommand{\arraystretch}{2}
+      \begin{tabular}{p{1cm} @{\hskip 0.5cm}p{8cm}}
+        \ifthenelse{\equal{\cvnumberphone}{}}{}{
+        		{$
+                \begin{array}{l}
+                \hspace{4mm} \Large \textnormal{\faMobile} 
+                \end{array}
+                $} 
+              & \cvnumberphone\\}
+              
+        \ifthenelse{\equal{\cvsite}{}}{}{
+              {$
+                \begin{array}{l}
+                \hspace{2.8mm} \Large \textnormal{\textcolor{test}{\faGlobe}}
+                \end{array}
+                $} 
+              & \href{http://\cvsite}{\cvsite} \\}
+        \ifthenelse{\equal{\cvmail}{}}{}{
+              {$
+                \begin{array}{l}
+                \hspace{2.5mm} \Large \textnormal{\textcolor{yt}{\faEnvelopeO}}
+                \end{array}
+                $} 
+              & \href{mailto:\cvmail}{\cvmail} \\}
+        
+         \ifthenelse{\equal{\cvlinkedin}{}}{}{
+              {$
+                \begin{array}{l}
+                \hspace{3mm} \Large \textnormal{\textcolor{linkedin}{\faLinkedin}}
+                \end{array}
+                $} & \href{https://www.linkedin.com\cvlinkedin}{\cvlinkedin} \\
+              }  
+          \ifthenelse{\equal{\cvgithub}{}}{}{
+              {$
+                \begin{array}{l}
+                \hspace{3mm} \Large \textnormal{\faGithub}
+                \end{array}
+                $} & \href{https://www.github.com/\cvgithub}{\cvgithub} \\
+              }   
+              
+      \end{tabular}
 
-    %------------------------------------------------
-    
-    {\Large\color{black!80}\cvjobtitle}
+    \end{minipage}
+    \begin{minipage}[t]{0.66\textwidth}
 
-    %------------------------------------------------
-    
-    \end{minipage} 
-    \hfill
-    \begin{minipage}[t]{0.66\textwidth} 
-
-    \vspace{3mm}
-    \renewcommand{\arraystretch}{2}
-    \begin{tabular}{p{1cm} @{\hskip 0.5cm}p{8cm}}
-      \ifthenelse{\equal{\cvnumberphone}{}}{}{
-      		{$
-              \begin{array}{l}
-              \hspace{4mm} \Large \textnormal{\faMobile} 
-              \end{array}
-              $} 
-            & \cvnumberphone\\}
-            
-      \ifthenelse{\equal{\cvsite}{}}{}{
-            {$
-              \begin{array}{l}
-              \hspace{2.8mm} \Large \textnormal{\textcolor{test}{\faGlobe}}
-              \end{array}
-              $} 
-            & \href{http://\cvsite}{\cvsite} \\}
-      \ifthenelse{\equal{\cvmail}{}}{}{
-            {$
-              \begin{array}{l}
-              \hspace{2.5mm} \Large \textnormal{\textcolor{yt}{\faEnvelopeO}}
-              \end{array}
-              $} 
-            & \href{mailto:\cvmail}{\cvmail} \\}
+      % \vspace{4mm}
+      {\Huge\color{pblue}\cvname}
       
-       \ifthenelse{\equal{\cvlinkedin}{}}{}{
-            {$
-              \begin{array}{l}
-              \hspace{3mm} \Large \textnormal{\textcolor{linkedin}{\faLinkedin}}
-              \end{array}
-              $} & \href{https://www.linkedin.com\cvlinkedin}{\cvlinkedin} \\
-            }  
-        \ifthenelse{\equal{\cvgithub}{}}{}{
-            {$
-              \begin{array}{l}
-              \hspace{3mm} \Large \textnormal{\faGithub}
-              \end{array}
-              $} & \href{https://www.github.com/\cvgithub}{\cvgithub} \\
-            }   
-            
-    \end{tabular}
+      \vspace{2mm}
 
-    \end{minipage} 
-      
+      {\Large\color{black!80}\cvjobtitle}
+
+    \end{minipage}
+
   \end{textblock}
+
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%
