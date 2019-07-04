@@ -66,8 +66,10 @@
 \newcommand{\cvname}[1]{\renewcommand{\cvname}{#1}}
 \newcommand{\cvjobtitle}[1]{\renewcommand{\cvjobtitle}{#1}}
 
-% Command for printing the contact information icons
-% \newcommand*\icon[1]{\tikz[baseline=(char.base)]{\node[shape=circle,draw,inner sep=1pt, fill=mainblue,mainblue,text=white] (char) {#1};}}
+\newcommand{\profilesection}[2]{{\noindent\color{black!80} \huge #1 \rule[0.15\baselineskip]{#2}{1pt} \vspace{1pt}}}
+
+\newcommand{\skills}[1]{\renewcommand{\givenskills}{  \justifying#1}}
+
 
 %%%%%%%%%%%%%%
 %%  Header  %%
@@ -153,6 +155,14 @@
 %%%%%%%%%%%%%%%%%%%%%%%
 %%  Left Side Block  %%
 %%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%  Right Side Block  %%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \begin{minipage}[t]{0.66\textwidth}
 
 \titleformat{\section}       % Customise the \section command 
 {\Large\scshape\raggedright} % Make the \section headers large (\Large), small capitals (\scshape) and left aligned (\raggedright)
