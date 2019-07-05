@@ -49,6 +49,8 @@
 \definecolor{maingray}{HTML}{B9B9B9}
 \definecolor{linkedin}{HTML}{0085AE}
 
+\colorlet{headercolor}{gray}
+
 
 %%%%%%%%%%%%%%%%%%%
 %%  Information  %%
@@ -156,7 +158,21 @@
 %%  Right Side Block  %%
 %%%%%%%%%%%%%%%%%%%%%%%%
 
-% \begin{minipage}[t]{0.66\textwidth}
+\def\@sectioncolor#1#2#3{%
+  {%
+    \color{pblue} #1#2#3%
+  }%
+}
+
+
+\renewcommand{\section}[1]{
+  \par\vspace{\parskip}
+  {%
+    \Large\color{headercolor}%
+    \@sectioncolor #1%
+  }
+  \par\vspace{1mm}
+}
 
 \titleformat{\section}       % Customise the \section command 
 {\Large\scshape\raggedright} % Make the \section headers large (\Large), small capitals (\scshape) and left aligned (\raggedright)
