@@ -2,7 +2,7 @@
 % @Email: arthur.bernard.92@gmail.com
 % @Date: 2019-07-02 19:18:05
 % @Last modified by: ArthurBernard
-% @Last modified time: 2019-07-06 19:56:55
+% @Last modified time: 2019-07-06 21:34:52
 \documentclass[a4paper,11pt]{arthur-cv}
 \title{Curiculum Vitae}
 \author{Arthur Bernard}
@@ -19,12 +19,15 @@
 \cvjobtitle{Data Scientist in Quantitative Finance}
 %\cvsite{}
 
+%\newlength\Colsep
+%\setlength\Colsep{10pt}
+
 \begin{document}
 \makeprofile % Print the sidebar
 
 \begin{textblock}{20.5}(0.25, 3.5)
 
-  \begin{minipage}[t]{0.38\textwidth}
+  \begin{minipage}[t]{0.38\textwidth}%{\dimexpr0.5\textwidth-0.5\Colsep\relax}
   
     \section{Personal projects}
       \subsection{2018 – 2019}{Development of  machine/deep learning  tools (in python and cython) specially adapted to finance, (create neural networks, backtest strategies, econmetric models, financial indicators, etc.).}
@@ -50,9 +53,11 @@
   \begin{minipage}[t]{0.62\textwidth}
   
     \section{Experiences}
-      \subsection{Since January 2019}{Research in Quantitative Finance, at Napoleon Crypto, Paris. Creation of a data-science competition proposed to the Collège de France and  R\&D of trading strategies using neural networks.}
-      \subsection{June to December 2018}{Intern in Quantitative Finance, at Napoleon Crypto, Paris. Research of algorithmic strategies and creation of a portfolio allocation algorithm.}
-      \subsection{2012 to 2018}{Administrator (volunteer) at Mutuelle des Etudiants de Provence. Approval of budgets, financial investments, internal policy, etc.}
+      \begin{expenv}
+      \expitem{Jan. 2019 -}{Present}{Research in Quantitative Finance}{Napoleon Crypto}{Paris}{Creation of a data-science competition proposed to the Collège de France and  R\&D of trading strategies using neural networks.}
+      \expitem{Jun. 2018 -}{Dec. 2018}{Intern in Quantitative Finance}{Napoleon Crypto}{Paris}{Research of algorithmic strategies and creation of a portfolio allocation algorithm.}
+      \expitem{Sept. 2012 -}{May 2018}{Administrator (volunteer)}{Mutuelle des Etudiants de Provence}{Marseille}{Approval of budgets, financial investments, internal policy, etc.}
+      \end{expenv}
 
     \section{Education}
       \subsection{2017 \& 2018}{Master 1 \& 2, Econometrics of Banking and Financial markets, at Aix-Marseille School of Economics. (Courses: Stochastic Finance, Financial Econometrics, Financial Engineering, Econometrics of Exchange Rates, Neural Network, etc. ; Projects: Intraday analysis of BTCUSD versus EURUSD, etc. ; Master thesis: Analysis of dynamics of Bitcoin.)}
