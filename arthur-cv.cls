@@ -38,6 +38,7 @@
 \RequirePackage{tikz}     % Graphic
 \RequirePackage{xcolor}   % Colors
 \RequirePackage{multirow} % Join rows in tabular
+\RequirePackage{xargs}    % Multiple optional args
 \RequirePackage{ifthen}
 
 %%%%%%%%%%%%%%%%%%
@@ -164,133 +165,60 @@
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%
-%%  Left Side Block  %%
+%%  Left side block  %%
 %%%%%%%%%%%%%%%%%%%%%%%
 
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%
-%%  Right Side Block  %%
-%%%%%%%%%%%%%%%%%%%%%%%%
-
-\def\@sectioncolor#1#2#3{%
-  {%
-    \color{pblue} #1#2#3%
-  }%
-}
-
-\renewcommand{\section}[1]{
-  \par\vspace{\parskip}
-  \textbf{%
-    \LARGE\color{headercolor}%
-    \@sectioncolor #1%
-  }
-  \par\vspace{1mm}
-}
-
-\titleformat{\section}       % Customise the \section command 
-{\Large\scshape\raggedright} % Make the \section headers large (\Large), small capitals (\scshape) and left aligned (\raggedright)
-  {}{0em}      % Can be used to give a prefix to all sections, like 'Section ...'
-  {}           % Can be used to insert code before the heading
-  [\titlerule] % Inserts a horizontal line after the heading
-
 \newcommand{\sectionleft}[1]{
-  \par\vspace{\parskip}
+  \par\vspace{5mm}
   {%
-    \Large\textbf{#1}%
+    \LARGE\textbf{#1}%
   }
-  \par\vspace{1mm}
+  \par\vspace{2mm}
 }
 
 \newcommand{\subsectionleft}[2]{
   \par
   {%
     \normalsize#1 #2%
-  }\\
+  }
 }
 
-\titleformat{\subsection}
-  {\large\scshape\raggedright}%
-  {}{0em}%
-  {}%
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%  Right side block  %%
+%%%%%%%%%%%%%%%%%%%%%%%%
 
-\newcommand{\datedsubsection}[2]{%
-  \subsection[#1]{#1 \hfill #2}%
+% Color of title section
+\def\@sectioncolor#1#2#3{%
+  {%
+    \color{pblue} #1#2#3%
+  }%
 }
 
-%%%%%%%%%%%%%%%
-%%  Exp env  %%
-%%%%%%%%%%%%%%%
+% Set section
+\renewcommand{\section}[1]{
+  \par\vspace{5mm}
+  \textbf{%
+    \LARGE\color{headercolor}%
+    \@sectioncolor #1%
+  }
+  \par\vspace{2mm}
+}
 
-\setlength{\tabcolsep}{0pt}
-\newenvironment{expenv}{%
-  \begin{tabular*}{0.5\textwidth}{@{\extracolsep{\fill}}p{2.1cm} l}
+% Set environnement
+\setlength{\tabcolsep}{2pt}
+\newenvironment{rightenv}{%
+  \begin{tabular}{@{\extracolsep{\fill}}p{2.1cm} l}
 }{%
-  \end{tabular*}
+  \end{tabular}
 }
 
-\newcommand{\expitem}[6]{%
-  #1&\parbox[t]{10.5cm}{%
-    \textbf{\color{pblue}#3}%
+% Set item
+\newcommandx{\subsectionright}[6][2= ,4= ,5= ]{%
+  #1 & \parbox[t]{10.3cm}{%
+    \ifblank{#2}{}{#2 in }\textbf{\color{pblue}#3}%
     \hfill%
-    {\footnotesize at \textit{#4}, #5}%\\
-    %#4\vspace{\parsep}%
-  }\\
-  #2&\parbox[t]{10.5cm}{%
-    #6 \\
-  }\\
-}
-
-%%%%%%%%%%%%%%%
-%%  Edu env  %%
-%%%%%%%%%%%%%%%
-
-\setlength{\tabcolsep}{0pt}
-\newenvironment{eduenv}{%
-  \begin{tabular*}{0.5\textwidth}{@{\extracolsep{\fill}}p{2.1cm} l}
-}{%
-  \end{tabular*}
-}
-
-\newcommand{\eduitem}[6]{%
-  #1 & \parbox[t]{10.5cm}{%
-    #2 in \textbf{\color{pblue}#3}%
-    \hfill%
-    {\footnotesize at \textit{#4}, #5}\\%
-    #6\vspace{\parsep}%
-  }\\
-}
-
-%%%%%%%%%%%%%%%
-%%  New env  %%
-%%%%%%%%%%%%%%%
-
-\setlength{\tabcolsep}{1pt}
-\newenvironment{newenv}{%
-  \begin{tabular*}{0.5\textwidth}{@{\extracolsep{\fill}}p{2.1cm} l}
-}{%
-  \end{tabular*}
-}
-
-\newcommand{\newitem}[3]{%
-  #1 & \parbox[t]{10.4cm}{%
-    \textbf{\color{pblue}#2}\\%
-    #3%
-    \vspace{\parsep}%
-  }\\
-}
-
-
-
-\newcommand{\twentyitem}[6]{%
-  #1&\parbox[t]{0.83\textwidth}{%
-    \textbf{#3}% 
-    \hfill%
-    {\footnotesize#4}%
-        }\\%
-    #2&\parbox[t]{0.83\textwidth}{%
-    \ifblank{#5}{}{#5 \\}
-    #6%
+    \ifblank{#4}{}{\footnotesize at \textit{#4}}\ifblank{#5}{}{\footnotesize, #5}\\%
+    \normalsize#6\vspace{\parsep}%
   }\\
 }
 
