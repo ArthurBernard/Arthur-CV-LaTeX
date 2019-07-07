@@ -2,8 +2,8 @@
 % @Email: arthur.bernard.92@gmail.com
 % @Date: 2019-07-02 19:18:05
 % @Last modified by: ArthurBernard
-% @Last modified time: 2019-07-07 17:13:20
-\documentclass[a4paper,12pt]{arthur-cv}
+% @Last modified time: 2019-07-07 22:48:29
+\documentclass[a4paper]{arthur-cv}
 \title{Curiculum Vitae}
 \author{Arthur Bernard}
 
@@ -27,8 +27,12 @@
 
 \begin{textblock}{20.5}(0.25, 3.5)
 
-  \begin{minipage}[t]{0.37\textwidth}%{\dimexpr0.5\textwidth-0.5\Colsep\relax}
-  
+  \begin{minipage}[t]{0.37\textwidth}
+
+    %%%%%%%%%%%%%%%%%
+    %%  Left side  %%
+    %%%%%%%%%%%%%%%%%
+
     \sectionleft{Key skills}
       \subsectionleft{Proficiency in statistics and econometrics softwares}{Octave/Matlab (Advanced), R (Advanced), SAS (Beginner), STATA (Beginner).} 
       \subsectionleft{Operating system}{Windows and Unix.}
@@ -50,33 +54,37 @@
       \subsectionleft{Crypto-currencies/Blockchains.}{}
 
   \end{minipage}\hfill\begin{minipage}[t]{0.61\textwidth}
+
+    %%%%%%%%%%%%%%%%%%
+    %%  Right side  %%
+    %%%%%%%%%%%%%%%%%%
   
     \section{Experiences}
-      \begin{expenv}
-        \expitem{Jan. 2019 –}{Present}{Research in Quantitative Finance}{Napoleon Crypto}{Paris}{R\&D of trading strategies using neural networks and Creation of a data-science competition proposed to the Collège de France.}
-        \expitem{Jun. 2018 –}{Dec. 2018}{Intern in Quantitative Finance}{Napoleon Crypto}{Paris}{Research of algorithmic strategies and creation of a portfolio allocation algorithm.}
-        \expitem{Sept. 2013 –}{May 2018}{Administrator (volunteer)}{Mutuelle des Etudiants de Provence}{Marseille}{Approval of budgets, financial investments, internal policy, etc.}
-      \end{expenv}
+      \begin{rightenv}
+        \subsectionright{Jan. 2019 – Present}{Research in Quantitative Finance}[Napoleon Crypto][Paris]{R\&D of trading strategies using neural networks, multivariate prediction, development of backtesting and financial analysis tools, and webscraping data.}
+        \subsectionright{Jun. 2018 – Dec. 2018}{Intern in Quantitative Finance}[Napoleon Crypto][Paris]{Research of quantitative strategies and portfolio allocation algorithms and creation of a data-science competition proposed to the Collège de France.}
+        \subsectionright{Sept. 2013 – May 2018}{Administrator (volunteer)}[Mutuelle des Etudiants de Provence][Marseille]{Approval of budgets, financial investments, internal policy, etc.}
+      \end{rightenv}
 
     \section{Personal projects}
-      \begin{newenv}
-        \newitem{2018 – 2019}{Development of  machine/deep learning  tools adapted to finance}{Python and cython package to create neural networks, backtest strategies, analysis with econmetric models and financial indicators, etc.}
-        \newitem{2017 – 2018}{Development of a python webscraping package on crypto-currencies}{Published on PyPI.}
-        \newitem{2016 – 2019}{Development and maintenance of trading bot algorithms}{Starting with "arbitrage on crypto currencies" and recently create strategy with neural networks.}
-      \end{newenv}
+      \begin{rightenv}
+        \subsectionright{2018 – 2019}{Development of  machine/deep learning  tools adapted to finance}{Python and cython package to create neural networks, backtest strategies, analysis with econmetric models and financial indicators, etc.}
+        \subsectionright{2017 – 2018}{Development of a python webscraping package on crypto-currencies}{Published on PyPI.}
+        \subsectionright{2016 – 2019}{Development and maintenance of trading bot algorithms}{Starting with "arbitrage on crypto currencies" and recently create strategy with neural networks.}
+      \end{rightenv}
 
     \section{Education}
-      \begin{eduenv}
-        \eduitem{2017 – 2018}{Master's Degree}{Econometrics of Banking and Financial markets}{Aix-Marseille School of Economics}{Marseille}{\textbf{Courses:} Stochastic Finance, Financial Econometrics, Financial Engineering, Econometrics of Exchange Rates, Neural Network, etc.\\\textbf{Projects:} Intraday analysis of BTCUSD versus EURUSD, etc.\\\textbf{Master thesis:} Analysis of dynamics of Bitcoin.}
-        \eduitem{2016 – 2013}{Bachelor's degree}{Economics and Management}{Aix-Marseille Université}{Marseille}{Specialized in finance.}
-        \eduitem{2012}{A-Level}{Science}{High-School Marie Madeleine Fourcade}{Gardanne}{}
-      \end{eduenv}
+      \begin{rightenv}
+        \subsectionright{2017 – 2018}[Master's Degree]{Econometrics of Banking and Financial markets}[Aix-Marseille School of Economics][Marseille]{\textbf{Courses:} Stochastic Finance, Financial Econometrics, Financial Engineering, Econometrics of Exchange Rates, Neural Network, etc.\\\textbf{Projects:} Intraday analysis of BTCUSD versus EURUSD, etc.\\\textbf{Master thesis:} Analysis of dynamics of Bitcoin.}
+        \subsectionright{2013 – 2016}[Bachelor's degree]{Economics and Management}[Aix-Marseille Université][Marseille]{Specialized in finance.}
+        \subsectionright{2012}[A-Level]{Science}[High-School Marie Madeleine Fourcade][Gardanne]{}
+      \end{rightenv}
 
     \section{Miscellaneous}
-      \begin{newenv}
-        \newitem{Student association}{Founder and general secretary at \textit{AMEco}}{Organisation and management of team projects.}
-        \newitem{Hobbies}{Cooking, travelling (Norway, Scotland, Eastern countries, etc.), swimming and theater.}{}
-      \end{newenv}
+      \begin{rightenv}
+        \subsectionright{Student association}{Founder and general secretary at \textit{AMEco}}{Organisation and management of team projects.}
+        \subsectionright{Hobbies}{Cooking, travelling (Norway, Scotland, Eastern countries, etc.), swimming and theater.}{}
+      \end{rightenv}
 
   \end{minipage}
 
