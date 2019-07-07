@@ -17,7 +17,7 @@
 
 \RequirePackage{tikz}
 \RequirePackage{xcolor}
-\RequirePackage[absolute,overlay,showboxes]{textpos}
+\RequirePackage[absolute,overlay]{textpos} % showboxes
 \RequirePackage{ragged2e}
 \RequirePackage{etoolbox}
 \RequirePackage{ifmtarg}
@@ -37,6 +37,7 @@
 \RequirePackage{marvosym} % Icone
 \RequirePackage{tikz}     % Graphic
 \RequirePackage{xcolor}   % Colors
+\RequirePackage{multirow} % Join rows in tabular
 \RequirePackage{ifthen}
 
 %%%%%%%%%%%%%%%%%%
@@ -84,15 +85,20 @@
 
 % From opensorcerror 
 \newcommand{\makeprofile}{
-  \begin{tikzpicture}%[remember picture,overlay]
-    \node [rectangle, fill=sidecolor, anchor=north, minimum width=8cm, minimum height=\paperheight] (box) at (0cm, -5cm){};
+  
+  % Set left color band
+  \begin{tikzpicture}[remember picture,overlay]
+    \node [rectangle, fill=sidecolor, minimum width=8cm, minimum height=27cm] at (4cm, -16.5cm) {};
   \end{tikzpicture}
+  % anchor=north, (box) at (0cm, 0cm) \paperheight
 
-  %------------------------------------------------
+  % Set header
 
   \begin{textblock}{20.5}(0.25, 0.2)
 
     \begin{minipage}[t]{0.5\textwidth}
+
+      % Set info
 
       \vspace{3mm}
       \renewcommand{\arraystretch}{1.5}
@@ -134,13 +140,15 @@
                 \begin{array}{l}
                 \hspace{3mm} \Large \textnormal{\faGithub}
                 \end{array}
-                $} & \href{https://www.github.com/\cvgithub}{\cvgithub} \\
-              }   
+              $} & \href{https://www.github.com/\cvgithub}{\cvgithub} \\
+            }  
               
       \end{tabular}
 
     \end{minipage}
     \begin{minipage}[t]{0.5\textwidth}
+
+      % Set name and title
 
       \vspace{3mm}
       {\Huge\color{pblue}\cvname}
@@ -173,7 +181,7 @@
 
 \renewcommand{\section}[1]{
   \par\vspace{\parskip}
-  {%
+  \textbf{%
     \LARGE\color{headercolor}%
     \@sectioncolor #1%
   }
@@ -216,7 +224,7 @@
 
 \setlength{\tabcolsep}{0pt}
 \newenvironment{expenv}{%
-  \begin{tabular*}{0.5\textwidth}{@{\extracolsep{\fill}}ll}
+  \begin{tabular*}{0.5\textwidth}{@{\extracolsep{\fill}}p{2.1cm} l}
 }{%
   \end{tabular*}
 }
@@ -234,24 +242,45 @@
 }
 
 %%%%%%%%%%%%%%%
-%%  Exp env  %%
+%%  Edu env  %%
 %%%%%%%%%%%%%%%
 
 \setlength{\tabcolsep}{0pt}
 \newenvironment{eduenv}{%
-  \begin{tabular*}{0.5\textwidth}{@{\extracolsep{\fill}}ll}
+  \begin{tabular*}{0.5\textwidth}{@{\extracolsep{\fill}}p{2.1cm} l}
 }{%
   \end{tabular*}
 }
 
 \newcommand{\eduitem}[6]{%
-  #1&\parbox[t]{10.5cm}{%
+  #1 & \parbox[t]{10.5cm}{%
     #2 in \textbf{\color{pblue}#3}%
     \hfill%
     {\footnotesize at \textit{#4}, #5}\\%
     #6\vspace{\parsep}%
   }\\
 }
+
+%%%%%%%%%%%%%%%
+%%  New env  %%
+%%%%%%%%%%%%%%%
+
+\setlength{\tabcolsep}{1pt}
+\newenvironment{newenv}{%
+  \begin{tabular*}{0.5\textwidth}{@{\extracolsep{\fill}}p{2.1cm} l}
+}{%
+  \end{tabular*}
+}
+
+\newcommand{\newitem}[3]{%
+  #1 & \parbox[t]{10.4cm}{%
+    \textbf{\color{pblue}#2}\\%
+    #3%
+    \vspace{\parsep}%
+  }\\
+}
+
+
 
 \newcommand{\twentyitem}[6]{%
   #1&\parbox[t]{0.83\textwidth}{%
