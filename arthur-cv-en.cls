@@ -14,12 +14,12 @@
 \usepackage{fontawesome}
 
 \RequirePackage{ragged2e}
-\RequirePackage{etoolbox}
-\RequirePackage{ifmtarg}
-\RequirePackage{pgffor}
+%\RequirePackage{etoolbox}
+%\RequirePackage{ifmtarg}
+%\RequirePackage{pgffor}
 \RequirePackage{parskip}
 
-\usepackage{enumitem}
+%\usepackage{enumitem}
 
 % \setlist[itemize]{leftmargin=*}
 
@@ -32,6 +32,7 @@
 \RequirePackage{xcolor}   % Colors
 \RequirePackage{multirow} % Join rows in tabular
 \RequirePackage{xargs}    % Multiple optional args
+\RequirePackage{tcolorbox} % Colored box
 \RequirePackage{ifthen}
 
 %%%%%%%%%%%%%%%%%%
@@ -86,7 +87,7 @@
   
   % Set left color band
   \begin{tikzpicture}[remember picture,overlay]
-    \node [rectangle, fill=sidecolor, minimum width=8cm, minimum height=27cm] at (4cm, -17cm) {};
+    \node [rectangle, fill=sidecolor, minimum width=8cm, minimum height=27cm] at (4cm, -16.8cm) {};
   \end{tikzpicture}
   % anchor=north, (box) at (0cm, 0cm) \paperheight
 
@@ -104,7 +105,7 @@
         \ifthenelse{\equal{\cvnumberphone}{}}{}{
         		{$
                 \begin{array}{l}
-                \hspace{4mm} \Large \textnormal{\faMobile} 
+                \hspace{4mm} \LARGE \textnormal{\faMobile} 
                 \end{array}
                 $} 
               & \large\cvnumberphone\\}
@@ -166,11 +167,15 @@
 %%%%%%%%%%%%%%%%%%%%%%%
 
 % TODO : Finish left side
+\tcbuselibrary{most}
+\tcbset{enhanced}
 
 \newcommand{\sectionleft}[1]{
-  \par\vspace{5mm}
+  \par\vspace{3.5mm}
   {%
-    \LARGE\textbf{#1}%
+    \begin{tcolorbox}[colframe=mainblue, colback=blue!10!white, shadow={0.7mm}{-1mm}{0mm}{black!50!white}, sharpish corners, boxrule=0.8mm]% , show bounding box
+      \centering\LARGE\textbf{#1}
+    \end{tcolorbox}
   }
   \par\vspace{2mm}
 }
@@ -178,7 +183,7 @@
 \newcommand{\subsectionleft}[2]{
   \par
   {%
-    \normalsize#1 #2%
+    \large#1 #2%
   }
   \par\vspace{2mm}
 }
@@ -196,9 +201,9 @@
 
 % Set section
 \renewcommand{\section}[1]{
-  \par\vspace{5mm}
+  \par\vspace{3.5mm}
   \textbf{%
-    \LARGE\color{headercolor}%
+    \huge\color{headercolor}%
     \@sectioncolor #1%
   }
   \par\vspace{2mm}
@@ -215,10 +220,10 @@
 % Set item
 \newcommandx{\subsectionright}[6][2= ,4= ,5= ]{%
   #1 & \parbox[t]{10.3cm}{%
-    \ifblank{#2}{}{#2 in }\textbf{\color{mainblue}#3}%
+    \ifblank{#2}{}{#2 in }\textbf{\large\color{mainblue}#3}%
     \hfill%
     \ifblank{#4}{}{\footnotesize at \textit{#4}}\ifblank{#5}{}{\footnotesize, #5}\\%
-    \normalsize#6\vspace{\parsep}%
+    \ifblank{#6}{}{\normalsize#6\vspace{\parsep}}%
   }\\
 }
 
