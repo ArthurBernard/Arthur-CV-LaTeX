@@ -6,24 +6,17 @@
 %%  Load packages  %%
 %%%%%%%%%%%%%%%%%%%%%
 
+% TODO : Clean required packages
+
 \RequirePackage[quiet]{fontspec}
 \RequirePackage[sfdefault]{ClearSans}
 
-% \def\arrow#1{\pspicture[shift=2pt](#1,0)\psline{->}(#1,0)\endpspicture}
-
-% \usepackage{pstricks}
-
 \usepackage{fontawesome}
 
-\RequirePackage{tikz}
-\RequirePackage{xcolor}
-\RequirePackage[absolute,overlay]{textpos} % showboxes
 \RequirePackage{ragged2e}
 \RequirePackage{etoolbox}
 \RequirePackage{ifmtarg}
-\RequirePackage{ifthen}
 \RequirePackage{pgffor}
-\RequirePackage{marvosym}
 \RequirePackage{parskip}
 
 \usepackage{enumitem}
@@ -32,7 +25,7 @@
 
 \RequirePackage[hidelinks]{hyperref}
 
-
+\RequirePackage[absolute,overlay]{textpos} % showboxes % Set text boxes
 \RequirePackage{titlesec} % Structure
 \RequirePackage{marvosym} % Icone
 \RequirePackage{tikz}     % Graphic
@@ -44,6 +37,8 @@
 %%%%%%%%%%%%%%%%%%
 %%  Set colors  %%
 %%%%%%%%%%%%%%%%%%
+
+% TODO
 
 \definecolor{sidecolor}{HTML}{E7E7E7}
 \definecolor{pblue}{HTML}{0395DE}
@@ -58,6 +53,8 @@
 %%%%%%%%%%%%%%%%%%%
 %%  Information  %%
 %%%%%%%%%%%%%%%%%%%
+
+% TODO : Clean new commands
 
 % \newcommand{\cvdate}[1]{\renewcommand{\cvdate}{#1}}
 \newcommand{\cvlinkedin}[1]{\renewcommand{\cvlinkedin}{#1}}
@@ -84,18 +81,18 @@
 \setlength{\TPHorizModule}{1cm}
 \setlength{\TPVertModule}{1cm}
 
-% From opensorcerror 
+% TODO : Clean makeprofile command
 \newcommand{\makeprofile}{
   
   % Set left color band
   \begin{tikzpicture}[remember picture,overlay]
-    \node [rectangle, fill=sidecolor, minimum width=8cm, minimum height=27cm] at (4cm, -16.5cm) {};
+    \node [rectangle, fill=sidecolor, minimum width=8cm, minimum height=27cm] at (4cm, -17cm) {};
   \end{tikzpicture}
   % anchor=north, (box) at (0cm, 0cm) \paperheight
 
   % Set header
 
-  \begin{textblock}{20.5}(0.25, 0.2)
+  \begin{textblock}{20.5}(0.25, 0.25)
 
     \begin{minipage}[t]{0.5\textwidth}
 
@@ -103,14 +100,14 @@
 
       \vspace{3mm}
       \renewcommand{\arraystretch}{1.5}
-      \begin{tabular}{p{1cm} @{\hskip 0.5cm}p{8cm}}
+      \begin{tabular}{p{1cm} @{\hskip 0.3cm}p{8cm}}
         \ifthenelse{\equal{\cvnumberphone}{}}{}{
         		{$
                 \begin{array}{l}
                 \hspace{4mm} \Large \textnormal{\faMobile} 
                 \end{array}
                 $} 
-              & \cvnumberphone\\}
+              & \large\cvnumberphone\\}
               
         %\ifthenelse{\equal{\cvsite}{}}{}{
         %      {$
@@ -126,14 +123,14 @@
                 \hspace{2.5mm} \Large \textnormal{\textcolor{yt}{\faEnvelopeO}}
                 \end{array}
                 $} 
-              & \href{mailto:\cvmail}{\cvmail} \\}
+              & \href{mailto:\cvmail}{\large\cvmail} \\}
         
          \ifthenelse{\equal{\cvlinkedin}{}}{}{
               {$
                 \begin{array}{l}
                 \hspace{3mm} \Large \textnormal{\textcolor{linkedin}{\faLinkedin}}
                 \end{array}
-                $} & \href{https://www.linkedin.com\cvlinkedin}{\cvlinkedin} \\
+                $} & \href{https://www.linkedin.com\cvlinkedin}{\large\cvlinkedin} \\
               }
 
           \ifthenelse{\equal{\cvgithub}{}}{}{
@@ -141,7 +138,7 @@
                 \begin{array}{l}
                 \hspace{3mm} \Large \textnormal{\faGithub}
                 \end{array}
-              $} & \href{https://www.github.com/\cvgithub}{\cvgithub} \\
+              $} & \href{https://www.github.com/\cvgithub}{\large\cvgithub} \\
             }  
               
       \end{tabular}
@@ -168,6 +165,8 @@
 %%  Left side block  %%
 %%%%%%%%%%%%%%%%%%%%%%%
 
+% TODO : Finish left side
+
 \newcommand{\sectionleft}[1]{
   \par\vspace{5mm}
   {%
@@ -181,6 +180,7 @@
   {%
     \normalsize#1 #2%
   }
+  \par\vspace{2mm}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%
@@ -215,7 +215,7 @@
 % Set item
 \newcommandx{\subsectionright}[6][2= ,4= ,5= ]{%
   #1 & \parbox[t]{10.3cm}{%
-    \ifblank{#2}{}{#2 in }\textbf{\color{pblue}#3}%
+    \ifblank{#2}{}{#2 in }\textbf{\color{mainblue}#3}%
     \hfill%
     \ifblank{#4}{}{\footnotesize at \textit{#4}}\ifblank{#5}{}{\footnotesize, #5}\\%
     \normalsize#6\vspace{\parsep}%
@@ -226,5 +226,7 @@
 %%  Page setting  %%
 %%%%%%%%%%%%%%%%%%%%
 
+% TODO : clean setting
+
 \RequirePackage[left=0.cm,top=0.cm,right=0.cm,bottom=0.cm,nohead,nofoot]{geometry}
-% \RequirePackage{hyperref}
+\RequirePackage{hyperref}
