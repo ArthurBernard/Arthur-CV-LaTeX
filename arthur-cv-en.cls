@@ -105,7 +105,7 @@
         \ifthenelse{\equal{\cvnumberphone}{}}{}{
         		{$
                 \begin{array}{l}
-                \hspace{4mm} \LARGE \textnormal{\faMobile} 
+                \hspace{4mm} \textnormal{\LARGE \faMobile} 
                 \end{array}
                 $} 
               & \large\cvnumberphone\\}
@@ -113,7 +113,7 @@
         %\ifthenelse{\equal{\cvsite}{}}{}{
         %      {$
         %        \begin{array}{l}
-        %        \hspace{2.8mm} \Large \textnormal{\textcolor{test}{\faGlobe}}
+        %        \hspace{2.8mm} \textnormal{\textcolor{test}{\Large \faGlobe}}
         %        \end{array}
         %        $} 
         %      & \href{http://\cvsite}{\cvsite} \\}
@@ -121,7 +121,7 @@
         \ifthenelse{\equal{\cvmail}{}}{}{
               {$
                 \begin{array}{l}
-                \hspace{2.5mm} \Large \textnormal{\textcolor{yt}{\faEnvelopeO}}
+                \hspace{2.5mm} \textnormal{\Large \textcolor{yt}{\faEnvelopeO}}
                 \end{array}
                 $} 
               & \href{mailto:\cvmail}{\large\cvmail} \\}
@@ -129,7 +129,7 @@
          \ifthenelse{\equal{\cvlinkedin}{}}{}{
               {$
                 \begin{array}{l}
-                \hspace{3mm} \Large \textnormal{\textcolor{linkedin}{\faLinkedin}}
+                \hspace{3mm} \textnormal{\Large \textcolor{linkedin}{\faLinkedin}}
                 \end{array}
                 $} & \href{https://www.linkedin.com\cvlinkedin}{\large\cvlinkedin} \\
               }
@@ -137,7 +137,7 @@
           \ifthenelse{\equal{\cvgithub}{}}{}{
               {$
                 \begin{array}{l}
-                \hspace{3mm} \Large \textnormal{\faGithub}
+                \hspace{3mm} \textnormal{\Large \faGithub}
                 \end{array}
               $} & \href{https://www.github.com/\cvgithub}{\large\cvgithub} \\
             }  
@@ -150,7 +150,7 @@
       % Set name and title
 
       \vspace{3mm}
-      {\Huge\color{pblue}\cvname}
+      {\Huge\color{mainblue}\cvname}
       
       \vspace{7mm}
 
@@ -183,7 +183,11 @@
 \newcommand{\subsectionleft}[2]{
   \par
   {%
-    \large#1 #2%
+    \begin{sloppypar}
+      \begin{itemize}
+        \item \large#1 #2%
+      \end{itemize}
+    \end{sloppypar}
   }
   \par\vspace{2mm}
 }
@@ -195,7 +199,7 @@
 % Color of title section
 \def\@sectioncolor#1#2#3{%
   {%
-    \color{pblue} #1#2#3%
+    \color{mainblue} #1#2#3%
   }%
 }
 
@@ -212,9 +216,9 @@
 % Set environnement
 \setlength{\tabcolsep}{2pt}
 \newenvironment{rightenv}{%
-  \begin{tabular}{@{\extracolsep{\fill}}p{2.1cm} l}
+  \begin{sloppypar}\begin{tabular}{@{\extracolsep{\fill}}p{2.1cm} l}
 }{%
-  \end{tabular}
+  \end{tabular}\end{sloppypar}
 }
 
 % Set item
