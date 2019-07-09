@@ -6,7 +6,7 @@
 %%  Load packages  %%
 %%%%%%%%%%%%%%%%%%%%%
 
-% TODO : Clean required packages
+% TODO : Clean unused required packages
 
 \RequirePackage[quiet]{fontspec}
 \RequirePackage[sfdefault]{ClearSans}
@@ -14,7 +14,7 @@
 \usepackage{fontawesome}
 
 \RequirePackage{ragged2e}
-%\RequirePackage{etoolbox}
+%\RequirePackage{etoolbox} % if blank
 %\RequirePackage{ifmtarg}
 %\RequirePackage{pgffor}
 \RequirePackage{parskip}
@@ -33,6 +33,7 @@
 \RequirePackage{multirow} % Join rows in tabular
 \RequirePackage{xargs}    % Multiple optional args
 \RequirePackage{tcolorbox} % Colored box
+\RequirePackage{enumitem} % Customize item
 \RequirePackage{ifthen}
 
 %%%%%%%%%%%%%%%%%%
@@ -44,6 +45,7 @@
 \definecolor{sidecolor}{HTML}{E7E7E7}
 \definecolor{pblue}{HTML}{0395DE}
 \definecolor{yt}{HTML}{c71610}
+\definecolor{test}{HTML}{0077be}
 \definecolor{mainblue}{HTML}{0E5484}
 \definecolor{maingray}{HTML}{B9B9B9}
 \definecolor{linkedin}{HTML}{0085AE}
@@ -63,7 +65,7 @@
 \newcommand{\cvmail}[1]{\renewcommand{\cvmail}{#1}}
 \newcommand{\cvnumberphone}[1]{\renewcommand{\cvnumberphone}{#1}}
 \newcommand{\cvaddress}[1]{\renewcommand{\cvaddress}{#1}}
-% \newcommand{\cvsite}[1]{\renewcommand{\cvsite}{#1}}
+\newcommand{\cvsite}[1]{\renewcommand{\cvsite}{#1}}
 % \newcommand{\aboutme}[1]{\renewcommand{\aboutme}{#1}}
 % \newcommand{\profilepic}[1]{\renewcommand{\profilepic}{#1}}
 \newcommand{\cvname}[1]{\renewcommand{\cvname}{#1}}
@@ -73,6 +75,9 @@
 
 %\newcommand{\skills}[1]{\renewcommand{\givenskills}{  \justifying#1}}
 
+%\pretolerance=10000
+%\setlength{\emergencystretch}{3em}
+%\overfullrule=1mm
 
 %%%%%%%%%%%%%%
 %%  Header  %%
@@ -95,13 +100,13 @@
 
   \begin{textblock}{20.5}(0.25, 0.25)
 
-    \begin{minipage}[t]{0.5\textwidth}
+    \begin{minipage}[t]{0.39\textwidth}
 
       % Set info
 
       \vspace{3mm}
-      \renewcommand{\arraystretch}{1.5}
-      \begin{tabular}{p{1cm} @{\hskip 0.3cm}p{8cm}}
+      \renewcommand{\arraystretch}{1.4}
+      \begin{tabular}{p{1.1cm} @{\hskip 0.3cm}p{6.3cm}}
         \ifthenelse{\equal{\cvnumberphone}{}}{}{
         		{$
                 \begin{array}{l}
@@ -110,13 +115,13 @@
                 $} 
               & \large\cvnumberphone\\}
               
-        %\ifthenelse{\equal{\cvsite}{}}{}{
-        %      {$
-        %        \begin{array}{l}
-        %        \hspace{2.8mm} \textnormal{\textcolor{test}{\Large \faGlobe}}
-        %        \end{array}
-        %        $} 
-        %      & \href{http://\cvsite}{\cvsite} \\}
+        \ifthenelse{\equal{\cvsite}{}}{}{
+              {$
+                \begin{array}{l}
+                \hspace{2.8mm} \textnormal{\textcolor{test}{\Large \faGlobe}}
+               \end{array}
+                $} 
+              & \href{http://\cvsite}{\large\cvsite} \\}
         
         \ifthenelse{\equal{\cvmail}{}}{}{
               {$
@@ -145,16 +150,16 @@
       \end{tabular}
 
     \end{minipage}
-    \begin{minipage}[t]{0.5\textwidth}
+    \begin{minipage}[t]{0.60\textwidth}
 
       % Set name and title
 
       \vspace{3mm}
-      {\Huge\color{mainblue}\cvname}
+      {\hspace{0mm}\Huge\color{mainblue}\cvname}
       
       \vspace{7mm}
 
-      {\Large\color{black!80}\cvjobtitle}
+      {\hspace{0mm}\Large\color{black!80}\cvjobtitle}
 
     \end{minipage}
 
@@ -184,7 +189,7 @@
   \par
   {%
     \begin{sloppypar}
-      \begin{itemize}
+      \begin{itemize}[font=\Large, leftmargin=7mm]
         \item \large#1 #2%
       \end{itemize}
     \end{sloppypar}
@@ -223,7 +228,7 @@
 
 % Set item
 \newcommandx{\subsectionright}[6][2= ,4= ,5= ]{%
-  #1 & \parbox[t]{10.3cm}{%
+  #1 & \parbox[t]{10.1cm}{%
     \ifblank{#2}{}{#2 in }\textbf{\large\color{mainblue}#3}%
     \hfill%
     \ifblank{#4}{}{\footnotesize at \textit{#4}}\ifblank{#5}{}{\footnotesize, #5}\\%
