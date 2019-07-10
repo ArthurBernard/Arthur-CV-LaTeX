@@ -2,13 +2,15 @@
 % @Email: arthur.bernard.92@gmail.com
 % @Date: 2019-07-02 19:18:05
 % @Last modified by: ArthurBernard
-% @Last modified time: 2019-07-09 23:47:55
+% @Last modified time: 2019-07-10 23:40:38
 \documentclass[a4paper]{arthur-cv-en}
 \title{Curiculum Vitae}
 \author{Arthur Bernard}
 
 \usepackage[english]{babel}
+%\usepackage[T1]{fontenc}
 \usepackage{fontspec}
+\usepackage{microtype}
 
 % Set profile info
 \cvname{Arthur Bernard}
@@ -19,6 +21,8 @@
 \cvaddress{7, Rue des Innocents, Paris, 75001}
 \cvjobtitle{Data Scientist in Quantitative Finance}
 \cvsite{}
+
+%\hyphenation{Octave-/-Matlab}
 
 \begin{document}
 \makeprofile % Set header
@@ -32,20 +36,20 @@
     %%%%%%%%%%%%%%%%%
 
     \sectionleft{Key skills}
-      \subsectionleft{Proficiency in \textbf{statistics} and \textbf{econometrics softwares}:}{Octave/Matlab (Advanced), R (Advanced), SAS (Beginner), STATA (Beginner).}
+      \subsectionleft{Proficiency in \textbf{statistics} \& \textbf{econometrics softwares}:}{R (Advanced), Octave/Matlab (Advanced), SAS (Beginner), STATA (Beginner).}
       \subsectionleft{Operating systems:}{Windows and \textbf{Unix}.}
-      \subsectionleft{Languages:}{French (\textbf{native speaker}), English (\textbf{professional skill}, langage of instruction of Master's Degree).}
+      \subsectionleft{Languages:}{French (\textbf{native speaker}), English (\textbf{professional skill}, language of instruction of Master's Degree).}
 
     \sectionleft{Programming}
-      \subsectionleft{Highly advanced:}{\textbf{Python} (proficiency in NumPy, Pandas, Cython, PyTorch, Keras, Sickit-Learn, Asyncio, Multi-process/thread), etc.}
-      \subsectionleft{Advanced:}{\textbf{Shell}, VBA, Matlab/Octave, LaTeX.}
+      \subsectionleft{Highly advanced:}{\textbf{Python} (expertise in NumPy, Pandas, Cython, PyTorch, Keras, Sickit-Learn, Asyncio, Multi-process/thread, etc).}
+      \subsectionleft{Advanced:}{\textbf{Shell}, VBA, LaTeX.} %Matlab/Octave,
       \subsectionleft{In progress:}{\textbf{C++}.}
-      \subsectionleft{Basic knowledge:}{R, SAS.}
+      % \subsectionleft{Basic knowledge:}{R, SAS.}
   
     \sectionleft{MOOC's}
-      \subsectionleft{Learn to program with \textbf{Python},}{OpenClassRooms.}
-      \subsectionleft{\textbf{Machine learning}, by Andrew Ng,}{Coursera.}
-      \subsectionleft{\textbf{Deep learning}, by Andrew Ng,}{Coursera.}
+      \subsectionleft{Learn to program with \textbf{Python},}{on OpenClassRooms.}
+      \subsectionleft{\textbf{Machine Learning}, by Andrew Ng,}{on Coursera.}
+      \subsectionleft{\textbf{Deep Learning}, by Andrew Ng,}{on Coursera.}
       \subsectionleft{And other diverse courses (\textbf{Linux}, \textbf{C++}, etc.).}{}
 
     \sectionleft{Interests}
@@ -61,13 +65,13 @@
     \section{Experiences}
       \begin{rightenv}
         \subsectionright{Jan. 2019 – Present}{Research in Quantitative Finance}[Napoleon Crypto][Paris]{R\&D of trading strategies using neural networks to \textbf{multivariate prediction}, \textbf{execution order algorithms}, development of \textbf{backtesting} and \textbf{financial analysi}s tools, and webscraping data.}
-        \subsectionright{Jun. 2018 – Dec. 2018}{Intern in Quantitative Finance}[Napoleon Crypto][Paris]{Research of quantitative strategies and \textbf{portfolio allocation} algorithms and creation of a \textbf{data-science competition} proposed to the Collège de France.}
+        \subsectionright{Jun. 2018 – Dec. 2018}{Intern in Quantitative Finance}[Napoleon Crypto][Paris]{Research of quantitative strategies and \textbf{portfolio allocation} algorithms. \textbf{Data-science competition} elaborated for the Collège de France.}
         \subsectionright{Sept. 2013 – May 2018}{Administrator (volunteer)}[Mutuelle des Etudiants de Provence]{Approval of budgets, financial investments, internal policy, etc.}
       \end{rightenv}
 
     \section{Personal projects}
       \begin{rightenv}
-        \subsectionright{2018 – 2019}{Machine/deep learning tools adapted to finance}{Development of python and cython package to create \textbf{neural networks}, \textbf{backtest strategies}, analysis with \textbf{econmetric models} and \textbf{financial indicators}, etc. Published on PyPI as \textit{fynance}.}
+        \subsectionright{2018 – 2019}{Machine/deep learning tools adapted to finance}{Development of a python and cython package to create \textbf{neural networks}, \textbf{backtest strategies}, analysis with \textbf{econmetric models} and \textbf{financial indicators}, etc. Published on PyPI as \textit{fynance}.}
         \subsectionright{2017 – 2018}{Webscraping package}{Development of a python package to \textbf{download data} and \textbf{update database} from some crypto-currency's exchanges. Published on PyPI as \textit{dccd}.}
         \subsectionright{2016 – 2019}{Trading bot algorithms on crypto currencies}{Development and maintenance of trading bots with python and bash scripts. Starting in 2016 with \textbf{arbitrage strategy}, and more recently create \textbf{strategies with neural network}. A part is available on my GitHub in the repository \textit{Strategy\_Manager}.}
       \end{rightenv}
