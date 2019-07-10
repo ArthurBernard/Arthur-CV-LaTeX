@@ -6,8 +6,6 @@
 %%  Load packages  %%
 %%%%%%%%%%%%%%%%%%%%%
 
-% TODO : Clean unused required packages
-
 \RequirePackage[quiet]{fontspec}
 \RequirePackage[sfdefault]{ClearSans}
 
@@ -18,10 +16,6 @@
 %\RequirePackage{ifmtarg}
 %\RequirePackage{pgffor}
 \RequirePackage{parskip}
-
-%\usepackage{enumitem}
-
-% \setlist[itemize]{leftmargin=*}
 
 \RequirePackage[hidelinks]{hyperref}
 
@@ -47,7 +41,7 @@
 \definecolor{yt}{HTML}{c71610}
 \definecolor{test}{HTML}{0077be}
 \definecolor{mainblue}{HTML}{0E5484}
-\definecolor{maingray}{HTML}{B9B9B9}
+% \definecolor{maingray}{HTML}{B9B9B9}
 \definecolor{linkedin}{HTML}{0085AE}
 
 \colorlet{headercolor}{gray}
@@ -59,25 +53,14 @@
 
 % TODO : Clean new commands
 
-% \newcommand{\cvdate}[1]{\renewcommand{\cvdate}{#1}}
 \newcommand{\cvlinkedin}[1]{\renewcommand{\cvlinkedin}{#1}}
 \newcommand{\cvgithub}[1]{\renewcommand{\cvgithub}{#1}}
 \newcommand{\cvmail}[1]{\renewcommand{\cvmail}{#1}}
 \newcommand{\cvnumberphone}[1]{\renewcommand{\cvnumberphone}{#1}}
 \newcommand{\cvaddress}[1]{\renewcommand{\cvaddress}{#1}}
 \newcommand{\cvsite}[1]{\renewcommand{\cvsite}{#1}}
-% \newcommand{\aboutme}[1]{\renewcommand{\aboutme}{#1}}
-% \newcommand{\profilepic}[1]{\renewcommand{\profilepic}{#1}}
 \newcommand{\cvname}[1]{\renewcommand{\cvname}{#1}}
 \newcommand{\cvjobtitle}[1]{\renewcommand{\cvjobtitle}{#1}}
-
-%\newcommand{\profilesection}[2]{{\noindent\color{black!80} \huge #1 \rule[0.15\baselineskip]{#2}{1pt} \vspace{1pt}}}
-
-%\newcommand{\skills}[1]{\renewcommand{\givenskills}{  \justifying#1}}
-
-%\pretolerance=10000
-%\setlength{\emergencystretch}{3em}
-%\overfullrule=1mm
 
 %%%%%%%%%%%%%%
 %%  Header  %%
@@ -232,8 +215,8 @@
     \ifblank{#2}{}{#2 in }\textbf{\large\color{mainblue}#3}%
     \hfill%
     \ifblank{#4}{}{\footnotesize at \textit{#4}}\ifblank{#5}{}{\footnotesize, #5}\\%
-    \ifblank{#6}{}{\normalsize#6\vspace{\parsep}}%
-  }\\
+    \ifblank{#6}{\vspace{0mm}}{\normalsize#6\vspace{\parsep}}%
+  }\\%
 }
 
 %%%%%%%%%%%%%%%%%%%%
