@@ -181,7 +181,7 @@
       \node[rectangle, anchor=north west] at (17.4cm, 0.2cm) {\includegraphics[width=\imagewidth]{\profilepic}};
       %\node[rectangle, draw=black, anchor=north west] at (17.2cm, -0.2cm) {};
       %\draw (17.2cm, 0.2cm) -- (20.6cm, 0.2cm) -- (20.6cm, -3.2cm) -- (17.2cm, -3.2cm);
-      \draw[line width=0.5mm, mainblue] (17.425cm, 0.175cm) -- + (3.2cm, 0) -- + (3.2cm, -3.2cm) -- + (0,-3.2cm) -- cycle; %+ (0,0);
+      \draw[line width=0.5mm, mainblue] (17.45cm, 0.15cm) -- + (3.15cm, 0) -- + (3.15cm, -3.15cm) -- + (0,-3.15cm) -- cycle; %+ (0,0);
     \end{tikzpicture}
 
 }
@@ -195,13 +195,13 @@
 \tcbset{enhanced}
 
 \newcommand{\sectionleft}[1]{
-  \par\vspace{2mm}
+  \par\vspace{3mm}
   {%
     \begin{tcolorbox}[colframe=mainblue, colback=blue!10!white, shadow={0.7mm}{-1mm}{0mm}{black!50!white}, sharpish corners, boxrule=0.8mm]% , show bounding box
       \centering\LARGE\textbf{#1}
     \end{tcolorbox}
   }
-  \par\vspace{1mm}
+  \par\vspace{0mm}
 }
 
 \newcommand{\subsectionleft}[2]{
@@ -228,7 +228,7 @@
 
 % Set section
 \renewcommand{\section}[1]{
-  \par\vspace{1mm}
+  \par\vspace{2mm}
   \textbf{%
     \huge\color{headercolor}%
     \@sectioncolor #1%
@@ -239,7 +239,7 @@
 % Set environnement
 \setlength{\tabcolsep}{2pt}
 \newenvironment{rightenv}{%
-  \begin{sloppypar}\begin{tabular}{@{\extracolsep{\fill}}p{2.1cm} l}
+  \begin{sloppypar}\begin{tabular}{@{\extracolsep{\fill}}p{2.0cm} l}
 }{%
   \end{tabular}\end{sloppypar}
 }
