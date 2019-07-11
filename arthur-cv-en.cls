@@ -7,43 +7,30 @@
 %%%%%%%%%%%%%%%%%%%%%
 
 \RequirePackage[quiet]{fontspec}
-\RequirePackage[sfdefault]{ClearSans}
-
-\usepackage{fontawesome}
-
+\RequirePackage[sfdefault]{ClearSans} % Police
+\usepackage{fontawesome}              % Icons
 \RequirePackage{ragged2e}
-%\RequirePackage{etoolbox} % if blank
-%\RequirePackage{ifmtarg}
-%\RequirePackage{pgffor}
 \RequirePackage{parskip}
-
-\RequirePackage[hidelinks]{hyperref}
-
-\RequirePackage[absolute,overlay]{textpos} % showboxes % Set text boxes
-\RequirePackage{titlesec} % Structure
-\RequirePackage{marvosym} % Icone
-\RequirePackage{tikz}     % Graphic
-\RequirePackage{xcolor}   % Colors
-\RequirePackage{multirow} % Join rows in tabular
-\RequirePackage{xargs}    % Multiple optional args
-\RequirePackage{tcolorbox} % Colored box
-\RequirePackage{enumitem} % Customize item
-\RequirePackage{ifthen}
+\RequirePackage[hidelinks]{hyperref}  % Set hyperlink
+\RequirePackage[absolute,overlay]{textpos} % Set text boxes
+\RequirePackage{titlesec}             % Structure
+\RequirePackage{tikz}                 % Graphic
+\RequirePackage{xcolor}               % Colors
+\RequirePackage{multirow}             % Join rows in tabular
+\RequirePackage{xargs}                % Multiple optional args
+\RequirePackage{tcolorbox}            % Colored box
+\RequirePackage{enumitem}             % Customize item
+\RequirePackage{ifthen}               % Conditions
 
 %%%%%%%%%%%%%%%%%%
 %%  Set colors  %%
 %%%%%%%%%%%%%%%%%%
 
-% TODO
-
 \definecolor{sidecolor}{HTML}{E7E7E7}
-\definecolor{pblue}{HTML}{0395DE}
 \definecolor{yt}{HTML}{c71610}
 \definecolor{test}{HTML}{0077be}
 \definecolor{mainblue}{HTML}{0E5484}
-% \definecolor{maingray}{HTML}{B9B9B9}
 \definecolor{linkedin}{HTML}{0085AE}
-
 \colorlet{headercolor}{gray}
 
 
@@ -51,13 +38,12 @@
 %%  Information  %%
 %%%%%%%%%%%%%%%%%%%
 
-% TODO : Clean new commands
+% Set linkedin, github, mail, phone, site, name and tilte commands
 
 \newcommand{\cvlinkedin}[1]{\renewcommand{\cvlinkedin}{#1}}
 \newcommand{\cvgithub}[1]{\renewcommand{\cvgithub}{#1}}
 \newcommand{\cvmail}[1]{\renewcommand{\cvmail}{#1}}
 \newcommand{\cvnumberphone}[1]{\renewcommand{\cvnumberphone}{#1}}
-\newcommand{\cvaddress}[1]{\renewcommand{\cvaddress}{#1}}
 \newcommand{\cvsite}[1]{\renewcommand{\cvsite}{#1}}
 \newcommand{\cvname}[1]{\renewcommand{\cvname}{#1}}
 \newcommand{\cvjobtitle}[1]{\renewcommand{\cvjobtitle}{#1}}
@@ -75,9 +61,8 @@
   
   % Set left color band
   \begin{tikzpicture}[remember picture,overlay]
-    \node [rectangle, fill=sidecolor, minimum width=8cm, minimum height=27cm] at (4cm, -16.8cm) {};
+    \node [rectangle, anchor=north west, fill=sidecolor, minimum width=8cm, minimum height=27cm] at (0cm, -3.2cm) {};{};
   \end{tikzpicture}
-  % anchor=north, (box) at (0cm, 0cm) \paperheight
 
   % Set header
 
@@ -90,45 +75,46 @@
       \vspace{3mm}
       \renewcommand{\arraystretch}{1.4}
       \begin{tabular}{p{1.1cm} @{\hskip 0.3cm}p{6.3cm}}
+        % Set phone
         \ifthenelse{\equal{\cvnumberphone}{}}{}{
-        		{$
-                \begin{array}{l}
-                \hspace{4mm} \textnormal{\LARGE \faMobile} 
-                \end{array}
-                $} 
-              & \large\cvnumberphone\\}
-              
+        	{$
+            \begin{array}{l}
+              \hspace{4mm} \textnormal{\LARGE \faMobile} 
+            \end{array}
+          $} & \large\cvnumberphone\\
+        }
+        % Set site
         \ifthenelse{\equal{\cvsite}{}}{}{
-              {$
-                \begin{array}{l}
-                \hspace{2.8mm} \textnormal{\textcolor{test}{\Large \faGlobe}}
-               \end{array}
-                $} 
-              & \href{http://\cvsite}{\large\cvsite} \\}
-        
+          {$
+            \begin{array}{l}
+              \hspace{2.8mm} \textnormal{\textcolor{test}{\Large \faGlobe}}
+            \end{array}
+          $} & \href{http://\cvsite}{\large\cvsite} \\
+        }
+        % Set eMail
         \ifthenelse{\equal{\cvmail}{}}{}{
-              {$
-                \begin{array}{l}
-                \hspace{2.5mm} \textnormal{\Large \textcolor{yt}{\faEnvelopeO}}
-                \end{array}
-                $} 
-              & \href{mailto:\cvmail}{\large\cvmail} \\}
-        
-         \ifthenelse{\equal{\cvlinkedin}{}}{}{
-              {$
-                \begin{array}{l}
-                \hspace{3mm} \textnormal{\Large \textcolor{linkedin}{\faLinkedin}}
-                \end{array}
-                $} & \href{https://www.linkedin.com\cvlinkedin}{\large\cvlinkedin} \\
-              }
-
-          \ifthenelse{\equal{\cvgithub}{}}{}{
-              {$
-                \begin{array}{l}
-                \hspace{3mm} \textnormal{\Large \faGithub}
-                \end{array}
-              $} & \href{https://www.github.com/\cvgithub}{\large\cvgithub} \\
-            }  
+          {$
+            \begin{array}{l}
+              \hspace{2.5mm} \textnormal{\Large \textcolor{yt}{\faEnvelopeO}}
+            \end{array}
+          $} & \href{mailto:\cvmail}{\large\cvmail} \\
+        }
+        % Set Linkedin
+        \ifthenelse{\equal{\cvlinkedin}{}}{}{
+          {$
+            \begin{array}{l}
+              \hspace{3mm} \textnormal{\Large \textcolor{linkedin}{\faLinkedin}}
+            \end{array}
+          $} & \href{https://www.linkedin.com\cvlinkedin}{\large\cvlinkedin} \\
+        }
+        % Set GitHub
+        \ifthenelse{\equal{\cvgithub}{}}{}{
+          {$
+            \begin{array}{l}
+              \hspace{3mm} \textnormal{\Large \faGithub}
+            \end{array}
+          $} & \href{https://www.github.com/\cvgithub}{\large\cvgithub} \\
+        }  
               
       \end{tabular}
 
@@ -154,20 +140,21 @@
 %%  Left side block  %%
 %%%%%%%%%%%%%%%%%%%%%%%
 
-% TODO : Finish left side
 \tcbuselibrary{most}
 \tcbset{enhanced}
 
+% Set section at the left side
 \newcommand{\sectionleft}[1]{
   \par\vspace{3.5mm}
   {%
-    \begin{tcolorbox}[colframe=mainblue, colback=blue!10!white, shadow={0.7mm}{-1mm}{0mm}{black!50!white}, sharpish corners, boxrule=0.8mm]% , show bounding box
+    \begin{tcolorbox}[colframe=mainblue, colback=blue!10!white, shadow={0.7mm}{-1mm}{0mm}{black!50!white}, sharpish corners, boxrule=0.8mm]
       \centering\LARGE\textbf{#1}
     \end{tcolorbox}
   }
   \par\vspace{2mm}
 }
 
+% Set subsection left side
 \newcommand{\subsectionleft}[2]{
   \par
   {%
@@ -191,7 +178,7 @@
   }%
 }
 
-% Set section
+% Set section right
 \renewcommand{\section}[1]{
   \par\vspace{3.5mm}
   \textbf{%
@@ -209,7 +196,7 @@
   \end{tabular}\end{sloppypar}
 }
 
-% Set item
+% Set item right
 \newcommandx{\subsectionright}[6][2= ,4= ,5= ]{%
   #1 & \parbox[t]{10.1cm}{%
     \ifblank{#2}{}{#2 in }\textbf{\large\color{mainblue}#3}%
@@ -223,7 +210,4 @@
 %%  Page setting  %%
 %%%%%%%%%%%%%%%%%%%%
 
-% TODO : clean setting
-
 \RequirePackage[left=0.cm,top=0.cm,right=0.cm,bottom=0.cm,nohead,nofoot]{geometry}
-\RequirePackage{hyperref}
