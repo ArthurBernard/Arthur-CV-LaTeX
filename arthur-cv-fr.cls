@@ -178,10 +178,10 @@
       %\clip (600/2, 567/2) rectangle ; %(567/2);
       %\clip (10, 10);
       %, anchor=north east, inner sep=0pt, outer sep=0pt
-      \node[rectangle, anchor=north west] at (17.4cm, 0cm) {\includegraphics[width=\imagewidth]{\profilepic}};
+      \node[rectangle, anchor=north west] at (17.4cm, 0.2cm) {\includegraphics[width=\imagewidth]{\profilepic}};
       %\node[rectangle, draw=black, anchor=north west] at (17.2cm, -0.2cm) {};
       %\draw (17.2cm, 0.2cm) -- (20.6cm, 0.2cm) -- (20.6cm, -3.2cm) -- (17.2cm, -3.2cm);
-      \draw[line width=0.5mm, mainblue] (17.425cm, -0.025cm) -- + (3.2cm, 0) -- + (3.2cm, -3.2cm) -- + (0,-3.2cm) -- cycle; %+ (0,0);
+      \draw[line width=0.5mm, mainblue] (17.425cm, 0.175cm) -- + (3.2cm, 0) -- + (3.2cm, -3.2cm) -- + (0,-3.2cm) -- cycle; %+ (0,0);
     \end{tikzpicture}
 
 }
@@ -195,25 +195,24 @@
 \tcbset{enhanced}
 
 \newcommand{\sectionleft}[1]{
-  \par\vspace{3.5mm}
+  \par\vspace{2mm}
   {%
     \begin{tcolorbox}[colframe=mainblue, colback=blue!10!white, shadow={0.7mm}{-1mm}{0mm}{black!50!white}, sharpish corners, boxrule=0.8mm]% , show bounding box
       \centering\LARGE\textbf{#1}
     \end{tcolorbox}
   }
-  \par\vspace{2mm}
+  \par\vspace{1mm}
 }
 
 \newcommand{\subsectionleft}[2]{
   \par
   {%
     \begin{sloppypar}
-      \begin{itemize}[font=\Large, leftmargin=7mm]
+      \begin{itemize}[label=\textbullet, font=\Large, leftmargin=7mm]
         \item \large#1 #2%
       \end{itemize}
     \end{sloppypar}
-  }
-  \par\vspace{2mm}
+  }%\par\vspace{1mm}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%
@@ -229,12 +228,12 @@
 
 % Set section
 \renewcommand{\section}[1]{
-  \par\vspace{3.5mm}
+  \par\vspace{1mm}
   \textbf{%
     \huge\color{headercolor}%
     \@sectioncolor #1%
   }
-  \par\vspace{2mm}
+  \par\vspace{1mm}
 }
 
 % Set environnement
@@ -248,9 +247,9 @@
 % Set item
 \newcommandx{\subsectionright}[6][2= ,4= ,5= ]{%
   #1 & \parbox[t]{10.1cm}{%
-    \ifblank{#2}{}{#2 in }\textbf{\large\color{mainblue}#3}%
+    \ifblank{#2}{}{#2 en }\textbf{\large\color{mainblue}#3}%
     \hfill%
-    \ifblank{#4}{}{\footnotesize at \textit{#4}}\ifblank{#5}{}{\footnotesize, #5}\\%
+    \ifblank{#4}{}{\footnotesize à \textit{#4}}\ifblank{#5}{}{\footnotesize, #5}\\%
     \ifblank{#6}{\vspace{0mm}}{\normalsize#6\vspace{\parsep}}%
   }\\%
 }
