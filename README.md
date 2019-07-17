@@ -8,11 +8,11 @@ Two version of my customized CV template, the class `arthur-cv-en` with respect 
 
 ### English version
 
-![English_CV](pictures/Arthur_Bernard_CV_En.png)
+![English_CV](https://github.com/ArthurBernard/Arthur-CV-LaTeX/blob/master/pictures/Arthur_Bernard_CV_En.jpg)
 
 ### French version
 
-![French_CV](pictures/Arthur_Bernard_CV_Fr.png)
+![French_CV](https://github.com/ArthurBernard/Arthur-CV-LaTeX/blob/master/pictures/Arthur_Bernard_CV_Fr.jpg)
 
 ## Requirements
 
