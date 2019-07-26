@@ -1,3 +1,8 @@
+% @Author: ArthurBernard
+% @Email: arthur.bernard.92@gmail.com
+% @Date: 2019-07-26 10:42:13
+% @Last modified by: ArthurBernard
+% @Last modified time: 2019-07-26 23:20:48
 \NeedsTeXFormat{LaTeX2e}
 \LoadClass{article}
 \ProvidesClass{arthur-cv-en}[2019/06/28 Custom english CV class]
@@ -31,7 +36,8 @@
 \definecolor{test}{HTML}{0077be}
 \definecolor{mainblue}{HTML}{0E5484}
 \definecolor{linkedin}{HTML}{0085AE}
-\colorlet{headercolor}{gray}
+\definecolor{headercolor}{HTML}{1a4c70}
+%\colorlet{headercolor}{gray}
 
 
 %%%%%%%%%%%%%%%%%%%
@@ -124,7 +130,7 @@
       % Set name and title
 
       \vspace{3mm}
-      {\hspace{0mm}\Huge\color{mainblue}\cvname}
+      {\hspace{0mm}\Huge\color{headercolor}\cvname}
       
       \vspace{7mm}
 
@@ -182,8 +188,8 @@
 \renewcommand{\section}[1]{
   \par\vspace{3.5mm}
   \textbf{%
-    \huge\color{headercolor}%
-    \@sectioncolor #1%
+    \huge\color{headercolor} #1%{headercolor}%
+    %\@sectioncolor #1%
   }
   \par\vspace{2mm}
 }
@@ -201,7 +207,7 @@
   #1 & \parbox[t]{10.1cm}{%
     \ifblank{#2}{}{#2 in }\textbf{\large\color{mainblue}#3}%
     \hfill%
-    \ifblank{#4}{}{\footnotesize at \textit{#4}}\ifblank{#5}{}{\footnotesize, #5}\\%
+    \ifblank{#4}{}{at \textbf{\textit{#4}}}\ifblank{#5}{}{, \footnotesize#5}\\%
     \ifblank{#6}{\vspace{0mm}}{\normalsize#6\vspace{\parsep}}%
   }\\%
 }
