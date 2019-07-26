@@ -36,7 +36,8 @@
 \definecolor{mainblue}{HTML}{0E5484}
 %\definecolor{maingray}{HTML}{B9B9B9}
 \definecolor{linkedin}{HTML}{0085AE}
-\colorlet{headercolor}{gray}
+\definecolor{headercolor}{HTML}{1a4c70}
+%\colorlet{headercolor}{gray}
 
 
 %%%%%%%%%%%%%%%%%%%
@@ -164,7 +165,7 @@
       % Set name and title
 
       \vspace{3mm}
-      {\hspace{0mm}\huge\color{mainblue}\cvname}
+      {\hspace{0mm}\huge\color{headercolor}\cvname}
       
       \vspace{7mm}
 
@@ -230,8 +231,8 @@
 \renewcommand{\section}[1]{
   \par\vspace{2mm}
   \textbf{%
-    \huge\color{headercolor}%
-    \@sectioncolor #1%
+    \huge\color{headercolor} #1%
+    %\@sectioncolor #1%
   }
   \par\vspace{1mm}
 }
@@ -247,9 +248,9 @@
 % Set item
 \newcommandx{\subsectionright}[6][2= ,4= ,5= ]{%
   #1 & \parbox[t]{10.1cm}{%
-    \ifblank{#2}{}{#2 en }\textbf{\large\color{mainblue}#3}%
+    \ifblank{#2}{}{#2 }\textbf{\large\color{mainblue} #3}%
     \hfill%
-    \ifblank{#4}{}{\footnotesize à \textit{#4}}\ifblank{#5}{}{\footnotesize, #5}\\%
+    \ifblank{#4}{}{à \textbf{\textit{#4}}}\ifblank{#5}{}{, \footnotesize#5}\\%
     \ifblank{#6}{\vspace{0mm}}{\normalsize#6\vspace{\parsep}}%
   }\\%
 }
