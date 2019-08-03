@@ -1,0 +1,7 @@
+# Ignoring some extension
+*.aux
+*.log
+*.out
+
+# Ignoring folder
+old_scripts/
