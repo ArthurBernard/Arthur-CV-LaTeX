@@ -16,8 +16,8 @@
 % Set profile info [Following informations are not compulsary]
 \profilepic{}               % Path of your picture or let empty
 \cvname{John Doe}           % Your full name
-\cvlinkedin{}               % Your linkedin
-\cvgithub{}                 % Your GitHub
+\cvlinkedin{/in/John.Doe}   % Your linkedin
+\cvgithub{JohnDoe}          % Your GitHub
 \cvmail{john.doe@mail.io}   % Your email
 \cvnumberphone{}            % Your phone number
 \cvaddress{}                % Your address
@@ -28,7 +28,7 @@
 \begin{document}
   \makeprofile % Set header
 
-  % Set left and right part, don't custom textblock and minipage parameters if you don't know what you are doing
+  % Set left and right part, don't custom 'textblock' and 'minipage'  commands and parameters if you don't know what you are doing
   \begin{textblock}{20.5}(0.25, 3.5)
 
     \begin{minipage}[t]{0.37\textwidth}
@@ -43,10 +43,17 @@
 
         \subsectionleft{Second skill}
 
+        \subsectionleft{Third skill}
+
       \sectionleft{Programming}
+        \subsectionleft{More advanced programming language}
+
         \subsectionleft{Advanced programming language}
 
         \subsectionleft{Less advanced programming language}
+
+      \sectionleft{Other sections..}
+        \subsectionleft{Other items..}
 
       % Etc.
 
@@ -74,6 +81,11 @@
           \subsectionright{2001 – 2003}[Master's degree]{Chemistry}[at \textbf{B University}][Melbourne, Australia]{Other intersting courses.}
 
           \subsectionright{1998 – 2001}[Bachelor's degree]{Mathematics}[at \textbf{C University}][Dakar, Senegal]{Another intersting courses}
+        \end{rightenv}
+
+      \section{Other important sections..}
+        \begin{rightenv}
+          \subsectionright{Other items..}
         \end{rightenv}
 
       % Etc.
