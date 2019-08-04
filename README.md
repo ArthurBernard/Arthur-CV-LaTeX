@@ -2,9 +2,9 @@
 
 ## Description
 
-My customizable CV template, `arthur-cv`, let you choose color themes, display or not personnal informations (age, address or pictures) with respect to local convention, define any section on left bar (skills, etc.), and define any section (education, experiences, etc.) in the body of the CV.
+My customizable CV template, `arthur-cv`, allow you to choose color themes, display or not some personnal informations (age, address, pictures, etc.) with respect to local convention, define some sections on left bar (skills, etc.), and define some other sections (education, experience, etc.) in the body of the CV.
 
-## Preview
+## Example preview
 
 ### English version
 
@@ -14,13 +14,13 @@ With respect to english conventions (without age, address and picture).
 
 ### French version
 
-With repect to french conventions (with picture, address and age).
+With respect to french conventions (with picture, address and age).
 
 ![French_CV](https://github.com/ArthurBernard/Arthur-CV-LaTeX/blob/master/pictures/Arthur_Bernard_CV_Fr.jpg)
 
 ## Customized colors
 
-You can custom themes color of the CV, see below some examples:
+The default theme color of CV is different kind of blue, but you can freely custom themes color, see below some non-exhaustive examples:
 
 ![Colored_Examples](https://github.com/ArthurBernard/Arthur-CV-LaTeX/blob/master/pictures/Colored_examples.jpg)
 
@@ -61,16 +61,16 @@ You can custom themes color of the CV, see below some examples:
 
 ``` latex
 \usepackage{xcolor}   
-\definecolor{leftcolorband}{HTML}{fef2bf}%{fa8072}   
-\definecolor{boxcolor}{HTML}{bfa100}%{9acd32}%{0E5484}    
-\definecolor{maincolor}{HTML}{5f5000}%{1a4c70}   
-\definecolor{secondcolor}{HTML}{e1b400}%{9acd32}%{4d4d4d}    
-\definecolor{thirdcolor}{HTML}{7f6b00}%{0E5484}    
+\definecolor{leftcolorband}{HTML}{fef2bf}   
+\definecolor{boxcolor}{HTML}{bfa100}    
+\definecolor{maincolor}{HTML}{5f5000}   
+\definecolor{secondcolor}{HTML}{e1b400}    
+\definecolor{thirdcolor}{HTML}{7f6b00}    
 ```
 
 ## Environment style and commands
 
-This template is divided in three parts, header where you can define some personnal informations, left bar to display some skills and the body of your CV to display your experiences, educations, etc.
+This template is divided in three parts, header where you can define some personnal informations, left bar to display some skills or other, and the body of your CV to display your experiences, educations, etc.
 
 The left bar and body must be each one in a minipage environment with respectively `0.37\textwidth` and `0.61\textwidth` parameters.   
 You can look one of the following examples: `example_cv.tex`, `Arthur_Bernard_CV_Fr.tex` or `Arthur_Bernard_CV_En.tex`
@@ -127,7 +127,7 @@ Set items in body:
 
 ## Requirements
 
-- Compile with XeLaTex or LuaLaTeX.
+- Compile with **XeLaTex** or **LuaLaTeX**.
 
 - LaTeX packages:
 
