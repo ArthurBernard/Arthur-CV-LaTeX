@@ -2,7 +2,7 @@
 
 ## Description
 
-My customizable CV template, `arthur-cv`, allow you to choose color themes, display or not some personnal informations (age, address, pictures, etc.) with respect to local convention, define some sections on left bar (skills, etc.), and define some other sections (education, experience, etc.) in the body of the CV.
+My customizable CV template, `arthur-cv`, allow you to choose color themes, display or not some personal informations (age, address, pictures, etc.) with respect to local convention, define some sections on left bar (skills, etc.), and define some sections in the body (education, experience, etc.) of the CV.
 
 ## Example preview
 
