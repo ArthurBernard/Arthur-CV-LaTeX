@@ -6,12 +6,20 @@
 \usepackage{fontspec}
 \usepackage{microtype}
 
+%%%%%%%%%%%%%%%%%%%%%
+%%  Custom colors  %%
+%%%%%%%%%%%%%%%%%%%%%
+
 % Custom colorthem by default colors are different kind of blue
 % \definecolor{leftcolorband}{HTML}{fa8072}
 % \definecolor{boxcolor}{HTML}{0E5484}
 % \definecolor{maincolor}{HTML}{1a4c70}
 % \definecolor{secondcolor}{HTML}{4d4d4d}
 % \definecolor{thirdcolor}{HTML}{0E5484}
+
+%%%%%%%%%%%%%%
+%%  Header  %%
+%%%%%%%%%%%%%%
 
 % Set profile info [Following informations are not compulsary]
 \profilepic{}               % Path of your picture or let empty
@@ -23,7 +31,7 @@
 \cvaddress{}                % Your address
 \cvjobtitle{Job of my life} % Title of your CV
 \cvsite{}                   % Your site
-\cvyearsold{33 years old}   % Your years old
+\cvyearsold{}               % Your years old
 
 \begin{document}
   \makeprofile % Set header
@@ -33,9 +41,9 @@
 
     \begin{minipage}[t]{0.37\textwidth}
 
-      %%%%%%%%%%%%%%%%%
-      %%  Left side  %%
-      %%%%%%%%%%%%%%%%%
+      %%%%%%%%%%%%%%%%
+      %%  Left bar  %%
+      %%%%%%%%%%%%%%%%
 
       \sectionleft{Key skills}
         % subsectionleft{Description}{Optional description}
@@ -60,7 +68,7 @@
     \end{minipage}\hfill\begin{minipage}[t]{0.61\textwidth}
 
       %%%%%%%%%%%%%%%%%%
-      %%  Right side  %%
+      %%     Body     %%
       %%%%%%%%%%%%%%%%%%
 
       \section{Experiences}
@@ -85,7 +93,8 @@
 
       \section{Other important sections..}
         \begin{rightenv}
-          \subsectionright{Other items..}
+          \subsectionright{Other date}{Other item}{With other description}
+
         \end{rightenv}
 
       % Etc.
