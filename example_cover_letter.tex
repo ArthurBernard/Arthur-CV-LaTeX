@@ -1,0 +1,59 @@
+\documentclass[a4paper]{arthur-cover-letter}
+\title{Example Curiculum Vitae}
+\author{Author}
+
+\usepackage[english]{babel}
+\usepackage{fontspec}
+\usepackage{microtype}
+\usepackage{lipsum}
+
+%%=================%%
+%%  Custom colors  %%
+%%=================%%
+
+% \definecolor{leftcolorband}{HTML}{E7E7E7}
+% \definecolor{boxcolor}{HTML}{0E5484}
+% \definecolor{maincolor}{HTML}{1a4c70}
+% \definecolor{secondcolor}{HTML}{4d4d4d}
+% \definecolor{thirdcolor}{HTML}{0E5484}
+
+%%==========%%
+%%  Header  %%
+%%==========%%
+
+% Set profile info [Following informations are not compulsary]
+\profilepic{}               % Path of your picture or let empty
+\cvname{John Doe}           % Your full name
+\cvlinkedin{/in/John.Doe}   % Your linkedin
+\cvgithub{JohnDoe}          % Your GitHub
+\cvmail{john.doe@mail.io}   % Your email
+\cvnumberphone{}            % Your phone number
+\cvjobtitle{Job of my life} % Title of your CV
+\cvsite{}                   % Your site
+
+\begin{document}
+    \makeprofile % Set header
+
+    \address{John \capit{DOE}\\123, somestreet\\Somecity}
+
+    \recipient{Sir \capit{COMPANY},\\456 somestreet\\Somecity} % Recipient address}
+
+    \location{Somecity, \today}
+
+    % \subject{Objet : XXX}
+
+    \begin{coverletter}%{17.5}(1.75, 3.5)
+
+            \subject{Application to job of my life}
+
+            \opening{Dear Sir or Madam}
+
+            \lipsum[1-4]
+
+            \closing{Your sincerly,} % To adapte following recipient
+
+            \signing{John \capit{DOE}}
+
+    \end{coverletter}
+
+\end{document}
