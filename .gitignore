@@ -1,7 +1,10 @@
-# Ignoring some extension
+# Ignored extensions
 *.aux
 *.log
 *.out
 
-# Ignoring folder
+# Ignored folders
 old_scripts/
+
+# Ignored files
+Arthur_Bernard_Cover_Letter*
