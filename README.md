@@ -4,7 +4,7 @@
 
 My customizable CV template, `arthur-cv`, allow you to choose color themes, display or not some personal informations (age, address, pictures, etc.) with respect to local convention, define some sections on left bar (skills, etc.), and define some sections in the body (education, experience, etc.) of the CV.
 
-My cover letter template `arthur-cover-letter` is classical with the same header than the CV template. The template allow english (addess and date at right and recipient at left) and french convention (address and date at left, and recipient at right).
+My cover letter template `arthur-cover-letter` is classical with the same header than the CV template. The template allow english conventions (address and date at right and recipient informations at left) and french conventions (address and date at left, and recipient informations at right).
 
 ## Example preview
 
@@ -26,7 +26,7 @@ With respect to french conventions (with picture, address and age).
 
 ## Customized colors
 
-The default theme color of CV is different kind of blue, but you can freely custom themes color, see below some non-exhaustive examples:
+The default theme color of CV and cover letter is different kind of blue, but you can freely custom themes color, see below some non-exhaustive examples:
 
 ![Colored_Examples](https://github.com/ArthurBernard/Arthur-CV-LaTeX/blob/master/pictures/Colored_examples.jpg)
 
@@ -169,7 +169,7 @@ Address, date and location are set at top left and the recipient is set at right
 \locationfr{Ville, \today}   
 ```
 
-#### Body
+### Body
 
 ``` latex
 \begin{coverletter}
