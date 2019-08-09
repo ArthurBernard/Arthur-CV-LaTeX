@@ -2,7 +2,7 @@
 % @Email: arthur.bernard.92@gmail.com
 % @Date: 2019-08-06 19:44:09
 % @Last modified by: ArthurBernard
-% @Last modified time: 2019-08-09 00:48:52
+% @Last modified time: 2019-08-09 18:45:52
 \NeedsTeXFormat{LaTeX2e}
 \LoadClass{article}
 \ProvidesClass{arthur-cover-letter}[2019/08/06 Custom cover letter class]
@@ -20,11 +20,8 @@
 \RequirePackage{parskip}
 \RequirePackage[hidelinks]{hyperref}  % Hyperlink
 \RequirePackage[absolute,overlay]{textpos} % Set text boxes
-% \RequirePackage{titlesec}             % Structure
 \RequirePackage{tikz}                 % Graphic
 \RequirePackage{xcolor}               % Colors
-
-% \RequirePackage{tcolorbox}            % Colored box
 \RequirePackage{ifthen}               % Conditions
 
 %%==============%%
@@ -35,13 +32,11 @@
 \definecolor{test}{HTML}{0077be}
 \definecolor{linkedin}{HTML}{0085AE}
 
-\definecolor{leftcolorband}{HTML}{E7E7E7}
 \definecolor{boxcolor}{HTML}{0E5484}
 
 \definecolor{maincolor}{HTML}{1a4c70}
 \definecolor{secondcolor}{HTML}{4d4d4d}
-\definecolor{thirdcolor}{HTML}{0E5484}
-
+\definecolor{colhyperlink}{HTML}{0E5484}
 
 %%===============%%
 %%  Information  %%
@@ -52,7 +47,6 @@
 \newcommand{\cvgithub}[1]{\renewcommand{\cvgithub}{#1}}
 \newcommand{\cvmail}[1]{\renewcommand{\cvmail}{#1}}
 \newcommand{\cvnumberphone}[1]{\renewcommand{\cvnumberphone}{#1}}
-%\newcommand{\cvaddress}[1]{\renewcommand{\cvaddress}{#1}}
 \newcommand{\cvsite}[1]{\renewcommand{\cvsite}{#1}}
 \newcommand{\profilepic}[1]{\renewcommand{\profilepic}{#1}}
 \newcommand{\cvname}[1]{\renewcommand{\cvname}{#1}}
@@ -75,14 +69,8 @@
 \pgfmathsetlength{\imagescale}{\imagewidth/600}%
 
 \newcommand{\makeprofile}{
-  
-  % Set left color band
-  % \begin{tikzpicture}[remember picture,overlay]
-  %  \node [rectangle, anchor=north west, fill=leftcolorband, minimum width=8cm, minimum height=27cm] at (0cm, -3.2cm) {};{};
-  % \end{tikzpicture}
-
   % Set header
-  \begin{textblock}{20.5}(0.25, 0.25)
+  \begin{textblock}{20.25}(0.25, 0.25)
 
     \begin{minipage}[t]{0.38\textwidth}
 
@@ -134,7 +122,7 @@
       \end{tabular}
 
     \end{minipage}
-    \begin{minipage}[t]{0.5\textwidth}
+    \begin{minipage}[t]{0.50\textwidth}
 
       % Set name and title CV
       \vspace{3mm}
@@ -148,13 +136,18 @@
 
   \end{textblock}
 
-  % Display picture and box if provided else nothing
-  \ifthenelse{\equal{\profilepic}{}}{}{
-    \begin{tikzpicture}[remember picture,overlay]
-      \node[rectangle, anchor=north west] at (17.4cm, 0.2cm) {\includegraphics[width=\imagewidth]{\profilepic}};
-      \draw[line width=0.5mm, boxcolor] (17.45cm, 0.15cm) -- + (3.15cm, 0) -- + (3.15cm, -3.15cm) -- + (0,-3.15cm) -- cycle;
-    \end{tikzpicture}
-  }
+  \begin{textblock}{3.5}(17.25, 0.25)
+
+    % Display picture and box if provided else nothing
+    \ifthenelse{\equal{\profilepic}{}}{}{
+      \begin{tikzpicture}[remember picture,overlay]
+        \node[rectangle, anchor=north west] at (0.15cm, 0.1cm) {\includegraphics[width=\imagewidth]{\profilepic}};
+        % \node[rectangle, anchor=north west] at (17.4cm, 0.2cm) {\includegraphics[width=\imagewidth]{\profilepic}};
+        \draw[line width=0.5mm, boxcolor] (0.20cm, 0.05cm) -- + (3.15cm, 0) -- + (3.15cm, -3.15cm) -- + (0,-3.15cm) -- cycle;
+      \end{tikzpicture}
+    }
+
+  \end{textblock}
 }
 
 %%===================================%%
@@ -166,19 +159,19 @@
 %------------------%
 
 \newcommand{\address}[1]{
-  \begin{textblock}{4}(15.25, 5)
+  \begin{textblock}{4}(14.5, 5)
     \center #1
   \end{textblock}
 }
 
 \newcommand{\recipient}[1]{
-  \begin{textblock}{4}(1.75, 7)
+  \begin{textblock}{4}(2.5, 7)
     #1
   \end{textblock}
 }
 
 \newcommand{\location}[1]{
-  \begin{textblock}{4}(15.25, 4.5)
+  \begin{textblock}{4}(14.5, 4.5)
     #1
   \end{textblock}
 }
@@ -188,19 +181,19 @@
 %-----------------%
 
 \newcommand{\addressfr}[1]{
-  \begin{textblock}{4}(1., 4.5)
+  \begin{textblock}{4}(1.5, 4.5)
     \center #1
   \end{textblock}
 }
 
 \newcommand{\recipientfr}[1]{
-  \begin{textblock}{4}(15.25, 5.5)
+  \begin{textblock}{4}(14.5, 5.5)
     #1
   \end{textblock}
 }
 
 \newcommand{\locationfr}[1]{
-  \begin{textblock}{4}(1.75, 8)
+  \begin{textblock}{4}(2.5, 8)
     #1
   \end{textblock}
 }
@@ -217,24 +210,27 @@
 \newcommand{\closing}[1]{\vspace{0.3cm}#1}
 \newcommand{\signing}[1]{\vspace{1cm}\hspace{12cm}#1}
 \newcommand{\capit}[1]{\@capsize #1}
+\newcommand{\hlink}[2]{\href{#1}{\color{colhyperlink}{\textit{#2}}}}
 
 % Letter environnement
 \newenvironment{coverletter}{%
-  \begin{textblock}{17.5}(1.75, 4)
+  %\begin{textblock}{17.5}(1.75, 4)
+  %\vspace{4.5cm}
     \begin{tikzpicture}[]
-      \draw[line width=0.5mm, secondcolor] (0, 0cm) -- (17.5cm, 0);
+      \draw[line width=0.5mm, secondcolor] (0, 0cm) -- (16.cm, 0);
     \end{tikzpicture}
     \vspace{4.5cm}
   }{%
     \vspace{1cm}
     \begin{tikzpicture}[]
-      \draw[line width=0.5mm, secondcolor] (0, 0cm) -- (17.5cm, 0);
+      \draw[line width=0.5mm, secondcolor] (0, 0cm) -- (16.cm, 0);
     \end{tikzpicture}
-  \end{textblock}
+  %\end{textblock}
 }
 
 %%================%%
 %%  Page setting  %%
 %%================%%
 
-\RequirePackage[left=0.cm,top=0.cm,right=0.cm,bottom=0.cm,nohead,nofoot]{geometry}
+% \RequirePackage[left=0.cm,top=0.cm,right=0.cm,bottom=0.cm,nohead,nofoot]{geometry}
+\RequirePackage[left=2.5cm,top=3.5cm,right=2.5cm,bottom=3.cm,head=3.5cm,foot=4.cm]{geometry}
