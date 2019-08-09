@@ -14,7 +14,7 @@ With respect to english conventions (without age, address and picture).
 
 ![English_CV](https://github.com/ArthurBernard/Arthur-CV-LaTeX/blob/master/pictures/Arthur_Bernard_CV_En.jpg)
 
-![English_cover_letter](https://github.com/ArthurBernard/Arthur-CV-LaTeX/blob/master/pictures/exemple_cover_letter_En.jpg)
+![English_cover_letter](https://github.com/ArthurBernard/Arthur-CV-LaTeX/blob/master/pictures/example_cover_letter_En.jpg)
 
 ### French version
 
