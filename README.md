@@ -1,8 +1,10 @@
-# LaTeX CV template Arthur
+# LaTeX CV and cover letter template Arthur
 
 ## Description
 
 My customizable CV template, `arthur-cv`, allow you to choose color themes, display or not some personal informations (age, address, pictures, etc.) with respect to local convention, define some sections on left bar (skills, etc.), and define some sections in the body (education, experience, etc.) of the CV.
+
+My cover letter template `arthur-cover-letter` is classical with the same header than the CV template. The template allow english (addess and date at right and recipient at left) and french convention (address and date at left, and recipient at right).
 
 ## Example preview
 
@@ -12,11 +14,15 @@ With respect to english conventions (without age, address and picture).
 
 ![English_CV](https://github.com/ArthurBernard/Arthur-CV-LaTeX/blob/master/pictures/Arthur_Bernard_CV_En.jpg)
 
+![English_cover_letter](https://github.com/ArthurBernard/Arthur-CV-LaTeX/blob/master/pictures/exemple_cover_letter_En.jpg)
+
 ### French version
 
 With respect to french conventions (with picture, address and age).
 
 ![French_CV](https://github.com/ArthurBernard/Arthur-CV-LaTeX/blob/master/pictures/Arthur_Bernard_CV_Fr.jpg)
+
+![French_CV](https://github.com/ArthurBernard/Arthur-CV-LaTeX/blob/master/pictures/example_cover_letter_Fr.jpg)
 
 ## Customized colors
 
@@ -68,7 +74,7 @@ The default theme color of CV is different kind of blue, but you can freely cust
 \definecolor{thirdcolor}{HTML}{7f6b00}    
 ```
 
-## Environment style and commands
+## CV environment style and commands
 
 This template is divided in three parts, header where you can define some personnal informations, left bar to display some skills or other, and the body of your CV to display your experiences, educations, etc.
 
@@ -122,6 +128,57 @@ Set items in body:
   \subsectionright{Date}[Level degree]{Title}[University][Location]{Description}   
   \subsectionright{Date}{Title job}[Firm][Location]{Description}   
 \end{rightenv}   
+```
+
+## Cover letter environment style and commands
+
+### Header
+
+Set personnal informations (if you don't want to display one (or several) personnal information let the command empty):
+
+``` latex
+\profilepic{path/picture}   
+\cvname{Your Name}   
+\cvlinkedin{/in/your-linkedin}   
+\cvgithub{YourGitHub}   
+\cvmail{your.address@email.com}   
+\cvnumberphone{your phone number}   
+\cvjobtitle{Title of your CV}   
+\cvsite{www.your-website.com}   
+```
+
+### Address and recipient
+
+#### English convention
+
+Address, date, and location are set at top right and the recipient is set at left.
+
+``` latex
+\address{John \capit{DOE}\\123, somestreet\\Somecity}   
+\recipient{Sir \capit{COMPANY},\\456 somestreet\\Somecity}   
+\location{Somecity, \today}   
+```
+
+#### French convention
+
+Address, date and location are set at top left and the recipient is set at right.
+
+``` latex
+\addressfr{John \capit{DOE}\\123, rue des Avenue\\Ville}   
+\recipientfr{Monsieur \capit{COMPANY},\\456 avenue des Rues\\Ville}   
+\locationfr{Ville, \today}   
+```
+
+#### Body
+
+``` latex
+\begin{coverletter}
+  \subject{Application to job of my life}
+  \opening{Dear Sir or Madam,}
+  \lipsum[1-4]
+  \closing{Your sincerly,} % To adapte following recipient
+  \signing{John \capit{DOE}}
+\end{coverletter}
 ```
 
 
