@@ -2,7 +2,7 @@
 % @Email: arthur.bernard.92@gmail.com
 % @Date: 2019-08-06 19:44:09
 % @Last modified by: ArthurBernard
-% @Last modified time: 2019-08-09 18:45:52
+% @Last modified time: 2019-08-09 18:56:56
 \NeedsTeXFormat{LaTeX2e}
 \LoadClass{article}
 \ProvidesClass{arthur-cover-letter}[2019/08/06 Custom cover letter class]
@@ -122,7 +122,7 @@
       \end{tabular}
 
     \end{minipage}
-    \begin{minipage}[t]{0.50\textwidth}
+    \begin{minipage}[t]{0.45\textwidth}
 
       % Set name and title CV
       \vspace{3mm}

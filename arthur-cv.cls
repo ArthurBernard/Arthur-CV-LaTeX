@@ -2,7 +2,7 @@
 % @Email: arthur.bernard.92@gmail.com
 % @Date: 2019-07-31 08:59:29
 % @Last modified by: ArthurBernard
-% @Last modified time: 2019-08-03 17:03:11
+% @Last modified time: 2019-08-09 19:00:39
 \NeedsTeXFormat{LaTeX2e}
 \LoadClass{article}
 \ProvidesClass{arthur-cv}[2019/07/31 Custom CV class]
@@ -137,7 +137,7 @@
       \end{tabular}
 
     \end{minipage}
-    \begin{minipage}[t]{0.5\textwidth}
+    \begin{minipage}[t]{0.45\textwidth}
 
       % Set name and title CV
       \vspace{3mm}
@@ -157,13 +157,19 @@
 
   \end{textblock}
 
+  \begin{textblock}{3.5}(17.25, 0.25)
+
     % Display picture and box if provided else nothing
     \ifthenelse{\equal{\profilepic}{}}{}{
       \begin{tikzpicture}[remember picture,overlay]
-        \node[rectangle, anchor=north west] at (17.4cm, 0.2cm) {\includegraphics[width=\imagewidth]{\profilepic}};
-        \draw[line width=0.5mm, boxcolor] (17.45cm, 0.15cm) -- + (3.15cm, 0) -- + (3.15cm, -3.15cm) -- + (0,-3.15cm) -- cycle;
+        \node[rectangle, anchor=north west] at (0.15cm, 0.1cm) {\includegraphics[width=\imagewidth]{\profilepic}};
+        %\node[rectangle, anchor=north west] at (17.4cm, 0.2cm) {\includegraphics[width=\imagewidth]{\profilepic}};
+        \draw[line width=0.5mm, boxcolor] (0.20cm, 0.05cm) -- + (3.15cm, 0) -- + (3.15cm, -3.15cm) -- + (0,-3.15cm) -- cycle;
+        %\draw[line width=0.5mm, boxcolor] (17.45cm, 0.15cm) -- + (3.15cm, 0) -- + (3.15cm, -3.15cm) -- + (0,-3.15cm) -- cycle;
       \end{tikzpicture}
     }
+
+  \end{textblock}
 
 }
 
