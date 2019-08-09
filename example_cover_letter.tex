@@ -3,6 +3,7 @@
 \author{Author}
 
 \usepackage[english]{babel}
+% \usepackage[french]{babel}
 \usepackage{fontspec}
 \usepackage{microtype}
 \usepackage{lipsum}
@@ -11,11 +12,9 @@
 %%  Custom colors  %%
 %%=================%%
 
-% \definecolor{leftcolorband}{HTML}{E7E7E7}
 % \definecolor{boxcolor}{HTML}{0E5484}
 % \definecolor{maincolor}{HTML}{1a4c70}
 % \definecolor{secondcolor}{HTML}{4d4d4d}
-% \definecolor{thirdcolor}{HTML}{0E5484}
 
 %%==========%%
 %%  Header  %%
@@ -33,24 +32,29 @@
 
 \begin{document}
     \makeprofile % Set header
-
+    
+    % English commands (addess and location at right and recipient at left)
     \address{John \capit{DOE}\\123, somestreet\\Somecity}
-
     \recipient{Sir \capit{COMPANY},\\456 somestreet\\Somecity} % Recipient address}
-
     \location{Somecity, \today}
 
-    % \subject{Objet : XXX}
+    % French commands (address and location at left and recipient at right)
+    % \addressfr{John \capit{DOE}\\123, rue des Avenue\\Ville}
+    % \recipientfr{Monsieur \capit{COMPANY},\\456 avenue des Rues\\Ville} % Recipient address}
+    % \locationfr{Ville, \today}
 
-    \begin{coverletter}%{17.5}(1.75, 3.5)
+    \begin{coverletter}
 
             \subject{Application to job of my life}
+            % \subject{Objet : Candidature au travail de mes rêves}
 
-            \opening{Dear Sir or Madam}
+            \opening{Dear Sir or Madam,}
+            % \opening{Madame, Monsieur,}
 
             \lipsum[1-4]
 
             \closing{Your sincerly,} % To adapte following recipient
+            % \closing{Cordialement,}
 
             \signing{John \capit{DOE}}
 
