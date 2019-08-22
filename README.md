@@ -1,10 +1,13 @@
-# LaTeX CV and cover letter template Arthur
+# Customizable template of Cover Letter and CV in LaTeX
 
 ## Description
 
-My customizable CV template, `arthur-cv`, allow you to choose color themes, display or not some personal informations (age, address, pictures, etc.) with respect to local convention, define some sections on left bar (skills, etc.), and define some sections in the body (education, experience, etc.) of the CV.
+**Customizable CV template**, `arthur-cv`, allow you to choose **color themes**, display or not some personal informations (age, address, pictures, etc.) with respect to **english and frenc convention**, define some sections on left bar (skills, etc.), and define some sections in the body (education, experience, etc.) of the CV.
 
-My cover letter template `arthur-cover-letter` is classical with the same header than the CV template. The template allow english conventions (address and date at right and recipient informations at left) and french conventions (address and date at left, and recipient informations at right).
+**Customizable cover letter template**, `arthur-cover-letter`, is classical with the same **header** than the CV template. The template allow **english conventions** (address and date at right and recipient informations at left) and **french conventions** (address and date at left, and recipient informations at right).
+
+___
+___
 
 ## Example preview
 
@@ -16,6 +19,8 @@ With respect to english conventions (without age, address and picture).
 
 ![English_cover_letter](https://github.com/ArthurBernard/Arthur-CV-LaTeX/blob/master/pictures/example_cover_letter_En.jpg)
 
+___
+
 ### French version
 
 With respect to french conventions (with picture, address and age).
@@ -24,11 +29,16 @@ With respect to french conventions (with picture, address and age).
 
 ![French_CV](https://github.com/ArthurBernard/Arthur-CV-LaTeX/blob/master/pictures/example_cover_letter_Fr.jpg)
 
+___
+___
+
 ## Customized colors
 
 The default theme color of CV and cover letter is different kind of blue, but you can freely custom themes color, see below some non-exhaustive examples:
 
 ![Colored_Examples](https://github.com/ArthurBernard/Arthur-CV-LaTeX/blob/master/pictures/Colored_examples.jpg)
+
+___
 
 ### Green
 
@@ -41,6 +51,8 @@ The default theme color of CV and cover letter is different kind of blue, but yo
 \definecolor{thirdcolor}{HTML}{6b8e23}   
 ```
 
+___
+
 ### Red
 
 ``` latex
@@ -51,6 +63,8 @@ The default theme color of CV and cover letter is different kind of blue, but yo
 \definecolor{secondcolor}{HTML}{861919}   
 \definecolor{thirdcolor}{HTML}{591111}   
 ```
+
+___
 
 ### Grey
 
@@ -63,6 +77,8 @@ The default theme color of CV and cover letter is different kind of blue, but yo
 \definecolor{thirdcolor}{HTML}{606060}   
 ```
 
+___
+
 ### Yellow
 
 ``` latex
@@ -74,12 +90,17 @@ The default theme color of CV and cover letter is different kind of blue, but yo
 \definecolor{thirdcolor}{HTML}{7f6b00}    
 ```
 
+___
+___
+
 ## CV environment style and commands
 
 This template is divided in three parts, header where you can define some personnal informations, left bar to display some skills or other, and the body of your CV to display your experiences, educations, etc.
 
 The left bar and body must be each one in a minipage environment with respectively `0.37\textwidth` and `0.61\textwidth` parameters.   
 You can look one of the following examples: `example_cv.tex`, `Arthur_Bernard_CV_Fr.tex` or `Arthur_Bernard_CV_En.tex`
+
+___
 
 ### Header
 
@@ -98,6 +119,8 @@ Set personnal informations (if you don't want to display one (or several) person
 \cvyearsold{your years old}   
 ```
 
+___
+
 ### Left bar
 
 Set section in left bar:
@@ -111,6 +134,8 @@ Set items in left bar:
 ``` latex
 \subsectionleft{Item name}{Optional description}
 ```
+
+___
 
 ### Body
 
@@ -130,6 +155,9 @@ Set items in body:
 \end{rightenv}   
 ```
 
+___
+___
+
 ## Cover letter environment style and commands
 
 ### Header
@@ -146,6 +174,8 @@ Set personnal informations (if you don't want to display one (or several) person
 \cvjobtitle{Title of your CV}   
 \cvsite{www.your-website.com}   
 ```
+
+___
 
 ### Address and recipient
 
@@ -169,6 +199,8 @@ Address, date and location are set at top left and the recipient is set at right
 \locationfr{Ville, \today}   
 ```
 
+___
+
 ### Body
 
 ``` latex
@@ -181,6 +213,8 @@ Address, date and location are set at top left and the recipient is set at right
 \end{coverletter}
 ```
 
+___
+___
 
 ## Requirements
 
@@ -203,6 +237,9 @@ Address, date and location are set at top left and the recipient is set at right
   - tcolorbox;   
   - enumitem;   
   - ifthen.   
+
+___
+___
 
 ## MIT License
 
