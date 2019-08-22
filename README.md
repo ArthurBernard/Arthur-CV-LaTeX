@@ -7,7 +7,6 @@
 **Customizable cover letter template**, `arthur-cover-letter`, is classical with the same **header** than the CV template. The template allow **english conventions** (address and date at right and recipient informations at left) and **french conventions** (address and date at left, and recipient informations at right).
 
 ___
-___
 
 ## Example preview
 
@@ -30,15 +29,12 @@ With respect to french conventions (with picture, address and age).
 ![French_CV](https://github.com/ArthurBernard/Arthur-CV-LaTeX/blob/master/pictures/example_cover_letter_Fr.jpg)
 
 ___
-___
 
 ## Customized colors
 
 The default theme color of CV and cover letter is different kind of blue, but you can freely custom themes color, see below some non-exhaustive examples:
 
 ![Colored_Examples](https://github.com/ArthurBernard/Arthur-CV-LaTeX/blob/master/pictures/Colored_examples.jpg)
-
-___
 
 ### Green
 
@@ -51,8 +47,6 @@ ___
 \definecolor{thirdcolor}{HTML}{6b8e23}   
 ```
 
-___
-
 ### Red
 
 ``` latex
@@ -64,8 +58,6 @@ ___
 \definecolor{thirdcolor}{HTML}{591111}   
 ```
 
-___
-
 ### Grey
 
 ``` latex
@@ -76,8 +68,6 @@ ___
 \definecolor{secondcolor}{HTML}{909090}   
 \definecolor{thirdcolor}{HTML}{606060}   
 ```
-
-___
 
 ### Yellow
 
@@ -91,16 +81,16 @@ ___
 ```
 
 ___
-___
 
 ## CV environment style and commands
 
-This template is divided in three parts, header where you can define some personnal informations, left bar to display some skills or other, and the body of your CV to display your experiences, educations, etc.
+This template is divided in three parts:   
+  - The **header** where you can define some personnal informations;   
+  - The **left bar** to display some skills or other;   
+  - The **body** of your CV to display your experiences, educations, etc.   
 
 The left bar and body must be each one in a minipage environment with respectively `0.37\textwidth` and `0.61\textwidth` parameters.   
 You can look one of the following examples: `example_cv.tex`, `Arthur_Bernard_CV_Fr.tex` or `Arthur_Bernard_CV_En.tex`
-
-___
 
 ### Header
 
