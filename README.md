@@ -109,8 +109,6 @@ Set personnal informations (if you don't want to display one (or several) person
 \cvyearsold{your years old}   
 ```
 
-___
-
 ### Left bar
 
 Set section in left bar:
@@ -124,8 +122,6 @@ Set items in left bar:
 ``` latex
 \subsectionleft{Item name}{Optional description}
 ```
-
-___
 
 ### Body
 
@@ -146,7 +142,6 @@ Set items in body:
 ```
 
 ___
-___
 
 ## Cover letter environment style and commands
 
@@ -164,8 +159,6 @@ Set personnal informations (if you don't want to display one (or several) person
 \cvjobtitle{Title of your CV}   
 \cvsite{www.your-website.com}   
 ```
-
-___
 
 ### Address and recipient
 
@@ -189,21 +182,18 @@ Address, date and location are set at top left and the recipient is set at right
 \locationfr{Ville, \today}   
 ```
 
-___
-
 ### Body
 
 ``` latex
 \begin{coverletter}
   \subject{Application to job of my life}
   \opening{Dear Sir or Madam,}
-  \lipsum[1-4]
+  % write here the letter body
   \closing{Your sincerly,} % To adapte following recipient
   \signing{John \capit{DOE}}
 \end{coverletter}
 ```
 
-___
 ___
 
 ## Requirements
@@ -228,7 +218,6 @@ ___
   - enumitem;   
   - ifthen.   
 
-___
 ___
 
 ## MIT License
