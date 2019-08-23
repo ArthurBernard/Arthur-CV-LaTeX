@@ -1,0 +1,63 @@
+\documentclass[a4paper]{arthur-cover-letter}
+\title{Example Curiculum Vitae}
+\author{Author}
+
+\usepackage[english]{babel}
+% \usepackage[french]{babel}
+\usepackage{fontspec}
+\usepackage{microtype}
+\usepackage{lipsum}
+
+%%=================%%
+%%  Custom colors  %%
+%%=================%%
+
+% \definecolor{boxcolor}{HTML}{0E5484}
+% \definecolor{maincolor}{HTML}{1a4c70}
+% \definecolor{secondcolor}{HTML}{4d4d4d}
+
+%%==========%%
+%%  Header  %%
+%%==========%%
+
+% Set profile info [Following informations are not compulsary]
+\profilepic{}               % Path of your picture or let empty
+\cvname{John Doe}           % Your full name
+\cvlinkedin{/in/John.Doe}   % Your linkedin
+\cvgithub{JohnDoe}          % Your GitHub
+\cvmail{john.doe@mail.io}   % Your email
+\cvnumberphone{}            % Your phone number
+\cvjobtitle{Job of my life} % Title of your CV
+\cvsite{}                   % Your site
+
+\begin{document}
+    \makeprofile % Set header
+    
+    % English commands (addess and location at right and recipient at left)
+    \address{John \capit{DOE}\\123, somestreet\\Somecity}
+    \recipient{Sir \capit{COMPANY},\\456 somestreet\\Somecity} % Recipient address}
+    \location{Somecity, \today}
+
+    % French commands (address and location at left and recipient at right)
+    % \addressfr{John \capit{DOE}\\123, rue des Avenue\\Ville}
+    % \recipientfr{Monsieur \capit{COMPANY},\\456 avenue des Rues\\Ville} % Recipient address}
+    % \locationfr{Ville, \today}
+
+    \begin{coverletter}
+
+            \subject{Application to job of my life}
+            % \subject{Objet : Candidature au travail de mes rêves}
+
+            \opening{Dear Sir or Madam,}
+            % \opening{Madame, Monsieur,}
+
+            \lipsum[1-3]
+
+            \closing{Your sincerly,} % To adapte following recipient
+            % \closing{Cordialement,}
+
+            \signing{John \capit{DOE}}
+
+    \end{coverletter}
+
+\end{document}
