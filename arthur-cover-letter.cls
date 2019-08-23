@@ -2,7 +2,7 @@
 % @Email: arthur.bernard.92@gmail.com
 % @Date: 2019-08-06 19:44:09
 % @Last modified by: ArthurBernard
-% @Last modified time: 2019-08-09 18:56:56
+% @Last modified time: 2019-08-23 08:27:19
 \NeedsTeXFormat{LaTeX2e}
 \LoadClass{article}
 \ProvidesClass{arthur-cover-letter}[2019/08/06 Custom cover letter class]
@@ -68,8 +68,13 @@
 \pgfmathsetlength{\imagewidth}{3cm}%
 \pgfmathsetlength{\imagescale}{\imagewidth/600}%
 
+% Set header
 \newcommand{\makeprofile}{
-  % Set header
+  
+  %-----------------------%
+  % Personal informations %
+  %-----------------------%
+
   \begin{textblock}{20.25}(0.25, 0.25)
 
     \begin{minipage}[t]{0.38\textwidth}
@@ -124,7 +129,11 @@
     \end{minipage}
     \begin{minipage}[t]{0.45\textwidth}
 
-      % Set name and title CV
+      %----------------%
+      % Name and title %
+      %----------------%
+
+      % Set name and title coverletter
       \vspace{3mm}
       {\hspace{0mm}\Huge\color{maincolor}\cvname}
       
@@ -136,13 +145,16 @@
 
   \end{textblock}
 
+  %---------%
+  % Picture %
+  %---------%
+
   \begin{textblock}{3.5}(17.25, 0.25)
 
     % Display picture and box if provided else nothing
     \ifthenelse{\equal{\profilepic}{}}{}{
       \begin{tikzpicture}[remember picture,overlay]
         \node[rectangle, anchor=north west] at (0.15cm, 0.1cm) {\includegraphics[width=\imagewidth]{\profilepic}};
-        % \node[rectangle, anchor=north west] at (17.4cm, 0.2cm) {\includegraphics[width=\imagewidth]{\profilepic}};
         \draw[line width=0.5mm, boxcolor] (0.20cm, 0.05cm) -- + (3.15cm, 0) -- + (3.15cm, -3.15cm) -- + (0,-3.15cm) -- cycle;
       \end{tikzpicture}
     }
@@ -204,7 +216,6 @@
 
 \def\@capsize#1#2{\normalsize #1\small #2}
 
-%\newcommand{\conc}[1]{\renewcommand{\conc}{#1}}
 \newcommand{\subject}[1]{#1\vspace{0.5cm}}
 \newcommand{\opening}[1]{#1\vspace{0.3cm}}
 \newcommand{\closing}[1]{\vspace{0.3cm}#1}
@@ -214,23 +225,19 @@
 
 % Letter environnement
 \newenvironment{coverletter}{%
-  %\begin{textblock}{17.5}(1.75, 4)
-  %\vspace{4.5cm}
-    \begin{tikzpicture}[]
-      \draw[line width=0.5mm, secondcolor] (0, 0cm) -- (16.cm, 0);
-    \end{tikzpicture}
-    \vspace{4.5cm}
+  \begin{tikzpicture}[]
+    \draw[line width=0.5mm, secondcolor] (0, 0cm) -- (16.cm, 0);
+  \end{tikzpicture}
+  \vspace{4.5cm}
   }{%
-    \vspace{1cm}
-    \begin{tikzpicture}[]
-      \draw[line width=0.5mm, secondcolor] (0, 0cm) -- (16.cm, 0);
-    \end{tikzpicture}
-  %\end{textblock}
+  \vspace{1cm}
+  \begin{tikzpicture}[]
+    \draw[line width=0.5mm, secondcolor] (0, 0cm) -- (16.cm, 0);
+  \end{tikzpicture}
 }
 
 %%================%%
 %%  Page setting  %%
 %%================%%
 
-% \RequirePackage[left=0.cm,top=0.cm,right=0.cm,bottom=0.cm,nohead,nofoot]{geometry}
 \RequirePackage[left=2.5cm,top=3.5cm,right=2.5cm,bottom=3.cm,head=3.5cm,foot=4.cm]{geometry}

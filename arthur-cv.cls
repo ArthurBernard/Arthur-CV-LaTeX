@@ -2,16 +2,16 @@
 % @Email: arthur.bernard.92@gmail.com
 % @Date: 2019-07-31 08:59:29
 % @Last modified by: ArthurBernard
-% @Last modified time: 2019-08-09 19:00:39
+% @Last modified time: 2019-08-23 08:27:21
 \NeedsTeXFormat{LaTeX2e}
 \LoadClass{article}
 \ProvidesClass{arthur-cv}[2019/07/31 Custom CV class]
 
 % TODO : Add option several pages
 
-%%%%%%%%%%%%%%%%%%%%%
+%%=================%%
 %%  Load packages  %%
-%%%%%%%%%%%%%%%%%%%%%
+%%=================%%
 
 \RequirePackage[quiet]{fontspec}
 \RequirePackage[sfdefault]{ClearSans} % Police
@@ -29,9 +29,9 @@
 \RequirePackage{enumitem}             % Customize item
 \RequirePackage{ifthen}               % Conditions
 
-%%%%%%%%%%%%%%%%%%
+%%==============%%
 %%  Set colors  %%
-%%%%%%%%%%%%%%%%%%
+%%==============%%
 
 \definecolor{yt}{HTML}{c71610}
 \definecolor{test}{HTML}{0077be}
@@ -45,9 +45,9 @@
 \definecolor{thirdcolor}{HTML}{0E5484}
 
 
-%%%%%%%%%%%%%%%%%%%
+%%===============%%
 %%  Information  %%
-%%%%%%%%%%%%%%%%%%%
+%%===============%%
 
 % Set linkedin, github, mail, phone, site, address, years old, pictures, name and tilte cv commands
 \newcommand{\cvlinkedin}[1]{\renewcommand{\cvlinkedin}{#1}}
@@ -61,9 +61,9 @@
 \newcommand{\cvjobtitle}[1]{\renewcommand{\cvjobtitle}{#1}}
 \newcommand{\cvyearsold}[1]{\renewcommand{\cvyearsold}{#1}}
 
-%%%%%%%%%%%%%%
+%%==========%%
 %%  Header  %%
-%%%%%%%%%%%%%%
+%%==========%%
 
 % Set unit
 \setlength{\TPHorizModule}{1cm}
@@ -77,6 +77,7 @@
 \pgfmathsetlength{\imagewidth}{3cm}%
 \pgfmathsetlength{\imagescale}{\imagewidth/600}%
 
+% Set header
 \newcommand{\makeprofile}{
   
   % Set left color band
@@ -84,7 +85,10 @@
     \node [rectangle, anchor=north west, fill=leftcolorband, minimum width=8cm, minimum height=27cm] at (0cm, -3.2cm) {};{};
   \end{tikzpicture}
 
-  % Set header
+  %-----------------------%
+  % Personal informations %
+  %-----------------------%
+
   \begin{textblock}{20.5}(0.25, 0.25)
 
     \begin{minipage}[t]{0.38\textwidth}
@@ -139,6 +143,10 @@
     \end{minipage}
     \begin{minipage}[t]{0.45\textwidth}
 
+      %----------------%
+      % Name and title %
+      %----------------%
+
       % Set name and title CV
       \vspace{3mm}
       {\hspace{0mm}\Huge\color{maincolor}\cvname}
@@ -157,15 +165,17 @@
 
   \end{textblock}
 
+  %---------%
+  % Picture %
+  %---------%
+
   \begin{textblock}{3.5}(17.25, 0.25)
 
     % Display picture and box if provided else nothing
     \ifthenelse{\equal{\profilepic}{}}{}{
       \begin{tikzpicture}[remember picture,overlay]
         \node[rectangle, anchor=north west] at (0.15cm, 0.1cm) {\includegraphics[width=\imagewidth]{\profilepic}};
-        %\node[rectangle, anchor=north west] at (17.4cm, 0.2cm) {\includegraphics[width=\imagewidth]{\profilepic}};
         \draw[line width=0.5mm, boxcolor] (0.20cm, 0.05cm) -- + (3.15cm, 0) -- + (3.15cm, -3.15cm) -- + (0,-3.15cm) -- cycle;
-        %\draw[line width=0.5mm, boxcolor] (17.45cm, 0.15cm) -- + (3.15cm, 0) -- + (3.15cm, -3.15cm) -- + (0,-3.15cm) -- cycle;
       \end{tikzpicture}
     }
 
@@ -173,9 +183,9 @@
 
 }
 
-%%%%%%%%%%%%%%%%%%%%%%%
+%%===================%%
 %%  Left side block  %%
-%%%%%%%%%%%%%%%%%%%%%%%
+%%===================%%
 
 \tcbuselibrary{most}
 \tcbset{enhanced}
@@ -204,9 +214,9 @@
   \par\vspace{2mm}
 }
 
-%%%%%%%%%%%%%%%%%%%%%%%%
+%%====================%%
 %%  Right side block  %%
-%%%%%%%%%%%%%%%%%%%%%%%%
+%%====================%%
 
 % Color of title section
 \def\@sectioncolor#1#2#3{%
@@ -243,8 +253,8 @@
   }\\%
 }
 
-%%%%%%%%%%%%%%%%%%%%
+%%================%%
 %%  Page setting  %%
-%%%%%%%%%%%%%%%%%%%%
+%%================%%
 
 \RequirePackage[left=0.cm,top=0.cm,right=0.cm,bottom=0.cm,nohead,nofoot]{geometry}
