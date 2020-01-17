@@ -167,8 +167,8 @@ Set personnal informations (if you don't want to display one (or several) person
 Address, date, and location are set at top right and the recipient is set at left.
 
 ``` latex
-\address{John \capit{DOE}\\123, somestreet\\Somecity}   
-\recipient{Sir \capit{COMPANY},\\456 somestreet\\Somecity}   
+\address{John \capit{DOE},\\123, somestreet\\Somecity}   
+\recipient{Sir \capit{COMPANY},\\456, somestreet\\Somecity}   
 \location{Somecity, \today}   
 ```
 
@@ -177,7 +177,7 @@ Address, date, and location are set at top right and the recipient is set at lef
 Address, date and location are set at top left and the recipient is set at right.
 
 ``` latex
-\addressfr{John \capit{DOE}\\123, rue des Avenue\\Ville}   
+\addressfr{John \capit{DOE},\\123 rue des Avenue\\Ville}   
 \recipientfr{Monsieur \capit{COMPANY},\\456 avenue des Rues\\Ville}   
 \locationfr{Ville, \today}   
 ```
