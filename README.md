@@ -2,9 +2,9 @@
 
 ## Description
 
-**Customizable CV template**, `arthur-cv`, allow you to choose **color themes**, display or not some personal informations (age, address, pictures, etc.) with respect to **english and frenc convention**, define some sections on left bar (skills, etc.), and define some sections in the body (education, experience, etc.) of the CV.
+**Customizable CV template**, `arthur-cv`, allow you to choose **color themes**, display or not some personal information (age, address, pictures, etc.) with respect to **English and French convention**, define some sections on left bar (skills, etc.), and define some sections in the body (education, experience, etc.) of the CV.
 
-**Customizable cover letter template**, `arthur-cover-letter`, is classical with the same **header** than the CV template. The template allow **english conventions** (address and date at right and recipient informations at left) and **french conventions** (address and date at left, and recipient informations at right).
+**Customizable cover letter template**, `arthur-cover-letter`, is classical with the same **header** than the CV template. The template allow **English conventions** (address and date at right and recipient information at left) and **French conventions** (address and date at left, and recipient information at right).
 
 ___
 
@@ -12,7 +12,7 @@ ___
 
 ### English version
 
-With respect to english conventions (without age, address and picture).
+With respect to English conventions (without age, address and picture).
 
 ![English_CV](https://github.com/ArthurBernard/Arthur-CV-LaTeX/blob/master/pictures/Arthur_Bernard_CV_En.jpg)
 
@@ -22,7 +22,7 @@ ___
 
 ### French version
 
-With respect to french conventions (with picture, address and age).
+With respect to French conventions (with picture, address and age).
 
 ![French_CV](https://github.com/ArthurBernard/Arthur-CV-LaTeX/blob/master/pictures/Arthur_Bernard_CV_Fr.jpg)
 
@@ -85,16 +85,16 @@ ___
 ## CV environment style and commands
 
 This template is divided in three parts:   
-  - The **header** where you can define some personnal informations;   
+  - The **header** where you can define some personal information;   
   - The **left bar** to display some skills or other;   
   - The **body** of your CV to display your experiences, educations, etc.   
 
-The left bar and body must be each one in a minipage environment with respectively `0.37\textwidth` and `0.61\textwidth` parameters.   
+The left bar and body must be each one in a `minipage` environment with respectively `0.37\textwidth` and `0.61\textwidth` parameters.   
 You can look one of the following examples: `example_cv.tex`, `Arthur_Bernard_CV_Fr.tex` or `Arthur_Bernard_CV_En.tex`
 
 ### Header
 
-Set personnal informations (if you don't want to display one (or several) personnal information let the command empty):
+Set personal information (if you don't want to display one (or several) personal information let the command empty):
 
 ``` latex
 \profilepic{path/picture}   
@@ -147,7 +147,7 @@ ___
 
 ### Header
 
-Set personnal informations (if you don't want to display one (or several) personnal information let the command empty):
+Set personal information (if you don't want to display one (or several) personal information let the command empty):
 
 ``` latex
 \profilepic{path/picture}   
@@ -189,7 +189,7 @@ Address, date and location are set at top left and the recipient is set at right
   \subject{Application to job of my life}
   \opening{Dear Sir or Madam,}
   % write here the letter body
-  \closing{Your sincerly,} % To adapte following recipient
+  \closing{Your sincerly,} % To adapt following recipient
   \signing{John \capit{DOE}}
 \end{coverletter}
 ```
