@@ -141,6 +141,16 @@ Set items in body:
 \end{rightenv}   
 ```
 
+### Several pages
+
+Use the following command to add a new page to your CV:
+
+``` latex
+\newcvpage
+```
+
+See example in `./example/Two_Pages_CV.tex`.
+
 ___
 
 ## Cover letter environment style and commands
@@ -198,7 +208,7 @@ ___
 
 ## Requirements
 
-- Compile with **XeLaTex** or **LuaLaTeX**.
+- Compile with **LuaLaTeX** (prefered) or **XeLaTex**.
 
 - LaTeX packages:
 
@@ -222,7 +232,7 @@ ___
 
 ## MIT License
 
-Copyright (c) 2019-2020 Arthur Bernard
+Copyright (c) 2019-2024 Arthur Bernard
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
