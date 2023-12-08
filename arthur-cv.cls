@@ -2,7 +2,7 @@
 % @Email: arthur.bernard.92@gmail.com
 % @Date: 2019-07-31 08:59:29
 % @Last modified by: ArthurBernard
-% @Last modified time: 2019-08-23 08:27:21
+% @Last modified time: 2023-12-08 09:17:59
 \NeedsTeXFormat{LaTeX2e}
 \LoadClass{article}
 \ProvidesClass{arthur-cv}[2019/07/31 Custom CV class]
@@ -141,7 +141,7 @@
       \end{tabular}
 
     \end{minipage}
-    \begin{minipage}[t]{0.45\textwidth}
+    \begin{minipage}[t]{0.43\textwidth}
 
       %----------------%
       % Name and title %

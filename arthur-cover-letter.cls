@@ -2,10 +2,10 @@
 % @Email: arthur.bernard.92@gmail.com
 % @Date: 2019-08-06 19:44:09
 % @Last modified by: ArthurBernard
-% @Last modified time: 2019-08-23 08:27:19
+% @Last modified time: 2020-01-29 19:08:37
 \NeedsTeXFormat{LaTeX2e}
 \LoadClass{article}
-\ProvidesClass{arthur-cover-letter}[2019/08/06 Custom cover letter class]
+\ProvidesClass{arthur-cover-letter}[2019/08/06 Custom cover letter with header class]
 
 % TODO : Add option several pages
 
@@ -42,7 +42,7 @@
 %%  Information  %%
 %%===============%%
 
-% Set linkedin, github, mail, phone, site, address, years old, pictures, name and tilte cv commands
+% Set linkedin, github, mail, phone, site, address, years old, picture, name and title letter commands
 \newcommand{\cvlinkedin}[1]{\renewcommand{\cvlinkedin}{#1}}
 \newcommand{\cvgithub}[1]{\renewcommand{\cvgithub}{#1}}
 \newcommand{\cvmail}[1]{\renewcommand{\cvmail}{#1}}
@@ -71,9 +71,9 @@
 % Set header
 \newcommand{\makeprofile}{
   
-  %-----------------------%
-  % Personal informations %
-  %-----------------------%
+  %----------------------%
+  % Personal information %
+  %----------------------%
 
   \begin{textblock}{20.25}(0.25, 0.25)
 
@@ -133,7 +133,7 @@
       % Name and title %
       %----------------%
 
-      % Set name and title coverletter
+      % Set name and title letter
       \vspace{3mm}
       {\hspace{0mm}\Huge\color{maincolor}\cvname}
       
@@ -162,9 +162,9 @@
   \end{textblock}
 }
 
-%%===================================%%
-%%  Set commands and environnements  %%
-%%===================================%%
+%%=================================%%
+%%  Set commands and environments  %%
+%%=================================%%
 
 %------------------%
 % English commands %
@@ -177,7 +177,7 @@
 }
 
 \newcommand{\recipient}[1]{
-  \begin{textblock}{4}(2.5, 7)
+  \begin{textblock}{4}(2.5, 6)
     #1
   \end{textblock}
 }
@@ -205,7 +205,7 @@
 }
 
 \newcommand{\locationfr}[1]{
-  \begin{textblock}{4}(2.5, 8)
+  \begin{textblock}{4}(2.5, 7)
     #1
   \end{textblock}
 }
@@ -219,18 +219,18 @@
 \newcommand{\subject}[1]{#1\vspace{0.5cm}}
 \newcommand{\opening}[1]{#1\vspace{0.3cm}}
 \newcommand{\closing}[1]{\vspace{0.3cm}#1}
-\newcommand{\signing}[1]{\vspace{1cm}\hspace{12cm}#1}
+\newcommand{\signing}[1]{\vspace{0.5cm}\hspace{12cm}#1}
 \newcommand{\capit}[1]{\@capsize #1}
 \newcommand{\hlink}[2]{\href{#1}{\color{colhyperlink}{\textit{#2}}}}
 
-% Letter environnement
+% Letter environment
 \newenvironment{coverletter}{%
   \begin{tikzpicture}[]
     \draw[line width=0.5mm, secondcolor] (0, 0cm) -- (16.cm, 0);
   \end{tikzpicture}
-  \vspace{4.5cm}
+  \vspace{3.5cm}
   }{%
-  \vspace{1cm}
+  \vspace{0.5cm}
   \begin{tikzpicture}[]
     \draw[line width=0.5mm, secondcolor] (0, 0cm) -- (16.cm, 0);
   \end{tikzpicture}
@@ -240,4 +240,5 @@
 %%  Page setting  %%
 %%================%%
 
-\RequirePackage[left=2.5cm,top=3.5cm,right=2.5cm,bottom=3.cm,head=3.5cm,foot=4.cm]{geometry}
+\RequirePackage[left=2.5cm,top=3.5cm,right=2.5cm,bottom=1.cm,head=3.5cm,foot=2.5cm]{geometry}
+\pagenumbering{gobble}
