@@ -2,12 +2,10 @@
 % @Email: arthur.bernard.92@gmail.com
 % @Date: 2019-07-31 08:59:29
 % @Last modified by: ArthurBernard
-% @Last modified time: 2019-08-23 08:27:21
+% @Last modified time: 2023-12-08 10:30:26
 \NeedsTeXFormat{LaTeX2e}
 \LoadClass{article}
 \ProvidesClass{arthur-cv}[2019/07/31 Custom CV class]
-
-% TODO : Add option several pages
 
 %%=================%%
 %%  Load packages  %%
@@ -141,7 +139,7 @@
       \end{tabular}
 
     \end{minipage}
-    \begin{minipage}[t]{0.45\textwidth}
+    \begin{minipage}[t]{0.43\textwidth}
 
       %----------------%
       % Name and title %
@@ -251,6 +249,21 @@
     \ifblank{#4}{}{\textit{#4}}\ifblank{#5}{}{, \footnotesize#5}\\%
     \ifblank{#6}{\vspace{0mm}}{\normalsize#6\vspace{\parsep}}%
   }\\%
+}
+
+%%============%%
+%%  New page  %%
+%%============%%
+
+\newcommand{\newcvpage}{
+
+  \newpage
+
+  % Set left color band
+  \begin{tikzpicture}[remember picture,overlay]
+    \node [rectangle, anchor=north west, fill=leftcolorband, minimum width=8cm, minimum height=30.5cm] at (0cm, 0.5cm) {};{};
+  \end{tikzpicture}
+
 }
 
 %%================%%
