@@ -4,7 +4,7 @@
 # a LaTeX document class, and the examples between them exercise every documented
 # command, both languages, both letter conventions and the multi-page path.
 #
-# latexmk must run from the repo root: the classes live here, and the examples
+# lualatex must run from the repo root: the classes live here, and the examples
 # reference pictures/ relative to the root rather than to examples/.
 
 SHELL    := /bin/bash
@@ -33,6 +33,7 @@ PASSES := 2
 # onto an extra one. A clean exit code alone is not evidence; this is.
 # Adding an example without adding its expected count here fails `make test`.
 PAGES_example_cv           := 1
+PAGES_minimal_cv           := 1
 PAGES_example_cover_letter := 1
 PAGES_Arthur_Bernard_CV_En := 1
 PAGES_Arthur_Bernard_CV_Fr := 1

@@ -215,15 +215,13 @@ ___
   - fontspec;   
   - ClearSans;   
   - fontawesome;   
-  - ragged2e;   
   - parskip;   
   - hyperref;   
   - textpos;   
-  - titlesec;   
   - tikz;   
   - xcolor;   
-  - multirow;   
   - xargs;   
+  - etoolbox;   
   - tcolorbox;   
   - enumitem;   
   - ifthen.   

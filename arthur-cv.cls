@@ -4,25 +4,27 @@
 % @Last modified by: ArthurBernard
 % @Last modified time: 2023-12-08 10:30:26
 \NeedsTeXFormat{LaTeX2e}
+\ProvidesClass{arthur-cv}[2026/08/27 v1.0.0 Custom CV class]
 \LoadClass{article}
-\ProvidesClass{arthur-cv}[2019/07/31 Custom CV class]
 
 %%=================%%
 %%  Load packages  %%
 %%=================%%
 
+% A class must use \RequirePackage, not \usepackage. ragged2e, titlesec and
+% multirow were loaded but never used, and are dropped. etoolbox is now loaded
+% explicitly: \subsectionright uses \ifblank, which until now only resolved
+% through a transitive dependency of tcolorbox/xargs.
 \RequirePackage[quiet]{fontspec}
 \RequirePackage[sfdefault]{ClearSans} % Police
-\usepackage{fontawesome}              % Icons
-\RequirePackage{ragged2e}
+\RequirePackage{fontawesome}          % Icons
 \RequirePackage{parskip}
 \RequirePackage[hidelinks]{hyperref}  % Hyperlink
 \RequirePackage[absolute,overlay]{textpos} % Set text boxes
-\RequirePackage{titlesec}             % Structure
 \RequirePackage{tikz}                 % Graphic
 \RequirePackage{xcolor}               % Colors
-\RequirePackage{multirow}             % Join rows in tabular
 \RequirePackage{xargs}                % Multiple optional args
+\RequirePackage{etoolbox}             % \ifblank, used by \subsectionright
 \RequirePackage{tcolorbox}            % Colored box
 \RequirePackage{enumitem}             % Customize item
 \RequirePackage{ifthen}               % Conditions
@@ -47,17 +49,29 @@
 %%  Information  %%
 %%===============%%
 
-% Set linkedin, github, mail, phone, site, address, years old, pictures, name and tilte cv commands
-\newcommand{\cvlinkedin}[1]{\renewcommand{\cvlinkedin}{#1}}
-\newcommand{\cvgithub}[1]{\renewcommand{\cvgithub}{#1}}
-\newcommand{\cvmail}[1]{\renewcommand{\cvmail}{#1}}
-\newcommand{\cvnumberphone}[1]{\renewcommand{\cvnumberphone}{#1}}
-\newcommand{\cvaddress}[1]{\renewcommand{\cvaddress}{#1}}
-\newcommand{\cvsite}[1]{\renewcommand{\cvsite}{#1}}
-\newcommand{\profilepic}[1]{\renewcommand{\profilepic}{#1}}
-\newcommand{\cvname}[1]{\renewcommand{\cvname}{#1}}
-\newcommand{\cvjobtitle}[1]{\renewcommand{\cvjobtitle}{#1}}
-\newcommand{\cvyearsold}[1]{\renewcommand{\cvyearsold}{#1}}
+% Declare a header field: \cv@declarefield{cvmail}{mail} creates the public
+% setter \cvmail{...}, which stores its argument in \cv@mail. The storage macro
+% is initialised *empty*, so simply omitting a field is exactly as safe as
+% calling it with {}. Before this, an omitted field left a macro still expecting
+% an argument, and the \equal test in \makeprofile then failed with an
+% unreadable error -- the most likely first-run failure for a new user.
+\newcommand{\cv@declarefield}[2]{%
+  \expandafter\newcommand\csname cv@#2\endcsname{}%
+  \expandafter\newcommand\csname #1\endcsname[1]{%
+    \expandafter\renewcommand\csname cv@#2\endcsname{##1}%
+  }%
+}
+
+\cv@declarefield{cvname}{name}
+\cv@declarefield{cvjobtitle}{jobtitle}
+\cv@declarefield{cvlinkedin}{linkedin}
+\cv@declarefield{cvgithub}{github}
+\cv@declarefield{cvmail}{mail}
+\cv@declarefield{cvnumberphone}{numberphone}
+\cv@declarefield{cvaddress}{address}
+\cv@declarefield{cvsite}{site}
+\cv@declarefield{cvyearsold}{yearsold}
+\cv@declarefield{profilepic}{profilepic}
 
 %%==========%%
 %%  Header  %%
@@ -96,44 +110,44 @@
       \renewcommand{\arraystretch}{1.4}
       \begin{tabular}{p{1.1cm} @{\hskip 0.3cm}p{6.2cm}}
         % Set phone
-        \ifthenelse{\equal{\cvnumberphone}{}}{}{
+        \ifthenelse{\equal{\cv@numberphone}{}}{}{
           {$
             \begin{array}{l}
               \hspace{4mm} \textnormal{\LARGE \faMobile} 
             \end{array}
-          $} & \large\cvnumberphone\\
+          $} & \large\cv@numberphone\\
         }
         % Set site
-        \ifthenelse{\equal{\cvsite}{}}{}{
+        \ifthenelse{\equal{\cv@site}{}}{}{
           {$
             \begin{array}{l}
               \hspace{2.8mm} \textnormal{\textcolor{test}{\Large \faGlobe}}
             \end{array}
-          $} & \href{http://\cvsite}{\large\cvsite} \\
+          $} & \href{http://\cv@site}{\large\cv@site} \\
         }
         % Set eMail
-        \ifthenelse{\equal{\cvmail}{}}{}{
+        \ifthenelse{\equal{\cv@mail}{}}{}{
           {$
             \begin{array}{l}
               \hspace{2.5mm} \textnormal{\Large \textcolor{yt}{\faEnvelopeO}}
             \end{array}
-          $} & \href{mailto:\cvmail}{\large\cvmail} \\
+          $} & \href{mailto:\cv@mail}{\large\cv@mail} \\
         }
         % Set LinkendIn
-        \ifthenelse{\equal{\cvlinkedin}{}}{}{
+        \ifthenelse{\equal{\cv@linkedin}{}}{}{
           {$
             \begin{array}{l}
               \hspace{3mm} \textnormal{\Large \textcolor{linkedin}{\faLinkedin}}
             \end{array}
-          $} & \href{https://www.linkedin.com\cvlinkedin}{\large\cvlinkedin} \\
+          $} & \href{https://www.linkedin.com\cv@linkedin}{\large\cv@linkedin} \\
         }
         % Set GitHub
-        \ifthenelse{\equal{\cvgithub}{}}{}{
+        \ifthenelse{\equal{\cv@github}{}}{}{
           {$
             \begin{array}{l}
               \hspace{3mm} \textnormal{\Large \faGithub}
             \end{array}
-          $} & \href{https://www.github.com/\cvgithub}{\large\cvgithub} \\
+          $} & \href{https://www.github.com/\cv@github}{\large\cv@github} \\
         }
       
       \end{tabular}
@@ -147,17 +161,17 @@
 
       % Set name and title CV
       \vspace{3mm}
-      {\hspace{0mm}\Huge\color{maincolor}\cvname}
+      {\hspace{0mm}\Huge\color{maincolor}\cv@name}
       
       \vspace{5mm}
 
-      {\hspace{0mm}\Large\color{secondcolor}\textbf{\cvjobtitle}}
+      {\hspace{0mm}\Large\color{secondcolor}\textbf{\cv@jobtitle}}
 
       \vspace{3mm}
 
-      {\hspace{0mm}\cvaddress}
+      {\hspace{0mm}\cv@address}
 
-      {\hspace{0mm}\cvyearsold}
+      {\hspace{0mm}\cv@yearsold}
 
     \end{minipage}
 
@@ -170,9 +184,9 @@
   \begin{textblock}{3.5}(17.25, 0.25)
 
     % Display picture and box if provided else nothing
-    \ifthenelse{\equal{\profilepic}{}}{}{
+    \ifthenelse{\equal{\cv@profilepic}{}}{}{
       \begin{tikzpicture}[remember picture,overlay]
-        \node[rectangle, anchor=north west] at (0.15cm, 0.1cm) {\includegraphics[width=\imagewidth]{\profilepic}};
+        \node[rectangle, anchor=north west] at (0.15cm, 0.1cm) {\includegraphics[width=\imagewidth]{\cv@profilepic}};
         \draw[line width=0.5mm, boxcolor] (0.20cm, 0.05cm) -- + (3.15cm, 0) -- + (3.15cm, -3.15cm) -- + (0,-3.15cm) -- cycle;
       \end{tikzpicture}
     }

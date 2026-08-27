@@ -81,3 +81,30 @@ enforces it.
 **Rejected:** diffing rendered pages against committed reference images. More
 faithful, but it makes every intentional cosmetic change a binary-blob churn in
 a repo already carrying 3.8 MB of JPEGs.
+
+### 2026-08-27 — Header fields store into private macros
+
+**Context.** `\cvmail` and friends were self-redefining macros:
+`\newcommand{\cvmail}[1]{\renewcommand{\cvmail}{#1}}`. Calling one replaced it
+with its value. But a field never called stayed a *one-argument* macro, so
+`\makeprofile`'s `\ifthenelse{\equal{\cvmail}{}}` expanded a macro still hunting
+for an argument and died with `Argument of \cvnumberphone has an extra }` — a
+message that points nowhere near the actual mistake. Omitting a field is the
+obvious thing for a newcomer to do, so this was the most likely first-run
+failure.
+
+**Decision.** Split setter from storage: `\cv@declarefield{cvmail}{mail}` builds
+the public setter `\cvmail{...}`, which writes into `\cv@mail`. Storage macros
+are initialised empty, so an omitted field and a `{}` field are identical.
+`\makeprofile` reads the private macros.
+
+**The public API is unchanged** — `\cvmail{...}` still works exactly as
+documented, which the frozen-API invariant requires. Verified by rendering every
+pre-existing example before and after at 100 dpi: all six pages are
+byte-identical PNGs. `examples/minimal_cv.tex` is the regression test; it fails
+to compile against the previous class and succeeds against this one.
+
+*Considered and rejected:* keeping the self-redefining idiom and making
+`\makeprofile` tolerate an unset one-argument macro. There is no clean way to
+test that from `\ifthenelse`, and the fragility would remain for anyone reading
+a field directly.
