@@ -57,9 +57,12 @@ Use `AskUserQuestion` for these, in one call:
   `\location` (EN) versus `\addressfr` / `\recipientfr` / `\locationfr` (FR).
   Using the wrong pair is a visible mistake to a native reader.
 
-- **Colour theme**: default blue, or green / red / grey / yellow (the five
-  `\definecolor` lines for each are in the root `README.md`), or a custom
-  colour they name.
+- **Colour theme**: pass it as a class option —
+  `\documentclass[a4paper, green]{arthur-cv}`. Available: `blue` (default),
+  `green`, `red`, `grey`/`gray`, `yellow`; the same names work on
+  `arthur-cover-letter`, so the CV and the letter match. For a colour outside
+  those five, redefine `leftcolorband` / `boxcolor` / `maincolor` /
+  `secondcolor` / `thirdcolor` in their preamble — that overrides the theme.
 
 ## Step 3 — Gather the content
 
@@ -88,7 +91,8 @@ render as nothing — the icon row disappears with them.
 | FR CV, photo + age + address | `examples/Arthur_Bernard_CV_Fr.tex` |
 | Two pages | `examples/Two_Pages_CV.tex` |
 | Cover letter | `examples/example_cover_letter.tex` |
-| Bare skeleton | `examples/example_cv.tex` |
+| Bare skeleton | `examples/example_cv.tex` (uses the layout environments) |
+| Smallest possible | `examples/minimal_cv.tex` |
 
 Write the result to **`_custom_CV/`** (or `_custom_cover_letter/` for a
 letter). Both are already in `.gitignore` — someone's phone number and address
@@ -97,15 +101,30 @@ the file; don't let them assume it's tracked.
 
 **Compile from the repo root**, not from inside the output directory: the
 classes live at the root and `\profilepic` paths are resolved relative to it.
+Run it **twice** — the grey band and the photo frame are tikz nodes using
+`remember picture`, which needs a second pass:
 
 ```bash
-latexmk -lualatex -halt-on-error -interaction=nonstopmode \
-        -outdir=build _custom_CV/my_cv.tex
+lualatex -halt-on-error -interaction=nonstopmode \
+         -output-directory=build _custom_CV/my_cv.tex
+lualatex -halt-on-error -interaction=nonstopmode \
+         -output-directory=build _custom_CV/my_cv.tex
 ```
 
-Do not edit the `textblock` / `minipage` wrapper the examples set up (the
-`0.37` / `0.61` widths) — they are load-bearing and paired with hard-coded
-widths inside the class.
+Use the layout environments rather than opening boxes by hand — they own the
+column widths, so there is nothing to keep in sync:
+
+```latex
+\begin{cvbody}                 % optional arg: vertical offset in cm (default 3.5)
+  \begin{cvleft}  ... \end{cvleft}
+  \begin{cvright} ... \end{cvright}
+\end{cvbody}
+```
+
+Older CVs open a `textblock` and two `minipage`s by hand with `0.37` / `0.61`
+widths. That still works, and three of the shipped examples use it — but if you
+copy one of those, leave those numbers alone: they pair with widths hard-coded
+in the class.
 
 ## Step 5 — Compile, then actually look at it
 
@@ -123,6 +142,8 @@ damaging first:
 3. **Tighten the spacing** locally with a `\vspace{-2mm}` after a section — a
    couple of millimetres, not a redesign.
 4. **Go to two pages** with `\newcvpage`, following `examples/Two_Pages_CV.tex`.
+   With the layout environments, the page after it opens with
+   `\begin{cvbody}[0.0]`.
    Do this only if they want a two-page CV; in many markets it is a downgrade.
    Note that `\newcvpage` re-draws the grey band but does *not* repeat the
    header.
@@ -139,6 +160,9 @@ explicit rather than deciding for them.
 
 ## Known sharp edges
 
+- **`\subsectionleft` takes two braces**, not one: `\subsectionleft{Python}{}`.
+  Passing only the first compiles, but silently feeds the next blank line's
+  `\par` in as the description, which throws off the spacing between items.
 - `\section{...}` colours its first three tokens in the main colour. A title
   shorter than three tokens, or one starting with a macro or a brace group,
   misbehaves. Keep section titles plain words of at least three letters.

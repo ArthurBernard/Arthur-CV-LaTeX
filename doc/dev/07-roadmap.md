@@ -32,12 +32,6 @@ here: git log + `CHANGELOG.md` are authoritative for *what* shipped,
       icon colours) — with backward-compatible aliases.
 - [ ] Document `\hlink` and `\capit` in the root README; they exist and are used
       in the examples but are undocumented.
-- [ ] **Re-check `.claude/skills/build-cv/SKILL.md` once §2 and §3 have landed.**
-      It was written before the class changes and describes the *current* API —
-      the colour-theme instructions, the `\section` three-token caveat and the
-      "don't touch the minipage widths" warning all become wrong once class
-      options and `cvleft`/`cvright` exist. User-facing docs are written last for
-      exactly this reason; this one wasn't, so it needs a pass.
 
 ## 4. Maintenance
 
