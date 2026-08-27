@@ -1,0 +1,11 @@
+{
+  "base_branch": "develop",
+  "roadmap": "doc/dev/07-roadmap.md",
+  "decisions": "doc/dev/03-decisions.md",
+  "status": "doc/dev/06-status.md",
+  "changelog": "CHANGELOG.md",
+  "plans_dir": "doc/dev/plans",
+  "plans_archive": "doc/dev/_archive/plans",
+  "test_cmd": "make test",
+  "lint_cmd": "make lint"
+}

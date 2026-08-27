@@ -1,0 +1,40 @@
+name: CI
+
+# Compiling every example is this repo's test suite (see CLAUDE.md). A class
+# change that breaks a fork shows up here and nowhere else.
+
+on:
+  push:
+    branches: [master, develop]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+    # Full TeX Live: the classes need fontspec, ClearSans, fontawesome, tcolorbox,
+    # textpos, xargs and babel-french. Pulling the image beats assembling that
+    # set with apt on every run.
+    container: texlive/texlive:latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install pdfinfo (page-count assertion)
+        run: |
+          apt-get update -qq
+          apt-get install -y --no-install-recommends poppler-utils
+
+      - name: Compile every example and check page counts
+        run: make test
+
+      - name: Lint
+        run: make lint
+
+      - name: Upload compiled PDFs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: examples-pdf
+          path: build/*.pdf
+          if-no-files-found: error
