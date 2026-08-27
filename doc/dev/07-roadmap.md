@@ -28,10 +28,6 @@ here: git log + `CHANGELOG.md` are authoritative for *what* shipped,
 
 ## 3. API & ergonomics
 
-- [ ] Declare class options for the colour themes so
-      `\documentclass[green]{arthur-cv}` replaces copying five `\definecolor`
-      lines into the preamble. Needs `\DeclareOption`/`\ProcessOptions`, which
-      the class currently lacks entirely.
 - [ ] Factor `\makeprofile` into a shared `arthur-cv-header.sty` required by both
       classes — the two copies have already drifted (`0.43` vs `0.45\textwidth`).
 - [ ] Provide `cvleft`/`cvright` environments so the side-bar/body widths stop

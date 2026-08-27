@@ -90,7 +90,4 @@ roadmap.
   pass one. That works only by accident: `\newcommand` builds `\long` macros, so
   the `\par` from the following blank line silently becomes the second argument.
   Pass `{}` explicitly.
-- **No class options** are declared (`\DeclareOption`/`\ProcessOptions` are
-  absent), so colour themes can only be applied by re-`\definecolor`ing in the
-  user preamble.
 - **`fontawesome`** is FontAwesome 4.7, frozen upstream; `fontawesome5` exists.

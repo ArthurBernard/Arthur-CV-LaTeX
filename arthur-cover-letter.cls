@@ -4,7 +4,27 @@
 % @Last modified by: ArthurBernard
 % @Last modified time: 2020-01-29 19:08:37
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{arthur-cover-letter}[2026/08/27 v1.0.0 Custom cover letter with header class]
+\ProvidesClass{arthur-cover-letter}[2026/08/27 v1.1.0 Custom cover letter with header class]
+
+%%=================%%
+%%  Class options  %%
+%%=================%%
+
+% Colour themes as class options: \documentclass[green]{arthur-cover-letter}.
+% Redefining the colours by hand in the preamble still works and still wins --
+% \definecolor is last-one-wins and the user's preamble is read after the class.
+% That backward-compatible route stays documented in README.md.
+\newcommand{\cv@theme}{blue}
+\DeclareOption{blue}{\renewcommand{\cv@theme}{blue}}
+\DeclareOption{green}{\renewcommand{\cv@theme}{green}}
+\DeclareOption{red}{\renewcommand{\cv@theme}{red}}
+\DeclareOption{grey}{\renewcommand{\cv@theme}{grey}}
+\DeclareOption{gray}{\renewcommand{\cv@theme}{grey}}
+\DeclareOption{yellow}{\renewcommand{\cv@theme}{yellow}}
+% Anything else (a4paper, 11pt, ...) is article's business.
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
+\ProcessOptions\relax
+
 \LoadClass{article}
 
 % TODO : Add option several pages
@@ -29,15 +49,29 @@
 %%  Set colors  %%
 %%==============%%
 
-\definecolor{yt}{HTML}{c71610}
-\definecolor{test}{HTML}{0077be}
-\definecolor{linkedin}{HTML}{0085AE}
+% Icon accents. Deliberately outside the themes: the envelope reads as "mail"
+% and the globe as "web" because of these colours, so they stay fixed.
+\definecolor{yt}{HTML}{c71610}        % mail icon
+\definecolor{test}{HTML}{0077be}      % website icon
+\definecolor{linkedin}{HTML}{0085AE}  % LinkedIn brand
 
-\definecolor{boxcolor}{HTML}{0E5484}
+% The letter has no grey band and no third colour, so it uses four of the five
+% theme slots. Same option names as arthur-cv, so a CV and its letter match.
+% #1 box frame, #2 main, #3 second, #4 hyperlink
+\newcommand{\cv@definetheme}[4]{%
+  \definecolor{boxcolor}{HTML}{#1}%
+  \definecolor{maincolor}{HTML}{#2}%
+  \definecolor{secondcolor}{HTML}{#3}%
+  \definecolor{colhyperlink}{HTML}{#4}%
+}
 
-\definecolor{maincolor}{HTML}{1a4c70}
-\definecolor{secondcolor}{HTML}{4d4d4d}
-\definecolor{colhyperlink}{HTML}{0E5484}
+\newcommand{\cv@theme@blue}  {\cv@definetheme{0E5484}{1a4c70}{4d4d4d}{0E5484}}
+\newcommand{\cv@theme@green} {\cv@definetheme{59762f}{556b2f}{85b145}{6b8e23}}
+\newcommand{\cv@theme@red}   {\cv@definetheme{851919}{420c0c}{861919}{591111}}
+\newcommand{\cv@theme@grey}  {\cv@definetheme{606060}{484848}{909090}{606060}}
+\newcommand{\cv@theme@yellow}{\cv@definetheme{bfa100}{5f5000}{e1b400}{7f6b00}}
+
+\csname cv@theme@\cv@theme\endcsname
 
 %%===============%%
 %%  Information  %%
