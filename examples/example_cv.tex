@@ -35,10 +35,11 @@
 \begin{document}
   \makeprofile % Set header
 
-  % Set left and right part, don't custom 'textblock' and 'minipage'  commands and parameters if you don't know what you are doing
-  \begin{textblock}{20.5}(0.25, 3.5)
+  % cvbody / cvleft / cvright own the layout widths, so there is nothing here
+  % you need to keep in sync with the class.
+  \begin{cvbody}
 
-    \begin{minipage}[t]{0.37\textwidth}
+    \begin{cvleft}
 
       %%%%%%%%%%%%%%%%
       %%  Left bar  %%
@@ -64,7 +65,8 @@
 
       % Etc.
 
-    \end{minipage}\hfill\begin{minipage}[t]{0.61\textwidth}
+    \end{cvleft}
+    \begin{cvright}
 
       %%%%%%%%%%%%%%%%%%
       %%     Body     %%
@@ -98,8 +100,8 @@
 
       % Etc.
 
-    \end{minipage}
+    \end{cvright}
 
-  \end{textblock}
+  \end{cvbody}
 
 \end{document}

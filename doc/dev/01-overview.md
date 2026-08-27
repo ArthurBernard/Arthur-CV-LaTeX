@@ -18,8 +18,9 @@ public API — see the invariants in `CLAUDE.md`.
 ## Repo map
 
 ```
-arthur-cv.cls              # the CV class (~275 lines)
-arthur-cover-letter.cls    # the cover-letter class (~245 lines)
+arthur-cv.cls              # the CV class
+arthur-cover-letter.cls    # the cover-letter class
+arthur-cv-header.sty       # header + layout environments shared by both
 examples/                  # 6 .tex + committed reference .pdf
   example_cv.tex           #   skeleton (John Doe)
   minimal_cv.tex           #   smallest possible CV; omits most header fields
@@ -36,6 +37,9 @@ README.md                  # end-user documentation
 Header (both classes): `\profilepic` `\cvname` `\cvlinkedin` `\cvgithub`
 `\cvmail` `\cvnumberphone` `\cvjobtitle` `\cvsite`, plus `\cvaddress`
 `\cvyearsold` (CV only). Rendered by `\makeprofile`.
+
+CV layout: `cvbody` (optional vertical offset) containing `cvleft` and
+`cvright`; the explicit `textblock` + `minipage` form still works.
 
 CV body: `\sectionleft{title}` and `\subsectionleft{item}{desc}` for the side
 bar; `\section{title}` and, inside a `rightenv` environment,

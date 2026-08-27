@@ -18,6 +18,9 @@ so an agent doesn't re-investigate settled ground or assume a known stub is a bu
   works and still wins, for palettes outside the five themes.
 - **Dev loop adopted (2026-08-27)** — `develop` branch, `.claude/` config,
   canonical hook copies, this `doc/dev/` pack, `CHANGELOG.md`.
+- **Shared header + layout environments (2026-08-27)** — `\makeprofile` factored
+  into `arthur-cv-header.sty`; `cvbody`/`cvleft`/`cvright` own the column widths.
+  Both verified byte-identical in output.
 - **Class hygiene (2026-08-27)** — header fields initialised (omitting one is
   safe), `etoolbox` required explicitly, identification before `\LoadClass`,
   unused packages dropped, classes versioned `v1.0.0`.
@@ -30,10 +33,9 @@ Ordered by how likely they are to bite someone. Details in
 
 - **`\@sectioncolor` eats tokens** on `\section` titles shorter than three
   tokens or starting with a macro/group.
-- **The left/right widths are split across the class and the user's `.tex`**, so
-  the layout can only be customised by editing numbers in two files.
-- **`\makeprofile` is duplicated** across the two classes and has already
-  drifted.
+- **Documents using the old explicit `minipage` form** still hard-code the
+  `0.37`/`0.61` widths themselves; only `cvbody`/`cvleft`/`cvright` users are
+  protected from desynchronising them.
 - **No page-break support** — overflowing content silently runs off the page.
   This is by design (see `03-decisions.md`), but it is a real usability edge.
 - **`\subsectionleft` needs both braces**; passing one silently feeds it a

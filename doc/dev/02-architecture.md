@@ -29,8 +29,10 @@ Both classes set zero page margins via `geometry` and place **everything** in
 └──────────────────┴─────────────────────────────┘
 ```
 
-The user's `.tex` opens the `textblock` and the two `minipage`s itself (see any
-example); the class only provides the commands used *inside* them.
+The `cvbody` / `cvleft` / `cvright` environments open the `textblock` and the two
+`minipage`s; the document only supplies the content. Documents written before
+those existed open them by hand, which still works — see
+`Arthur_Bernard_CV_En.tex` for that form and `example_cv.tex` for the new one.
 
 ### Header — `\makeprofile`
 
@@ -43,12 +45,18 @@ its argument in a private macro (`\cv@mail`) that is **initialised empty**.
 `\ifthenelse{\equal{\cv@foo}{}}{}{...}`, so a field that is unset — whether
 passed `{}` or omitted entirely — renders nothing.
 
+`\makeprofile` itself lives in **`arthur-cv-header.sty`**, required by both
+classes; each class composes it from `\cv@headerblock{<tb width>}{<name width>}`
+and `\cv@photoblock`, and fills the `\cv@headerextra` hook (address + age for
+the CV, empty for the letter). The grey band is drawn by `arthur-cv.cls` alone.
+
 Two implementation notes:
 
+- **The two space tokens between the contact column and the name column are
+  load-bearing.** The header row is set flush, so collapsing them to one shifts
+  the name 2.69 pt left. `arthur-cv-header.sty` says so at the call site.
 - The icons are vertically aligned with a `$\begin{array}{l}\hspace{Nmm}…\end{array}$`
   wrapper and a per-icon hand-tuned `\hspace`. It is a hack; a `\makebox` would do.
-- **`\makeprofile` is copy-pasted into both classes** and the copies have already
-  drifted (`0.43\textwidth` in `arthur-cv`, `0.45` in `arthur-cover-letter`).
 
 ### Side bar
 
@@ -65,20 +73,19 @@ sectioning command (no TOC, no bookmarks, no optional argument, no numbering).
 that the README documents by example. It lays out inside `rightenv`, a
 `tabular{p{1.6cm} l}` whose second cell is a `\parbox[t]{10.5cm}`.
 
-## The fragile seam
+## The width seam
 
-Three widths must agree, and they live in two different files:
+Three widths must agree:
 
 | Value | Where | Meaning |
 |---|---|---|
 | `8cm` | `arthur-cv.cls`, tikz band | grey band width |
-| `0.37\textwidth` / `0.61\textwidth` | **the user's `.tex`** | side bar / body minipages |
+| `\cvleftwidth` / `\cvrightwidth` (`0.37` / `0.61`) | `arthur-cv-header.sty` | side bar / body minipages |
 | `10.5cm` | `arthur-cv.cls`, `\subsectionright` | body text wrap width |
 
-Change one without the others and the layout silently breaks. This is why the
-root README says *"don't custom textblock and minipage … if you don't know what
-you are doing"*. Factoring these into class-provided environments is on the
-roadmap.
+These now all live in the package, so a document using `cvbody`/`cvleft`/
+`cvright` cannot desynchronise them. A document using the older explicit
+`minipage` form still hard-codes `0.37`/`0.61` itself and can.
 
 ## Known fragilities (read before touching)
 
