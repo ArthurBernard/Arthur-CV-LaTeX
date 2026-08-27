@@ -39,7 +39,7 @@ PAGES_Arthur_Bernard_CV_En := 1
 PAGES_Arthur_Bernard_CV_Fr := 1
 PAGES_Two_Pages_CV         := 2
 
-.PHONY: all build test lint clean toolchain
+.PHONY: all build test lint clean toolchain refresh-examples
 
 all: test
 
@@ -77,6 +77,20 @@ test: build
 	) \
 	if [ $$fail -ne 0 ]; then echo "page-count check failed"; exit 1; fi; \
 	echo "all examples compile and match their expected page count"
+
+## refresh-examples — regenerate the reference PDFs committed under examples/
+#
+# Those PDFs are what someone browsing the repo opens, so they must match what
+# the sources actually produce. They had drifted: Two_Pages_CV.pdf carried a
+# spurious blank third page for a file whose whole point is being two pages.
+#
+# Note: example_cover_letter.tex uses \today, so its PDF is not reproducible --
+# running this on a different day always yields a diff. Expected, not a bug.
+refresh-examples: build
+	@for n in $(NAMES); do \
+	    if [ -f examples/$$n.pdf ]; then cp $(BUILD)/$$n.pdf examples/$$n.pdf; \
+	       echo "  refreshed examples/$$n.pdf"; fi; \
+	done
 
 # chktex exits 0 even when it reports problems, so `make lint` fails on any
 # output instead of on the exit code. Each suppression below is here for a
