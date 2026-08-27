@@ -22,6 +22,11 @@ The classes carried no version marker before this file existed; history prior to
   through to `article` as before.
 - `examples/minimal_cv.tex` — the smallest CV the template can produce, and the
   regression test for the omitted-field fix below.
+- `.claude/skills/build-cv/` — a Claude Code skill shipped **for people who fork
+  this template**: it gathers their details, applies the right FR/EN convention,
+  generates the `.tex` from the closest example, compiles it and checks for the
+  silent overflow this absolutely-positioned layout allows. Referenced from
+  `README.md`; doubles as a written guide.
 - `Makefile` (`make test` / `build` / `lint` / `clean`) compiling every example
   with two `lualatex` passes, plus a page-count assertion per example — the
   layout is absolutely positioned, so a broken change often still compiles.
