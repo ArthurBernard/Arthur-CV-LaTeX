@@ -217,6 +217,33 @@ Address, date and location are set at top left and the recipient is set at right
 
 ___
 
+## Building your CV with Claude Code
+
+This repo ships a **skill** for [Claude Code](https://claude.com/claude-code):
+open the repo and ask for `/build-cv` (or just *"build my CV from this
+template"*). It gathers your details, applies the right French/English
+convention, picks a colour theme, generates your `.tex` from the closest
+example, compiles it, and — the part that matters — checks the result is not
+silently overflowing.
+
+> **Why that last part matters**: this template is absolutely positioned, so
+> content does **not** reflow onto a second page. If your experience section is
+> too long it runs off the bottom and *the compile still succeeds*. Always look
+> at the rendered PDF, not just the exit code.
+
+The skill lives in [`.claude/skills/build-cv/`](.claude/skills/build-cv/) — it
+is plain Markdown, so it doubles as a written guide if you'd rather do it by
+hand.
+
+To build and check every example yourself:
+
+``` bash
+make toolchain   # tells you what to install if something is missing
+make test        # compiles every example and asserts its page count
+```
+
+___
+
 ## Requirements
 
 - Compile with **LuaLaTeX** (prefered) or **XeLaTex**.
