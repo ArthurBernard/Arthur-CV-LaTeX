@@ -129,3 +129,33 @@ colours to the README's yellow values renders **byte-identically to
 *Note:* the letter has no grey band and no `thirdcolor`, so its palettes carry
 four slots against the CV's five. Same option names, different arity — kept
 deliberately rather than inventing unused colours for the letter.
+
+### 2026-08-27 — Shared header package and layout environments
+
+**Context.** `\makeprofile` was copy-pasted into both classes and the copies had
+drifted (name column `0.43\textwidth` in the CV, `0.45` in the letter). Separately,
+the side-bar/body widths lived in the *document*, while widths they had to agree
+with lived in the class — the reason the README warned people off touching them.
+
+**Decision.** `arthur-cv-header.sty`, required by both classes, holds the field
+declarations, the contact column, the name column and the photo block. The four
+genuine differences are parameters: the grey band (drawn by `arthur-cv` only),
+the header-block width, the name-column width, and the `\cv@headerextra` hook.
+The drift is preserved as data rather than "fixed", because changing either
+number would move a real document.
+
+The same package adds `cvbody` / `cvleft` / `cvright`, which own `\cvleftwidth`
+and `\cvrightwidth`. The explicit form still works — the API is frozen — so the
+examples deliberately cover **both**: `example_cv.tex` uses the environments,
+the three real CVs keep the explicit form.
+
+**Verification.** Every example renders byte-identically at 100 dpi before and
+after, including `example_cv.tex` *after* converting it to the new environments.
+That is the whole claim: a pure refactor plus an additive API.
+
+**One trap worth knowing.** The original inline code had **two** space tokens
+between the contact and name minipages. The header row is set flush, so
+collapsing them to one moves the name 2.69 pt left — which is exactly what the
+first attempt did, caught by the pixel comparison and not by the compile. The
+trailing newlines in the two column macros are load-bearing and commented as
+such.

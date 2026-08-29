@@ -48,6 +48,9 @@
 \RequirePackage{tcolorbox}            % Colored box
 \RequirePackage{enumitem}             % Customize item
 \RequirePackage{ifthen}               % Conditions
+% Header shared with arthur-cover-letter; must come after textpos and tikz,
+% which it uses at load time.
+\RequirePackage{arthur-cv-header}
 
 %%==============%%
 %%  Set colors  %%
@@ -81,149 +84,33 @@
 %%  Information  %%
 %%===============%%
 
-% Declare a header field: \cv@declarefield{cvmail}{mail} creates the public
-% setter \cvmail{...}, which stores its argument in \cv@mail. The storage macro
-% is initialised *empty*, so simply omitting a field is exactly as safe as
-% calling it with {}. Before this, an omitted field left a macro still expecting
-% an argument, and the \equal test in \makeprofile then failed with an
-% unreadable error -- the most likely first-run failure for a new user.
-\newcommand{\cv@declarefield}[2]{%
-  \expandafter\newcommand\csname cv@#2\endcsname{}%
-  \expandafter\newcommand\csname #1\endcsname[1]{%
-    \expandafter\renewcommand\csname cv@#2\endcsname{##1}%
-  }%
-}
-
-\cv@declarefield{cvname}{name}
-\cv@declarefield{cvjobtitle}{jobtitle}
-\cv@declarefield{cvlinkedin}{linkedin}
-\cv@declarefield{cvgithub}{github}
-\cv@declarefield{cvmail}{mail}
-\cv@declarefield{cvnumberphone}{numberphone}
+% The fields common to both classes are declared in arthur-cv-header.sty.
+% These two are CV-only: a cover letter shows neither an address nor an age.
 \cv@declarefield{cvaddress}{address}
-\cv@declarefield{cvsite}{site}
 \cv@declarefield{cvyearsold}{yearsold}
-\cv@declarefield{profilepic}{profilepic}
 
-%%==========%%
-%%  Header  %%
-%%==========%%
-
-% Set unit
-\setlength{\TPHorizModule}{1cm}
-\setlength{\TPVertModule}{1cm}
-
-% Set image size
-\newcommand{\imsize}{\linewidth}
-\newlength\imagewidth
-\newlength\imagescale
-\renewcommand{\imsize}{0.618\linewidth}
-\pgfmathsetlength{\imagewidth}{3cm}%
-\pgfmathsetlength{\imagescale}{\imagewidth/600}%
-
-% Set header
-\newcommand{\makeprofile}{
-  
-  % Set left color band
-  \begin{tikzpicture}[remember picture,overlay]
-    \node [rectangle, anchor=north west, fill=leftcolorband, minimum width=8cm, minimum height=27cm] at (0cm, -3.2cm) {};{};
-  \end{tikzpicture}
-
-  %-----------------------%
-  % Personal informations %
-  %-----------------------%
-
-  \begin{textblock}{20.5}(0.25, 0.25)
-
-    \begin{minipage}[t]{0.38\textwidth}
-
-      % Set information
-      \vspace{3mm}
-      \renewcommand{\arraystretch}{1.4}
-      \begin{tabular}{p{1.1cm} @{\hskip 0.3cm}p{6.2cm}}
-        % Set phone
-        \ifthenelse{\equal{\cv@numberphone}{}}{}{
-          {$
-            \begin{array}{l}
-              \hspace{4mm} \textnormal{\LARGE \faMobile} 
-            \end{array}
-          $} & \large\cv@numberphone\\
-        }
-        % Set site
-        \ifthenelse{\equal{\cv@site}{}}{}{
-          {$
-            \begin{array}{l}
-              \hspace{2.8mm} \textnormal{\textcolor{test}{\Large \faGlobe}}
-            \end{array}
-          $} & \href{http://\cv@site}{\large\cv@site} \\
-        }
-        % Set eMail
-        \ifthenelse{\equal{\cv@mail}{}}{}{
-          {$
-            \begin{array}{l}
-              \hspace{2.5mm} \textnormal{\Large \textcolor{yt}{\faEnvelopeO}}
-            \end{array}
-          $} & \href{mailto:\cv@mail}{\large\cv@mail} \\
-        }
-        % Set LinkendIn
-        \ifthenelse{\equal{\cv@linkedin}{}}{}{
-          {$
-            \begin{array}{l}
-              \hspace{3mm} \textnormal{\Large \textcolor{linkedin}{\faLinkedin}}
-            \end{array}
-          $} & \href{https://www.linkedin.com\cv@linkedin}{\large\cv@linkedin} \\
-        }
-        % Set GitHub
-        \ifthenelse{\equal{\cv@github}{}}{}{
-          {$
-            \begin{array}{l}
-              \hspace{3mm} \textnormal{\Large \faGithub}
-            \end{array}
-          $} & \href{https://www.github.com/\cv@github}{\large\cv@github} \\
-        }
-      
-      \end{tabular}
-
-    \end{minipage}
-    \begin{minipage}[t]{0.43\textwidth}
-
-      %----------------%
-      % Name and title %
-      %----------------%
-
-      % Set name and title CV
-      \vspace{3mm}
-      {\hspace{0mm}\Huge\color{maincolor}\cv@name}
-      
-      \vspace{5mm}
-
-      {\hspace{0mm}\Large\color{secondcolor}\textbf{\cv@jobtitle}}
-
+% Shown under the job title, in the header's name column.
+\renewcommand{\cv@headerextra}{%
       \vspace{3mm}
 
       {\hspace{0mm}\cv@address}
 
       {\hspace{0mm}\cv@yearsold}
+}
 
-    \end{minipage}
+%%==========%%
+%%  Header  %%
+%%==========%%
 
-  \end{textblock}
+\newcommand{\makeprofile}{
 
-  %---------%
-  % Picture %
-  %---------%
+  % Set left color band
+  \begin{tikzpicture}[remember picture,overlay]
+    \node [rectangle, anchor=north west, fill=leftcolorband, minimum width=8cm, minimum height=27cm] at (0cm, -3.2cm) {};{};
+  \end{tikzpicture}
 
-  \begin{textblock}{3.5}(17.25, 0.25)
-
-    % Display picture and box if provided else nothing
-    \ifthenelse{\equal{\cv@profilepic}{}}{}{
-      \begin{tikzpicture}[remember picture,overlay]
-        \node[rectangle, anchor=north west] at (0.15cm, 0.1cm) {\includegraphics[width=\imagewidth]{\cv@profilepic}};
-        \draw[line width=0.5mm, boxcolor] (0.20cm, 0.05cm) -- + (3.15cm, 0) -- + (3.15cm, -3.15cm) -- + (0,-3.15cm) -- cycle;
-      \end{tikzpicture}
-    }
-
-  \end{textblock}
+  \cv@headerblock{20.5}{0.43}
+  \cv@photoblock
 
 }
 

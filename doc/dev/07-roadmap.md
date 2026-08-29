@@ -28,11 +28,6 @@ here: git log + `CHANGELOG.md` are authoritative for *what* shipped,
 
 ## 3. API & ergonomics
 
-- [ ] Factor `\makeprofile` into a shared `arthur-cv-header.sty` required by both
-      classes — the two copies have already drifted (`0.43` vs `0.45\textwidth`).
-- [ ] Provide `cvleft`/`cvright` environments so the side-bar/body widths stop
-      living in the user's `.tex`. Removes the "don't touch this if you don't
-      know what you're doing" warning from the README.
 - [ ] Rename the meaningless colours `yt` and `test` (they are the mail and site
       icon colours) — with backward-compatible aliases.
 - [ ] Document `\hlink` and `\capit` in the root README; they exist and are used

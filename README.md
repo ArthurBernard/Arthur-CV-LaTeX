@@ -71,8 +71,28 @@ This template is divided in three parts:
   - The **left bar** to display some skills or other;   
   - The **body** of your CV to display your experiences, educations, etc.   
 
-The left bar and body must be each one in a `minipage` environment with respectively `0.37\textwidth` and `0.61\textwidth` parameters.   
-You can look one of the following examples: `example_cv.tex`, `Arthur_Bernard_CV_Fr.tex` or `Arthur_Bernard_CV_En.tex`
+Wrap the left bar and the body in the `cvbody` / `cvleft` / `cvright`
+environments — they own the column widths, so there is nothing to keep in sync:
+
+``` latex
+\begin{cvbody}
+  \begin{cvleft}
+    % \sectionleft, \subsectionleft ...
+  \end{cvleft}
+  \begin{cvright}
+    % \section, rightenv ...
+  \end{cvright}
+\end{cvbody}
+```
+
+`cvbody` takes an optional vertical offset in cm (default `3.5`); use
+`\begin{cvbody}[0.0]` for a page opened by `\newcvpage`.
+
+See `example_cv.tex` for this form. The older explicit form — opening a
+`textblock` and two `minipage`s by hand with `0.37\textwidth` and
+`0.61\textwidth` — still works unchanged, and is what
+`Arthur_Bernard_CV_En.tex`, `Arthur_Bernard_CV_Fr.tex` and `Two_Pages_CV.tex`
+use.
 
 ### Header
 
@@ -121,6 +141,15 @@ Set items in body:
   \subsectionright{Date}[Level degree]{Title}[University][Location]{Description}   
   \subsectionright{Date}{Title job}[Firm][Location]{Description}   
 \end{rightenv}   
+```
+
+### Layout
+
+``` latex
+\begin{cvbody}[vertical offset in cm, default 3.5]
+  \begin{cvleft} ... \end{cvleft}
+  \begin{cvright} ... \end{cvright}
+\end{cvbody}
 ```
 
 ### Several pages

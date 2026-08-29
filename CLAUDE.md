@@ -81,10 +81,10 @@ a second pass is tikz `remember picture`).
 2. **Examples are the contract.** `examples/*.tex` must compile with an
    unmodified class. If a change needs an example edit, the change is
    API-breaking — reconsider it.
-3. **The two classes must render an identical header.** `\makeprofile` is
-   currently copy-pasted into both `.cls` files and the copies have already
-   drifted (`0.43` vs `0.45\textwidth`). Until that is factored out
-   (`07-roadmap.md`), any header edit must be applied to **both** files.
+3. **Both classes share one header.** `\makeprofile` is composed from
+   `arthur-cv-header.sty`, required by both. Never re-fork it — the two copies
+   had already drifted before it was factored out. The class-specific bits are
+   parameters (`\cv@headerblock{width}{namewidth}`, `\cv@headerextra`).
 4. **Compile with LuaLaTeX** (or XeLaTeX). `fontspec` makes pdfLaTeX
    impossible; don't add anything that assumes pdfLaTeX.
 5. **No page-count surprises.** The layout is absolutely positioned

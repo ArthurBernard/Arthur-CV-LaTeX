@@ -11,6 +11,10 @@ The classes carried no version marker before this file existed; history prior to
 
 ### Added
 
+- **`cvbody` / `cvleft` / `cvright` environments** own the side-bar and body
+  column widths, which previously had to be written out in every document and
+  kept in step with numbers hard-coded in the class. The explicit
+  `textblock` + `minipage` form still works unchanged.
 - **Colour themes as class options** — `\documentclass[green]{arthur-cv}`.
   `blue` (default), `green`, `red`, `grey`/`gray`, `yellow`; the same names work
   on `arthur-cover-letter`. Redefining the colours in your own preamble still
@@ -27,6 +31,9 @@ The classes carried no version marker before this file existed; history prior to
   copies).
 
 ### Changed
+
+- `\makeprofile` is now defined once in a new `arthur-cv-header.sty` required by
+  both classes, instead of being copy-pasted into each. Rendering is unchanged.
 
 ### Fixed
 
