@@ -32,53 +32,35 @@ ___
 
 ## Customized colors
 
-The default theme color of CV and cover letter is different kind of blue, but you can freely custom themes color, see below some non-exhaustive examples:
-
-![Colored_Examples](https://github.com/ArthurBernard/Arthur-CV-LaTeX/blob/master/pictures/Colored_examples.jpg)
-
-### Green
+The default theme is blue. Four other themes ship with the classes — pass one as
+a **class option**:
 
 ``` latex
-\usepackage{xcolor}   
-\definecolor{leftcolorband}{HTML}{d0f0c0}   
-\definecolor{boxcolor}{HTML}{59762f}   
-\definecolor{maincolor}{HTML}{556b2f}   
-\definecolor{secondcolor}{HTML}{85b145}   
-\definecolor{thirdcolor}{HTML}{6b8e23}   
+\documentclass[a4paper, green]{arthur-cv}
+\documentclass[a4paper, red]{arthur-cover-letter}
 ```
 
-### Red
+Available: `blue` (default), `green`, `red`, `grey` (or `gray`), `yellow`. The
+same option names work on both classes, so a CV and its cover letter match.
+
+![Colored_Examples](pictures/Colored_examples.jpg)
+
+### Custom colors
+
+For a colour that isn't one of the five themes, redefine the colours in your own
+preamble. This still works and takes precedence over the class option:
 
 ``` latex
-\usepackage{xcolor}   
-\definecolor{leftcolorband}{HTML}{e0e0e0}   
-\definecolor{boxcolor}{HTML}{851919}   
-\definecolor{maincolor}{HTML}{420c0c}   
-\definecolor{secondcolor}{HTML}{861919}   
-\definecolor{thirdcolor}{HTML}{591111}   
+\usepackage{xcolor}
+\definecolor{leftcolorband}{HTML}{d0f0c0}   % grey band behind the left bar
+\definecolor{boxcolor}{HTML}{59762f}        % frame of the left-bar section boxes
+\definecolor{maincolor}{HTML}{556b2f}       % name, first letters of a section
+\definecolor{secondcolor}{HTML}{85b145}     % job title, rest of a section title
+\definecolor{thirdcolor}{HTML}{6b8e23}      % item titles in the body
 ```
 
-### Grey
-
-``` latex
-\usepackage{xcolor}   
-\definecolor{leftcolorband}{HTML}{e0e0e0}   
-\definecolor{boxcolor}{HTML}{606060}   
-\definecolor{maincolor}{HTML}{484848}   
-\definecolor{secondcolor}{HTML}{909090}   
-\definecolor{thirdcolor}{HTML}{606060}   
-```
-
-### Yellow
-
-``` latex
-\usepackage{xcolor}   
-\definecolor{leftcolorband}{HTML}{fef2bf}   
-\definecolor{boxcolor}{HTML}{bfa100}    
-\definecolor{maincolor}{HTML}{5f5000}   
-\definecolor{secondcolor}{HTML}{e1b400}    
-\definecolor{thirdcolor}{HTML}{7f6b00}    
-```
+The cover letter uses `boxcolor`, `maincolor`, `secondcolor` and `colhyperlink`
+(it has no grey band).
 
 ___
 

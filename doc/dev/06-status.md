@@ -13,8 +13,9 @@ so an agent doesn't re-investigate settled ground or assume a known stub is a bu
 - **Six examples** covering both classes, both languages, both conventions, the
   multi-page path and the omitted-field edge. Four are the author's real
   documents; `example_cv` and `minimal_cv` are skeletons.
-- **Colour theming** by redefining five colours in the user preamble; four ready
-  themes (green/red/grey/yellow) documented in the root `README.md`.
+- **Colour theming** by class option (`[green]`, `[red]`, `[grey]`, `[yellow]`,
+  default `blue`) on both classes; redefining the colours in the preamble still
+  works and still wins, for palettes outside the five themes.
 - **Dev loop adopted (2026-08-27)** — `develop` branch, `.claude/` config,
   canonical hook copies, this `doc/dev/` pack, `CHANGELOG.md`.
 - **Class hygiene (2026-08-27)** — header fields initialised (omitting one is

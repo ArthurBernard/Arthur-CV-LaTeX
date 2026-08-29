@@ -11,6 +11,11 @@ The classes carried no version marker before this file existed; history prior to
 
 ### Added
 
+- **Colour themes as class options** — `\documentclass[green]{arthur-cv}`.
+  `blue` (default), `green`, `red`, `grey`/`gray`, `yellow`; the same names work
+  on `arthur-cover-letter`. Redefining the colours in your own preamble still
+  works and still takes precedence. Unrecognised options (`11pt`, …) are passed
+  through to `article` as before.
 - `examples/minimal_cv.tex` — the smallest CV the template can produce, and the
   regression test for the omitted-field fix below.
 - `Makefile` (`make test` / `build` / `lint` / `clean`) compiling every example

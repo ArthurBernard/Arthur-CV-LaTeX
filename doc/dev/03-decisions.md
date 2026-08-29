@@ -24,10 +24,10 @@ dated ADR log.
   both languages, both conventions, and the multi-page path. Page-count checks
   catch the layout regressions that a clean compile would miss.
 
-- **Colour theming by re-`\definecolor`, historically.** Five named colours are
-  defined in the class and the README tells users to redefine them in their
-  preamble; the later `\definecolor` wins. It works but is unusual — class
-  options are the idiomatic mechanism and are on the roadmap.
+- **Colour theming by class option, with the preamble override kept.** Themes
+  are `\DeclareOption`s that pick a palette; because `\definecolor` is
+  last-one-wins and the user preamble is read after the class, redefining the
+  colours by hand still overrides the theme. Both routes are documented.
 
 ## Decision journal
 
@@ -108,3 +108,24 @@ to compile against the previous class and succeeds against this one.
 `\makeprofile` tolerate an unset one-argument macro. There is no clean way to
 test that from `\ifthenelse`, and the fragility would remain for anyone reading
 a field directly.
+
+### 2026-08-27 — Colour themes become class options
+
+**Context.** The four extra themes existed only as five `\definecolor` lines to
+copy out of the README. The classes declared no options at all — no
+`\DeclareOption`, no `\ProcessOptions` — so there was no mechanism to offer.
+
+**Decision.** Declare `blue`/`green`/`red`/`grey`/`gray`/`yellow` as class
+options selecting a palette, with `\DeclareOption*` forwarding everything else
+to `article` and `\ProcessOptions\relax` before `\LoadClass`. Same option names
+on both classes so a CV and its letter match.
+
+**Backward compatibility is the whole constraint** (frozen public API). Verified
+three ways: every existing example renders byte-identically under the default
+theme; `[11pt]` still reaches `article`; and a preamble that redefines the five
+colours to the README's yellow values renders **byte-identically to
+`[yellow]`** — so the palettes are faithful and the old route still wins.
+
+*Note:* the letter has no grey band and no `thirdcolor`, so its palettes carry
+four slots against the CV's five. Same option names, different arity — kept
+deliberately rather than inventing unused colours for the letter.
