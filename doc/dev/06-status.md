@@ -10,12 +10,16 @@ so an agent doesn't re-investigate settled ground or assume a known stub is a bu
   `\subsectionright`), multi-page via `\newcvpage`.
 - **`arthur-cover-letter`** — same header, FR and EN address/recipient
   conventions, `coverletter` environment with subject/opening/closing/signing.
-- **Five examples** covering both classes, both languages, both conventions and
-  the multi-page path. All are the real documents the author uses.
+- **Six examples** covering both classes, both languages, both conventions, the
+  multi-page path and the omitted-field edge. Four are the author's real
+  documents; `example_cv` and `minimal_cv` are skeletons.
 - **Colour theming** by redefining five colours in the user preamble; four ready
   themes (green/red/grey/yellow) documented in the root `README.md`.
 - **Dev loop adopted (2026-08-27)** — `develop` branch, `.claude/` config,
   canonical hook copies, this `doc/dev/` pack, `CHANGELOG.md`.
+- **Class hygiene (2026-08-27)** — header fields initialised (omitting one is
+  safe), `etoolbox` required explicitly, identification before `\LoadClass`,
+  unused packages dropped, classes versioned `v1.0.0`.
 
 ## Known gaps
 
@@ -23,10 +27,6 @@ Ordered by how likely they are to bite someone. Details in
 [`02-architecture.md`](02-architecture.md); open items in
 [`07-roadmap.md`](07-roadmap.md).
 
-- **Omitting a header field errors cryptically** instead of rendering nothing —
-  the fields have no default. Most likely first-run failure for a new user.
-- **`\ifblank` used without `etoolbox` loaded** — works only via a transitive
-  dependency, and is missing from the README's package list.
 - **`\@sectioncolor` eats tokens** on `\section` titles shorter than three
   tokens or starting with a macro/group.
 - **The left/right widths are split across the class and the user's `.tex`**, so
@@ -35,6 +35,8 @@ Ordered by how likely they are to bite someone. Details in
   drifted.
 - **No page-break support** — overflowing content silently runs off the page.
   This is by design (see `03-decisions.md`), but it is a real usability edge.
+- **`\subsectionleft` needs both braces**; passing one silently feeds it a
+  `\par`. Harmless in practice, but it explains uneven item spacing.
 - **`fontawesome` 4.7** is frozen upstream.
 
 ## Deferred deliberately

@@ -1,0 +1,54 @@
+% The smallest CV this template can produce, and a regression test.
+%
+% Every header field except the name and the email is OMITTED here — not set to
+% {}, left out entirely. That used to fail with "Argument of \cvnumberphone has
+% an extra }", because an unset field was still a macro expecting an argument.
+% Header fields now start empty, so omitting one renders nothing.
+%
+% Compile from the repository root:
+%   lualatex -output-directory=build examples/minimal_cv.tex
+
+\documentclass[a4paper]{arthur-cv}
+
+\usepackage[english]{babel}
+
+\cvname{Jane Roe}
+\cvmail{jane.roe@example.org}
+\cvjobtitle{Junior Developer}
+
+\begin{document}
+  \makeprofile
+
+  \begin{textblock}{20.5}(0.25, 3.5)
+
+    \begin{minipage}[t]{0.37\textwidth}
+
+      \sectionleft{Skills}
+        % Both braces are required. Passing only the first happens to work, but
+        % it silently feeds \par into the second argument — pass {} instead.
+        \subsectionleft{Python}{}
+
+        \subsectionleft{SQL}{}
+
+      \sectionleft{Languages}
+        \subsectionleft{English}{(native)}
+
+        \subsectionleft{French}{(fluent)}
+
+    \end{minipage}\hfill\begin{minipage}[t]{0.61\textwidth}
+
+      \section{Experience}
+        \begin{rightenv}
+          \subsectionright{2024 – Present}{Developer}[at \textbf{Some Company}][Paris, France]{Building and maintaining internal tools.}
+        \end{rightenv}
+
+      \section{Education}
+        \begin{rightenv}
+          \subsectionright{2021 – 2024}[BSc]{Computer Science}[at \textbf{A University}][Lyon, France]{}
+        \end{rightenv}
+
+    \end{minipage}
+
+  \end{textblock}
+
+\end{document}

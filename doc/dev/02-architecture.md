@@ -36,8 +36,12 @@ example); the class only provides the commands used *inside* them.
 
 A two-`minipage` row: a `tabular` of contact rows on the left, name + job title
 on the right, then a separate `textblock` for the photo with a tikz-drawn frame.
-Each contact row is guarded by `\ifthenelse{\equal{\cvfoo}{}}{}{...}` so unset
-fields vanish.
+
+Each public setter (`\cvmail{...}`) is built by `\cv@declarefield` and stores
+its argument in a private macro (`\cv@mail`) that is **initialised empty**.
+`\makeprofile` reads the private macro and guards each row with
+`\ifthenelse{\equal{\cv@foo}{}}{}{...}`, so a field that is unset — whether
+passed `{}` or omitted entirely — renders nothing.
 
 Two implementation notes:
 
@@ -82,15 +86,10 @@ roadmap.
   by grabbing `#1#2#3`. A title shorter than three tokens, or starting with a
   group/macro, eats the tokens that follow. All current examples have long
   titles, so it never fires.
-- **Header fields are self-redefining macros**
-  (`\newcommand{\cvname}[1]{\renewcommand{\cvname}{#1}}`) with **no default**.
-  Omitting a field entirely — as opposed to calling it with `{}` — leaves a
-  1-argument macro that `\equal` then mis-expands, producing a cryptic error.
-- **`\ifblank` is used without loading `etoolbox`**; it arrives transitively via
-  `tcolorbox`/`xargs`. It is also absent from the README's dependency list.
-- **`titlesec`, `multirow` and `ragged2e` are loaded but never used.**
-- **`\usepackage{fontawesome}`** appears inside a `.cls` (should be
-  `\RequirePackage`), and `\LoadClass` runs *before* `\ProvidesClass`.
+- **`\subsectionleft` takes two *mandatory* arguments**, but the examples often
+  pass one. That works only by accident: `\newcommand` builds `\long` macros, so
+  the `\par` from the following blank line silently becomes the second argument.
+  Pass `{}` explicitly.
 - **No class options** are declared (`\DeclareOption`/`\ProcessOptions` are
   absent), so colour themes can only be applied by re-`\definecolor`ing in the
   user preamble.

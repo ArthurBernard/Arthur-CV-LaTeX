@@ -16,20 +16,15 @@ here: git log + `CHANGELOG.md` are authoritative for *what* shipped,
 
 ## 1. Correctness & robustness
 
-- [ ] Initialise every header field to empty at class load, so **omitting** a
-      field renders nothing instead of erroring. Currently only calling it with
-      `{}` is safe. (`02-architecture.md` § Known fragilities)
-- [ ] `\RequirePackage{etoolbox}` explicitly — `\ifblank` currently resolves only
-      through a transitive dependency — and add it to the README package list.
 - [ ] Make `\@sectioncolor` safe for `\section` titles shorter than three tokens
       or starting with a macro/group. Currently it grabs `#1#2#3` blindly.
 
-## 2. Class conformance
-
-- [ ] Move `\ProvidesClass` above `\LoadClass`, turn the stray
-      `\usepackage{fontawesome}` into `\RequirePackage`, drop the unused
-      `titlesec` / `multirow` / `ragged2e`, and give the classes a real version
-      in `\ProvidesClass[...]` (currently frozen at the 2019 creation date).
+- [ ] Make `\subsectionleft`'s second argument genuinely optional, or document
+      that both braces are required. Today `\subsectionleft{Skill}` compiles only
+      because `\newcommand` is `\long` and the following blank line's `\par`
+      lands in the second argument. Note the API is frozen: switching to a
+      bracketed optional argument would break every existing fork, so this is a
+      documentation fix unless a compatible form is found.
 
 ## 3. API & ergonomics
 

@@ -20,8 +20,9 @@ public API — see the invariants in `CLAUDE.md`.
 ```
 arthur-cv.cls              # the CV class (~275 lines)
 arthur-cover-letter.cls    # the cover-letter class (~245 lines)
-examples/                  # 5 .tex + committed reference .pdf
-  example_cv.tex           #   minimal skeleton (John Doe)
+examples/                  # 6 .tex + committed reference .pdf
+  example_cv.tex           #   skeleton (John Doe)
+  minimal_cv.tex           #   smallest possible CV; omits most header fields
   example_cover_letter.tex #   minimal letter
   Arthur_Bernard_CV_En.tex #   real EN CV — no photo/age/address
   Arthur_Bernard_CV_Fr.tex #   real FR CV — with photo/age/address
