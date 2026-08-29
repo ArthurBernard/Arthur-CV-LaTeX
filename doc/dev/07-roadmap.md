@@ -49,6 +49,12 @@ here: git log + `CHANGELOG.md` are authoritative for *what* shipped,
 
 ## 4. Maintenance
 
+- [ ] Decide what to do about `example_cover_letter.tex` using `\today`: its
+      committed reference PDF changes every day, so `make refresh-examples`
+      always shows a diff for it and pixel comparisons of that file are only
+      valid within a single day. Either freeze the date in the example (losing
+      the `\today` demonstration) or stop committing that PDF.
+
 - [ ] Migrate `fontawesome` (4.7, frozen) to `fontawesome5`.
 - [ ] Replace the `$\begin{array}{l}\hspace{Nmm}…\end{array}$` icon-alignment
       hack with `\makebox`.

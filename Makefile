@@ -77,6 +77,18 @@ test: build
 	if [ $$fail -ne 0 ]; then echo "page-count check failed"; exit 1; fi; \
 	echo "all examples compile and match their expected page count"
 
+# chktex exits 0 even when it reports problems, so `make lint` fails on any
+# output instead of on the exit code. Each suppression below is here for a
+# reason -- do not add one just to make the target green:
+#   -n1  "Command terminated with space"   deliberate in the icon macros
+#   -n12 "Interword spacing"               false positive after abbreviations
+#   -n13 "Intersentence spacing"           false positive after "LLM:"
+#   -n26 "Space in front of punctuation"   correct in French typography
+#   -n36 "Space in front of parenthesis"   class-internal math/array code
+# Notably NOT suppressed: -n8 (wrong dash length), which caught two real
+# hyphen/en-dash inconsistencies in the English CV.
+CHKTEXFLAGS ?= -q -n1 -n12 -n13 -n26 -n36
+
 ## lint — static check of the sources
 #
 # chktex is a separate package (`sudo apt install chktex`) and is not needed to
@@ -89,9 +101,9 @@ lint:
 	    echo "         lint is enforced in CI regardless."; \
 	    exit 0; \
 	fi; \
-	$(CHKTEX) --quiet --nowarn=1 --nowarn=8 --nowarn=17 --nowarn=36 \
-	          --nowarn=41 --nowarn=46 --erroronwarning $(CLASSES) $(SRCS) \
-	    && echo "lint clean"
+	out=$$($(CHKTEX) $(CHKTEXFLAGS) $(CLASSES) $(SRCS) 2>&1); \
+	if [ -n "$$out" ]; then echo "$$out"; echo "lint failed"; exit 1; fi; \
+	echo "lint clean"
 
 ## toolchain — fail early with a useful message rather than a cryptic one
 toolchain:
