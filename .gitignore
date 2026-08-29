@@ -14,3 +14,12 @@ pictures/Green_example_CV.jpg
 pictures/Grey_example_CV.jpg
 pictures/Red_example_CV.jpg
 pictures/Yellow_example_CV.jpg
+
+# Build artifacts
+build/
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+
+# Archived plan trees (local reference only)
+doc/dev/_archive/
