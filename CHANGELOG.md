@@ -42,6 +42,10 @@ The classes carried no version marker before this file existed; history prior to
 
 ### Fixed
 
+- The reference PDFs under `examples/` no longer match-fail their sources:
+  `Two_Pages_CV.pdf` carried a spurious **blank third page**, and all four were
+  built by an older toolchain. Regenerated, and `make refresh-examples` now does
+  it in one command.
 - **Omitting a header field no longer errors.** Fields such as `\cvnumberphone`
   were self-redefining macros with no initial value, so leaving one out (rather
   than calling it with `{}`) left a macro still expecting an argument and failed

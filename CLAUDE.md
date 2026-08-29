@@ -58,6 +58,9 @@ make build
 # Compile one example
 make build/example_cv.pdf
 
+# Regenerate the reference PDFs committed under examples/
+make refresh-examples
+
 # Lint the sources (chktex)
 make lint
 

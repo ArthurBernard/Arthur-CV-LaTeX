@@ -160,6 +160,10 @@ explicit rather than deciding for them.
 
 ## Known sharp edges
 
+- **The classes need `arthur-cv-header.sty` alongside them.** If the user is
+  copying the template into a project of their own rather than working inside a
+  clone, they need the `.cls` *and* the `.sty`, or the compile dies with
+  ``File `arthur-cv-header.sty' not found``.
 - **`\subsectionleft` takes two braces**, not one: `\subsectionleft{Python}{}`.
   Passing only the first compiles, but silently feeds the next blank line's
   `\par` in as the description, which throws off the spacing between items.

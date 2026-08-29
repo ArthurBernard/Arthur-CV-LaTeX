@@ -244,6 +244,26 @@ make test        # compiles every example and asserts its page count
 
 ___
 
+## Installation
+
+Copy these next to your `.tex` file (or anywhere TeX searches):
+
+| You want | Copy |
+|---|---|
+| a CV | `arthur-cv.cls` **and** `arthur-cv-header.sty` |
+| a cover letter | `arthur-cover-letter.cls` **and** `arthur-cv-header.sty` |
+| both | both classes **and** `arthur-cv-header.sty` |
+
+`arthur-cv-header.sty` holds the header and layout code shared by the two
+classes. **Neither class works without it** — copying only the `.cls`, as was
+possible before the header was factored out, now fails with
+``File `arthur-cv-header.sty' not found``.
+
+If your `.tex` sets `\profilepic`, the path is resolved relative to the
+directory you run `lualatex` **from**, not to the `.tex` file.
+
+___
+
 ## Requirements
 
 - Compile with **LuaLaTeX** (prefered) or **XeLaTex**.
